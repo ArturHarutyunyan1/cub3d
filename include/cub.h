@@ -4,42 +4,31 @@
 #include "../libft/include/libft.h"
 #include "../mlx/mlx.h"
 #include <stdbool.h>
+#include <math.h>
 
-typedef struct s_map
-{
-    int rows;
-    int cols;
-} t_map;
+// Default window size
 
-typedef struct s_player
-{
-    int x;
-    int y;
-} t_player;
+#define WIDTH 1024
+#define HEIGHT 768
 
-typedef struct s_game
+// Keycodes
+
+#define KEY_ESC 53
+#define KEY_W 13
+#define KEY_A 0
+#define KEY_S 1
+#define KEY_D 2
+#define LEFT_ARROW 123
+#define RIGHT_ARROW 124
+
+typedef struct s_vars
 {
     void *mlx;
     void *mlx_win;
-    char **map;
-    char *t_line;
-    char *trim;
-    int map_width;
-    int map_height;
-    int x;
-    int y;
+}t_vars;
 
-} t_game;
 
-void	validation(int argc, char **argv);
-bool check_format(char *path);
-void exit_program(char *msg, int status);
-int	get_size(char *path);
-char	**read_map(char *path);
-t_map	get_dimensions(char **str);
-void	free_matrix(char **matrix);
-void	validate_map(char *path);
-void	check_chars(char c);
-bool	surrounded_by_walls(char **map);
+void init_game();
+int	exit_game(t_vars *vars);
 
 #endif

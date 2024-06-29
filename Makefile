@@ -1,10 +1,10 @@
-NAME = cub3d
+NAME = Cub3D
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
 LIBFT_DIR = ./libft
 MLX_DIR = ./mlx
 LIBFT_FLAGS = -L$(LIBFT_DIR) -lft
-MLX_FLAGS = -L$(MLX_DIR) -lmlx
+MLX_FLAGS = -L$(MLX_DIR) -Lmlx -lmlx -framework OpenGL -framework AppKit
 RM = rm -f
 
 SRCS = $(wildcard src/*.c) \
