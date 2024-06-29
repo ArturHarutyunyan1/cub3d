@@ -53,68 +53,50 @@ char **read_map(char *path)
     return (game.map.grid);
 }
 
-t_map init_map(char **str)
-{
-    int i;
-    int len;
-    t_map map;
-
-    i = 0;
-    map.width = 0;
-    map.height = 0;
-    while (str[i])
-    {
-        len = ft_strlen(str[i]);
-        if (len != 0)
-        {
-            if (len > map.width)
-                map.width = len;
-            map.height++;
-        }
-        i++;
-    }
-    map.width -= 1;
-    return (map);
-}
-
 void init_player(t_game *game)
 {
     int i;
     int j;
 
     i = 0;
-    while (game->map.grid[i])
+    while (i < game->map.height)
     {
         j = 0;
-        while (game->map.grid[i][j])
+        while (j < game->map.width)
         {
-            if (game->map.grid[i][j] == 'N')
+            if (game->map.grid[i][j] == 'N' || game->map.grid[i][j] == 'S' || game->map.grid[i][j] == 'E' || game->map.grid[i][j] == 'W')
             {
-                game->player.dir_x = -1;
-                game->player.dir_y = 0;
-                game->player.plane_x = 0;
-                game->player.plane_y = 0.66;
-            }
-            else if (game->map.grid[i][j] == 'S')
-            {
-                game->player.dir_x = 1;
-                game->player.dir_y = 0;
-                game->player.plane_x = 0;
-                game->player.plane_y = -0.66;
-            }
-            else if (game->map.grid[i][j] == 'E')
-            {
-                game->player.dir_x = 0;
-                game->player.dir_y = 1;
-                game->player.plane_x = 0.66;
-                game->player.plane_y = 0;
-            }
-            else if (game->map.grid[i][j] == 'W')
-            {
-                game->player.dir_x = 0;
-                game->player.dir_y = -1;
-                game->player.plane_x = -0.66;
-                game->player.plane_y = 0;
+                game->player.x = j + 0.5;
+                game->player.y = i + 0.5;
+                if (game->map.grid[i][j] == 'N')
+                {
+                    game->player.dir_x = -1;
+                    game->player.dir_y = 0;
+                    game->player.plane_x = 0;
+                    game->player.plane_y = 0.66;
+                }
+                else if (game->map.grid[i][j] == 'S')
+                {
+                    game->player.dir_x = 1;
+                    game->player.dir_y = 0;
+                    game->player.plane_x = 0;
+                    game->player.plane_y = -0.66;
+                }
+                else if (game->map.grid[i][j] == 'E')
+                {
+                    game->player.dir_x = 0;
+                    game->player.dir_y = 1;
+                    game->player.plane_x = 0.66;
+                    game->player.plane_y = 0;
+                }
+                else if (game->map.grid[i][j] == 'W')
+                {
+                    game->player.dir_x = 0;
+                    game->player.dir_y = -1;
+                    game->player.plane_x = -0.66;
+                    game->player.plane_y = 0;
+                }
+                return; // Exit after setting player position
             }
             j++;
         }
@@ -122,19 +104,20 @@ void init_player(t_game *game)
     }
 }
 
-void init_rays(t_game game)
+void init_rays(t_game *game)
 {
-    game.rays.camera_x = 0;
-    game.rays.camera_y = 0;
-    game.rays.ray_dir_x = 0;
-    game.rays.ray_dir_y = 0;
-    game.rays.delta_dist_x = 0;
-    game.rays.delta_dist_y = 0;
-    game.rays.side_dist_x = 0;
-    game.rays.map_x = 0;
-    game.rays.map_y = 0;
-    game.rays.step_x = 0;
-    game.rays.step_y = 0;
-    game.rays.hit = 0;
-    game.rays.side = 0;
+    game->rays.camera_x = 0;
+    game->rays.camera_y = 0;
+    game->rays.ray_dir_x = 0;
+    game->rays.ray_dir_y = 0;
+    game->rays.delta_dist_x = 0;
+    game->rays.delta_dist_y = 0;
+    game->rays.side_dist_x = 0;
+    game->rays.perp_wall_dist = 0;
+    game->rays.map_x = 0;
+    game->rays.map_y = 0;
+    game->rays.step_x = 0;
+    game->rays.step_y = 0;
+    game->rays.hit = 0;
+    game->rays.side = 0;
 }

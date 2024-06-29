@@ -8,8 +8,8 @@
 
 // Default window size
 
-#define WIDTH 1024
-#define HEIGHT 768
+#define WIDTH 640
+#define HEIGHT 480
 
 // Keycodes
 
@@ -62,6 +62,7 @@ typedef struct s_rays
     double delta_dist_y;
     double side_dist_x;
     double side_dist_y;
+    double perp_wall_dist;
     int map_x;
     int map_y;
     int step_x;
@@ -84,7 +85,7 @@ char **read_map(char *path);
 t_map init_map(char **str);
 void init_player(t_game *game);
 int	exit_game(t_game *game);
-void init_rays(t_game game);
+void init_rays(t_game *game);
 void	free_matrix(char **matrix);
 
 #endif
