@@ -60,20 +60,20 @@ t_map init_map(char **str)
     t_map map;
 
     i = 0;
-    map.widht = 0;
+    map.width = 0;
     map.height = 0;
     while (str[i])
     {
         len = ft_strlen(str[i]);
         if (len != 0)
         {
-            if (len > map.widht)
-                map.widht = len;
+            if (len > map.width)
+                map.width = len;
             map.height++;
         }
         i++;
     }
-    map.widht -= 1;
+    map.width -= 1;
     return (map);
 }
 

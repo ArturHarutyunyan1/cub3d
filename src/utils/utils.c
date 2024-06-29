@@ -1,8 +1,22 @@
 #include "../../include/cub.h"
 
-int	exit_game(t_vars *vars)
+void	free_matrix(char **matrix)
 {
-	mlx_destroy_window(vars->mlx, vars->mlx_win);
+	int	i;
+
+	i = 0;
+	while (matrix[i])
+	{
+		free(matrix[i]);
+		i++;
+	}
+	free(matrix);
+}
+
+int	exit_game(t_game *game)
+{
+	// free_matrix(game->map.grid);
+	mlx_destroy_window(game->vars.mlx, game->vars.mlx_win);
 	printf("Game was closed successfully!\n");
 	exit(0);
 }

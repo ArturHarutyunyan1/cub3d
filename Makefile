@@ -1,6 +1,6 @@
 NAME = Cub3D
 CC = cc
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall
 LIBFT_DIR = ./libft
 MLX_DIR = ./mlx
 LIBFT_FLAGS = -L$(LIBFT_DIR) -lft

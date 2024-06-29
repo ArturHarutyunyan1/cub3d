@@ -29,7 +29,7 @@ typedef struct s_vars
 
 typedef struct s_map
 {
-    int widht;
+    int width;
     int height;
     char **grid;
 }t_map;
@@ -83,7 +83,8 @@ void init_game(char *argv);
 char **read_map(char *path);
 t_map init_map(char **str);
 void init_player(t_game *game);
-int	exit_game(t_vars *vars);
+int	exit_game(t_game *game);
 void init_rays(t_game game);
+void	free_matrix(char **matrix);
 
 #endif
