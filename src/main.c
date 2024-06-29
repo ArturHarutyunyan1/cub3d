@@ -1,6 +1,7 @@
 #include "../include/cub.h"
 
-int main()
+int main(int argc, char **argv)
 {
-    init_game();
+    if (argc > 1)
+        init_game(argv[1]);
 }

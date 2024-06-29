@@ -59,7 +59,9 @@ typedef struct s_game
     t_player player;
 }t_game;
 
-void init_game();
+void init_game(char *argv);
+char **read_map(char *path);
+t_map init_map(char **str);
 int	exit_game(t_vars *vars);
 
 #endif
