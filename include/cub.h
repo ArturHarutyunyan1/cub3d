@@ -62,6 +62,7 @@ typedef struct s_game
 void init_game(char *argv);
 char **read_map(char *path);
 t_map init_map(char **str);
+void init_player(t_game *game);
 int	exit_game(t_vars *vars);
 
 #endif

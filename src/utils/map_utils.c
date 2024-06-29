@@ -76,3 +76,48 @@ t_map init_map(char **str)
     map.widht -= 1;
     return (map);
 }
+
+void init_player(t_game *game)
+{
+    int i;
+    int j;
+
+    i = 0;
+    while (game->map.grid[i])
+    {
+        j = 0;
+        while (game->map.grid[i][j])
+        {
+            if (game->map.grid[i][j] == 'N')
+            {
+                game->player.dir_x = -1;
+                game->player.dir_y = 0;
+                game->player.plane_x = 0;
+                game->player.plane_y = 0.66;
+            }
+            else if (game->map.grid[i][j] == 'S')
+            {
+                game->player.dir_x = 1;
+                game->player.dir_y = 0;
+                game->player.plane_x = 0;
+                game->player.plane_y = -0.66;
+            }
+            else if (game->map.grid[i][j] == 'E')
+            {
+                game->player.dir_x = 0;
+                game->player.dir_y = 1;
+                game->player.plane_x = 0.66;
+                game->player.plane_y = 0;
+            }
+            else if (game->map.grid[i][j] == 'W')
+            {
+                game->player.dir_x = 0;
+                game->player.dir_y = -1;
+                game->player.plane_x = -0.66;
+                game->player.plane_y = 0;
+            }
+            j++;
+        }
+        i++;
+    }
+}
