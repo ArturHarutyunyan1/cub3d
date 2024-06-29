@@ -27,6 +27,37 @@ typedef struct s_vars
     void *mlx_win;
 }t_vars;
 
+typedef struct s_map
+{
+    int widht;
+    int height;
+    char **grid;
+}t_map;
+
+typedef struct s_img
+{
+    void *img;
+    char *data;
+    int *size;
+    int bpp;
+}t_img;
+
+typedef struct s_player
+{
+    double x;
+    double y;
+    double dir_x;
+    double dir_y;
+    double plane_x;
+    double plane_y;
+}t_player;
+
+typedef struct s_game
+{
+    t_vars vars;
+    t_map map;
+    t_player player;
+}t_game;
 
 void init_game();
 int	exit_game(t_vars *vars);
