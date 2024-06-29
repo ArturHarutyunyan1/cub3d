@@ -93,38 +93,30 @@ void draw_walls(int x, t_game *game)
     }
 }
 
-// void raycaster(t_game *game)
-// {
-//     for (int x = 0; x < WIDTH; x++)
-//     {
-//         setup(x, &game);
-//         get_sides(&game);
-//         dda(&game);
-//         if (gamerays.hit)
-//             draw_walls(x, &game);
-//     }
-// }
+void raycaster(t_game *game)
+{
+    for (int x = 0; x < WIDTH; x++)
+    {
+        setup(x, game);
+        get_sides(game);
+        dda(game);
+        if (game->rays.hit)
+            draw_walls(x, game);
+    }
+}
 
 void init_game(char *argv)
 {
     t_game game;
     
     game.map.grid = read_map(argv);
-    printf("%s", game.map.grid[0]);
-    game.map.width = 4;
+    game.map.width = 5;
     game.map.height = 4;
     init_rays(&game);
     init_player(&game);
     game.vars.mlx = mlx_init();
     game.vars.mlx_win = mlx_new_window(game.vars.mlx, WIDTH, HEIGHT, "Cub3D");
-        for (int x = 0; x < WIDTH; x++)
-    {
-        setup(x, &game);
-        get_sides(&game);
-        dda(&game);
-        if (game.rays.hit)
-            draw_walls(x, &game);
-    }
+    raycaster(&game);
     mlx_hook(game.vars.mlx_win, 17, 0, exit_game, &game);
     mlx_loop(game.vars.mlx);
 }
