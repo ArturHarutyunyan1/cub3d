@@ -121,3 +121,20 @@ void init_player(t_game *game)
         i++;
     }
 }
+
+void init_rays(t_game game)
+{
+    game.rays.camera_x = 0;
+    game.rays.camera_y = 0;
+    game.rays.ray_dir_x = 0;
+    game.rays.ray_dir_y = 0;
+    game.rays.delta_dist_x = 0;
+    game.rays.delta_dist_y = 0;
+    game.rays.side_dist_x = 0;
+    game.rays.map_x = 0;
+    game.rays.map_y = 0;
+    game.rays.step_x = 0;
+    game.rays.step_y = 0;
+    game.rays.hit = 0;
+    game.rays.side = 0;
+}
