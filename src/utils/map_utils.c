@@ -96,12 +96,19 @@ void init_player(t_game *game)
                     game->player.plane_x = -0.66;
                     game->player.plane_y = 0;
                 }
-                return; // Exit after setting player position
+                return;
             }
             j++;
         }
         i++;
     }
+}
+
+void init_img(t_game *game)
+{
+    game->img.bits_per_pixel = 0;
+    game->img.endian = 0;
+    game->img.line_length = 0;
 }
 
 void init_rays(t_game *game)

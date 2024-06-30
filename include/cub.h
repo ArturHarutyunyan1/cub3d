@@ -20,6 +20,10 @@
 #define KEY_D 2
 #define LEFT_ARROW 123
 #define RIGHT_ARROW 124
+#define MOVE_SPEED 0.1
+#define ROTATE_SPEED 0.05
+
+
 
 typedef struct s_vars
 {
@@ -31,16 +35,31 @@ typedef struct s_map
 {
     int width;
     int height;
+    char *no;
+    char *so;
+    char *ea;
+    char *we;
     char **grid;
 }t_map;
 
-typedef struct s_img
+typedef struct	s_img {
+	void	*img;
+	char	*addr;
+	int		bits_per_pixel;
+	int		line_length;
+	int		endian;
+}		t_img;
+
+typedef struct s_texture
 {
-    void *img;
-    char *data;
-    int size[2];
-    int bpp;
-}t_img;
+    void    *img;
+    char    *addr;
+    int     width;
+    int     height;
+    int     bpp;
+    int     line_length;
+    int     endian;
+}           t_texture;
 
 typedef struct s_player
 {
@@ -63,6 +82,9 @@ typedef struct s_rays
     double side_dist_x;
     double side_dist_y;
     double perp_wall_dist;
+    int direction;
+    int horizontal;
+    int vertical;
     int map_x;
     int map_y;
     int step_x;
@@ -76,15 +98,18 @@ typedef struct s_game
     t_vars vars;
     t_map map;
     t_img img;
+    t_texture textures[4];
     t_rays rays;
     t_player player;
 }t_game;
 
 void init_game(char *argv);
 char **read_map(char *path);
+void init_img(t_game *game);
 t_map init_map(char **str);
 void init_player(t_game *game);
 int	exit_game(t_game *game);
+void get_paths(t_game *game, char *path);
 void init_rays(t_game *game);
 void	free_matrix(char **matrix);
 

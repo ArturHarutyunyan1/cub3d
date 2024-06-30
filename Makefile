@@ -1,4 +1,4 @@
-NAME = Cub3D
+NAME = cub3D
 CC = cc
 CFLAGS = -Wall
 LIBFT_DIR = ./libft
@@ -11,7 +11,7 @@ SRCS = $(wildcard src/*.c) \
        $(wildcard src/utils/*.c)
 OBJS = $(SRCS:.c=.o)
 
-$(NAME): $(OBJS) Makefile include
+$(NAME): $(OBJS) Makefile ./include
 	@$(MAKE) -C $(LIBFT_DIR)
 	$(CC) $(CFLAGS) $(OBJS) -o $(NAME) $(LIBFT_FLAGS) $(MLX_FLAGS)
 
