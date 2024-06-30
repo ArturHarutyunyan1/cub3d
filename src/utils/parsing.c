@@ -18,14 +18,19 @@ void check_path(t_game *game, char *line)
             arr = ft_split(line, ' ');
             if (arr)
             {
-                if (i == 0)
-                    game->map.no = arr[1];
-                else if (i == 1)
-                    game->map.so = arr[1];
-                else if (i == 2)
-                    game->map.ea = arr[1];
-                else if (i == 3)
-                    game->map.we = arr[1];
+                if (i <= 3)
+                {
+                    if (i == 0)
+                        game->map.no = arr[1];
+                    else if (i == 1)
+                        game->map.so = arr[1];
+                    else if (i == 2)
+                        game->map.ea = arr[1];
+                    else if (i == 3)
+                        game->map.we = arr[1];
+                }
+                if (game->map.no && game->map.so && game->map.ea && game->map.we)
+                    game->map.is_all_set = 1;
                 return;
             }
         }
@@ -72,26 +77,41 @@ void process_line(t_game *game, char *line)
     }
 }
 
+int	ft_isspace(int c)
+{
+	if (c == '\t' || c == '\n' || c == ' ')
+		return (1);
+	return (0);
+}
+
+int	contains_only_whitespace(const char *str)
+{
+	while (*str)
+	{
+		if (!ft_isspace((char)*str))
+			return (0);
+		str++;
+	}
+	return (1);
+}
+
 void get_paths(t_game *game, char *path)
 {
     int fd;
-    int i;
     char *line;
 
-    i = 0;
     fd = open(path, O_RDONLY);
     if (fd == -1)
         return;
-
-    while (i != 4)
+    game->map.is_all_set = 0;
+    while (game->map.is_all_set != 1)
     {
         line = get_next_line(fd);
         if (!line)
             break;
-        process_line(game, line);
+        if (!contains_only_whitespace(line))
+            process_line(game, line);
         free(line);
-        i++;
     }
-
     close(fd);
 }

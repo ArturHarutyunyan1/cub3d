@@ -1,6 +1,6 @@
 #include "../../include/cub.h"
 
-static int get_size(char *path)
+int get_size(char *path)
 {
     int fd;
     int flag;

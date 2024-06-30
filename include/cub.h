@@ -33,8 +33,12 @@ typedef struct s_vars
 
 typedef struct s_map
 {
+    int is_all_set;
     int width;
     int height;
+    int r;
+    int g;
+    int b;
     char *no;
     char *so;
     char *ea;
@@ -112,5 +116,6 @@ int	exit_game(t_game *game);
 void get_paths(t_game *game, char *path);
 void init_rays(t_game *game);
 void	free_matrix(char **matrix);
+int get_size(char *path);
 
 #endif
