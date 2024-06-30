@@ -7,6 +7,8 @@ void display_map_data(t_map *map)
     printf("  - South Texture: %s\n", map->so ? map->so : "Not set");
     printf("  - East Texture: %s\n", map->ea ? map->ea : "Not set");
     printf("  - West Texture: %s\n", map->we ? map->we : "Not set");
+    printf("  - Ceiling Color: %s\n", map->c ? map->c : "Not set");
+    printf("  - Floor Color: %s\n", map->f ? map->f : "Not set");
 }
 
 void init_game(char *argv)

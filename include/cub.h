@@ -36,9 +36,8 @@ typedef struct s_map
     int is_all_set;
     int width;
     int height;
-    int r;
-    int g;
-    int b;
+    char *f;
+    char *c;
     char *no;
     char *so;
     char *ea;

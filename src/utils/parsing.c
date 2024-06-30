@@ -2,39 +2,29 @@
 
 void check_path(t_game *game, char *line)
 {
-    int i;
     char **arr;
-    char *prefixes[4];
 
-    i = 0;
-    prefixes[0] = "NO";
-    prefixes[1] = "SO";
-    prefixes[2] = "EA";
-    prefixes[3] = "WE";
-    while (prefixes[i])
+    if ((line[0] == 'N' && line[1] == 'O' && line[2] == ' ')
+        || (line[0] == 'S' && line[1] == 'O' && line[2] == ' ')
+        || (line[0] == 'E' && line[1] == 'A' && line[2] == ' ')
+        || (line[0] == 'W' && line[1] == 'E' && line[2] == ' ')
+        || (line[0] == 'C' && line[1] == ' ')
+        || (line[0] == 'F' && line[1] == ' '))
     {
-        if (ft_strncmp(line, prefixes[i], 2) == 0)
-        {
-            arr = ft_split(line, ' ');
-            if (arr)
-            {
-                if (i <= 3)
-                {
-                    if (i == 0)
-                        game->map.no = arr[1];
-                    else if (i == 1)
-                        game->map.so = arr[1];
-                    else if (i == 2)
-                        game->map.ea = arr[1];
-                    else if (i == 3)
-                        game->map.we = arr[1];
-                }
-                if (game->map.no && game->map.so && game->map.ea && game->map.we)
-                    game->map.is_all_set = 1;
-                return;
-            }
-        }
-        i++;
+        arr = ft_split(line, ' ');
+        if (line[0] == 'N' && line[1] == 'O')
+            game->map.no = arr[1];
+        else if (line[0] == 'S' && line[1] == 'O')
+            game->map.so = arr[1];
+        else if (line[0] == 'E' && line[1] == 'A')
+            game->map.ea = arr[1];
+        else if (line[0] == 'W' && line[1] == 'E')
+            game->map.we = arr[1];
+        else if (line[0] == 'C')
+            game->map.c = arr[1];
+        else if (line[0] == 'F')
+            game->map.f = arr[1];
+        return;
     }
 }
 
