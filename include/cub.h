@@ -111,14 +111,14 @@ char **read_map(char *path);
 void init_img(t_game *game);
 t_map init_map(char **str);
 void init_player(t_game *game);
-int	exit_game(t_game *game);
+int	exit_game(t_game *game, char *msg, int status);
+void validate(char *path);
+bool	check_chars(t_game *game);
 void get_paths(t_game *game, char *path);
 void init_rays(t_game *game);
 void	free_matrix(char **matrix);
 int	contains_only_whitespace(const char *str);
-int get_line_count(char *path);
-int is_line_valid(char *line);
-int are_edges_valid(char *line);
+bool surrounded_by_walls(t_game *game);
 int get_size(char *path);
 
 #endif

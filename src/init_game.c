@@ -26,7 +26,7 @@ void init_game(char *argv)
     init_img(&game);
     init_player(&game);
     get_paths(&game, argv);
-    display_map_data(&game.map); 
+    // display_map_data(&game.map); 
     // game.vars.mlx = mlx_init();
     // game.vars.mlx_win = mlx_new_window(game.vars.mlx, WIDTH, HEIGHT, "Cub3D");
     // game.img.img = mlx_new_image(game.vars.mlx, WIDTH, HEIGHT);
