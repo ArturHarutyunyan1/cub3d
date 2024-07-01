@@ -115,6 +115,10 @@ int	exit_game(t_game *game);
 void get_paths(t_game *game, char *path);
 void init_rays(t_game *game);
 void	free_matrix(char **matrix);
+int	contains_only_whitespace(const char *str);
+int get_line_count(char *path);
+int is_line_valid(char *line);
+int are_edges_valid(char *line);
 int get_size(char *path);
 
 #endif

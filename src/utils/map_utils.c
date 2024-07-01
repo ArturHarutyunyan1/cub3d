@@ -31,27 +31,39 @@ char **read_map(char *path)
 {
     int i;
     int fd;
-    int size;
+    int count;
     char *line;
-    t_game game;
+    char **map;
 
     i = 0;
-    size = get_size(path);
-    game.map.grid = (char **)malloc((size + 1) * sizeof(char *));
+    count = get_size(path);
     fd = open(path, O_RDONLY);
-    if (!game.map.grid)
+    if (fd < 0)
+        exit(printf("Error\nCannot read map!\n"));
+    map = (char **)malloc((count + 1) * sizeof(char *));
+    if (!map)
         return (NULL);
-    while (i < size)
+    line = get_next_line(fd);
+    while (line && !(line[0] == '1'))
     {
+        free (line);
         line = get_next_line(fd);
-        game.map.grid[i] = malloc(ft_strlen(line) + 1);
-        ft_strlcpy(game.map.grid[i], line, ft_strlen(line) + 1);
+    }
+    while (line && line[0] == '1')
+    {
+        map[i] = malloc((ft_strlen(line) + 1));
+        if (!map[i])
+            free (map);
+        ft_strlcpy(map[i], line, ft_strlen(line) + 1);
         i++;
         free (line);
+        line = get_next_line(fd);
     }
-    game.map.grid[i] = NULL;
-    return (game.map.grid);
+    map[i] = NULL;
+    close (fd);
+    return (map);
 }
+
 
 void init_player(t_game *game)
 {
