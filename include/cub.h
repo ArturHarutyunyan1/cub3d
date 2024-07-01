@@ -114,6 +114,7 @@ void init_player(t_game *game);
 int	exit_game(t_game *game, char *msg, int status);
 void validate(char *path);
 bool	check_chars(t_game *game);
+bool check_format(char *line);
 void get_paths(t_game *game, char *path);
 void init_rays(t_game *game);
 void	free_matrix(char **matrix);

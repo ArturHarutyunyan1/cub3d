@@ -4,11 +4,23 @@ void validate(char *path)
 {
     t_game game;
 
+    if (!check_format(path))
+        exit(printf("Error\nInvalid format\n"));
     game.map.grid = read_map(path);
     if (!surrounded_by_walls(&game))
         exit_game(&game, "Error\nMap is not surrounded by walls\n", 1);
     if (!check_chars(&game))
         exit_game(&game, "Error\nInvalid characters in map\n", 1);
+}
+
+bool check_format(char *line)
+{
+    int len;
+
+    len = ft_strlen(line);
+    if (ft_strncmp(line + len - 4, ".cub", 4))
+        return (false);
+    return (true);
 }
 
 bool surrounded_by_walls(t_game *game)
