@@ -16,7 +16,7 @@ void	free_matrix(char **matrix)
 int	ft_exit(t_game *game, char *msg, int status)
 {
 	printf("%s", msg);
-	// printf("ER);
+	(void)game;
 	// free_matrix(game->map.grid);
 	// mlx_destroy_image(game->vars.mlx, game->img.img);
 	// mlx_destroy_window(game->vars.mlx, game->vars.mlx_win);
