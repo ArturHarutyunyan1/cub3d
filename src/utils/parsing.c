@@ -39,7 +39,7 @@ void process_line(t_game *game, char *line)
     i = 0;
     j = 0;
     flg = 0;
-    dup = ft_strtrim(line, " \t");
+    dup = ft_strtrim(line, " \t\n");
     trimmed_line = malloc(ft_strlen(dup) + 1);
     if (trimmed_line)
     {

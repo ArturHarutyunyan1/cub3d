@@ -13,12 +13,18 @@ void	free_matrix(char **matrix)
 	free(matrix);
 }
 
-int	exit_game(t_game *game, char *msg, int status)
+int	ft_exit(t_game *game, char *msg, int status)
 {
 	printf("%s", msg);
-	printf("ERROR LINE %s", game->map.grid[0]);
+	// printf("ER);
 	// free_matrix(game->map.grid);
 	// mlx_destroy_image(game->vars.mlx, game->img.img);
 	// mlx_destroy_window(game->vars.mlx, game->vars.mlx_win);
 	exit(status);
+}
+
+int exit_game(t_game *game)
+{
+	ft_exit(game, "Game was closed successfully\n", 0);
+	return (0);
 }

@@ -111,7 +111,8 @@ char **read_map(char *path);
 void init_img(t_game *game);
 t_map init_map(char **str);
 void init_player(t_game *game);
-int	exit_game(t_game *game, char *msg, int status);
+int	ft_exit(t_game *game, char *msg, int status);
+int exit_game(t_game *game);
 void validate(char *path);
 bool	check_chars(t_game *game);
 bool check_format(char *line);
@@ -121,5 +122,5 @@ void	free_matrix(char **matrix);
 int	contains_only_whitespace(const char *str);
 bool surrounded_by_walls(t_game *game);
 int get_size(char *path);
-
+void init_textures(t_game *game);
 #endif
