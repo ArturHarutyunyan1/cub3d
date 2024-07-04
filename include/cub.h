@@ -132,6 +132,7 @@ void	free_matrix(char **matrix);
 int	contains_only_whitespace(const char *str);
 bool surrounded_by_walls(t_game *game);
 int get_size(char *path);
+void my_mlx_pixel_put(t_img *img, int x, int y, int color);
 void raycaster(t_game *game);
 void init_textures(t_game *game);
 #endif

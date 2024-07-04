@@ -70,75 +70,68 @@ void dda(t_game *game)
 }
 
 
-void draw_walls(int x, t_game *game)
+void prepare_drawing(t_game *game)
 {
-    int line_height;
-    int draw_start;
-    int draw_end;
-    int y;
-    t_texture *texture;
-    double wall_x;
-    int tex_x, tex_y;
-    double step;
-    double tex_pos;
+	if (game->rays.side == 0) {
+		game->rays.perp_wall_dist = game->rays.side_dist_x - game->rays.delta_dist_x;
+		game->rays.direction = game->rays.vertical;
+	} else {
+		game->rays.perp_wall_dist = game->rays.side_dist_y - game->rays.delta_dist_y;
+		game->rays.direction = game->rays.horizontal;
+	}
+	game->rays.line_height = (int)(HEIGHT / game->rays.perp_wall_dist);
+	game->rays.draw_start = -game->rays.line_height / 2 + HEIGHT / 2;
+	if (game->rays.draw_start < 0)
+		game->rays.draw_start = 0;
+	game->rays.draw_end = game->rays.line_height / 2 + HEIGHT / 2;
+	if (game->rays.draw_end >= HEIGHT)
+		game->rays.draw_end = HEIGHT - 1;
+	if (game->rays.side == 0)
+		game->rays.wall_x = game->player.y + game->rays.perp_wall_dist * game->rays.ray_dir_y;
+	else
+		game->rays.wall_x = game->player.x + game->rays.perp_wall_dist * game->rays.ray_dir_x;
+	game->rays.wall_x -= floor(game->rays.wall_x);
+	game->rays.tex_x = (int)(game->rays.wall_x * (double)game->textures[0].width);
+	if (game->rays.side == 0 && game->rays.ray_dir_x > 0)
+		game->rays.tex_x = game->textures[0].width - game->rays.tex_x - 1;
+	if (game->rays.side == 1 && game->rays.ray_dir_y < 0)
+		game->rays.tex_x = game->textures[0].width - game->rays.tex_x - 1;
+}
 
-    if (game->rays.side == 0)
-        game->rays.perp_wall_dist = (game->rays.map_x - game->player.x + (1 - game->rays.step_x) / 2) / game->rays.ray_dir_x;
-    else
-        game->rays.perp_wall_dist = (game->rays.map_y - game->player.y + (1 - game->rays.step_y) / 2) / game->rays.ray_dir_y;
+void draw_wall(t_game *game, int x)
+{
+	int y;
+	int color;
+	t_texture *texture;
 
-    line_height = (int)(HEIGHT / game->rays.perp_wall_dist);
+	texture = &game->textures[game->rays.direction];
+	game->rays.step = 1.0 * texture->height / game->rays.line_height;
+	game->rays.tex_pos = (game->rays.draw_start - HEIGHT / 2 + game->rays.line_height / 2) * game->rays.step;
 
-    draw_start = -line_height / 2 + HEIGHT / 2;
-    if (draw_start < 0)
-        draw_start = 0;
-
-    draw_end = line_height / 2 + HEIGHT / 2;
-    if (draw_end >= HEIGHT)
-        draw_end = HEIGHT - 1;
-
-    if (game->rays.side == 0)
-        wall_x = game->player.y + game->rays.perp_wall_dist * game->rays.ray_dir_y;
-    else
-        wall_x = game->player.x + game->rays.perp_wall_dist * game->rays.ray_dir_x;
-    wall_x -= floor(wall_x);
-
-    // Determine which texture to use based on the wall side
-    if (game->rays.side == 0 && game->rays.ray_dir_x > 0)
-        texture = &game->textures[0]; // North
-    else if (game->rays.side == 0 && game->rays.ray_dir_x < 0)
-        texture = &game->textures[1]; // South
-    else if (game->rays.side == 1 && game->rays.ray_dir_y > 0)
-        texture = &game->textures[2]; // East
-    else
-        texture = &game->textures[3]; // West
-
-    tex_x = (int)(wall_x * (double)(texture->width));
-    if ((game->rays.side == 0 && game->rays.ray_dir_x > 0) || (game->rays.side == 1 && game->rays.ray_dir_y < 0))
-        tex_x = texture->width - tex_x - 1;
-
-    step = 1.0 * texture->height / line_height;
-    tex_pos = (draw_start - HEIGHT / 2 + line_height / 2) * step;
-
-    for (y = draw_start; y < draw_end; y++)
-    {
-        tex_y = (int)tex_pos & (texture->height - 1);
-        tex_pos += step;
-        int color = *(int *)(texture->addr + (tex_y * texture->line_length + tex_x * (texture->bpp / 8)));
-        mlx_pixel_put(game->vars.mlx, game->vars.mlx_win, x, y, color);
-    }
-}   
+	y = game->rays.draw_start;
+	while (y < game->rays.draw_end)
+	{
+		game->rays.tex_y = (int)game->rays.tex_pos & (texture->height - 1);
+		game->rays.tex_pos += game->rays.step;
+		color = *(int *)(texture->addr + (game->rays.tex_y * texture->line_length + game->rays.tex_x * (texture->bpp / 8)));
+		if (game->rays.side == 1)
+			color = (color >> 1) & 8355711;
+		my_mlx_pixel_put(&game->img, x, y, color);
+		y++;
+	}
+}
 
 void raycaster(t_game *game)
 {
-    int x = 0;
-    while (x < WIDTH)
-    {
-        setup(game, x);
-        get_sides(game);
-        dda(game);
-        if (game->rays.hit == 1)
-            draw_walls(x, game);
-        ++x;
-    }
+	int x = 0;
+	while (x < WIDTH)
+	{
+		setup(game, x);
+		get_sides(game);
+		dda(game);
+		prepare_drawing(game);
+		draw_wall(game, x);
+		x++;
+	}
+	mlx_put_image_to_window(game->vars.mlx, game->vars.mlx_win, game->img.img, 0, 0);
 }
