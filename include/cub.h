@@ -20,9 +20,10 @@
 #define KEY_D 2
 #define LEFT_ARROW 123
 #define RIGHT_ARROW 124
-#define MOVE_SPEED 0.1
-#define ROTATE_SPEED 0.05
-
+#define NORTH 0
+#define SOUTH 1
+#define EAST 2
+#define WEST 3
 
 
 typedef struct s_vars
@@ -85,9 +86,18 @@ typedef struct s_rays
     double side_dist_x;
     double side_dist_y;
     double perp_wall_dist;
+    double wall_x;
+    double wall_y;
+    double step;
+    double tex_pos;
     int direction;
     int horizontal;
     int vertical;
+    int line_height;
+    int draw_start;
+    int draw_end;
+    int tex_x;
+    int tex_y;
     int map_x;
     int map_y;
     int step_x;
@@ -122,5 +132,6 @@ void	free_matrix(char **matrix);
 int	contains_only_whitespace(const char *str);
 bool surrounded_by_walls(t_game *game);
 int get_size(char *path);
+void raycaster(t_game *game);
 void init_textures(t_game *game);
 #endif
