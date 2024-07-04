@@ -24,9 +24,9 @@
 #define SOUTH 1
 #define EAST 2
 #define WEST 3
-#define MOVE_SPEED 0.3
-#define ROTATE_SPEED 0.3
-
+#define MOVE_SPEED 0.05
+#define ROTATE_SPEED 0.05
+#define KEY_COUNT 256
 
 typedef struct s_vars
 {
@@ -116,6 +116,7 @@ typedef struct s_game
     t_texture textures[4];
     t_rays rays;
     t_player player;
+    int key_states[KEY_COUNT];
 }t_game;
 
 void init_game(char *argv);
@@ -136,6 +137,7 @@ bool surrounded_by_walls(t_game *game);
 int get_size(char *path);
 void my_mlx_pixel_put(t_img *img, int x, int y, int color);
 void raycaster(t_game *game);
+void update_player(t_game *game);
 void init_textures(t_game *game);
 void clear_image(t_game *game);
 #endif
