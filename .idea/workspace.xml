@@ -10,60 +10,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="487bc7bc-8ad5-4ce4-a14e-ae104cac152c" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/Makefile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/include/cub.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/cub.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libft/libft.a" beforeDir="false" afterPath="$PROJECT_DIR$/libft/libft.a" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libft/src/ft_fd/ft_putchar_fd.o" beforeDir="false" afterPath="$PROJECT_DIR$/libft/src/ft_fd/ft_putchar_fd.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libft/src/ft_fd/ft_putendl_fd.o" beforeDir="false" afterPath="$PROJECT_DIR$/libft/src/ft_fd/ft_putendl_fd.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libft/src/ft_fd/ft_putnbr_fd.o" beforeDir="false" afterPath="$PROJECT_DIR$/libft/src/ft_fd/ft_putnbr_fd.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libft/src/ft_fd/ft_putstr_fd.o" beforeDir="false" afterPath="$PROJECT_DIR$/libft/src/ft_fd/ft_putstr_fd.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libft/src/ft_is/ft_isalnum.o" beforeDir="false" afterPath="$PROJECT_DIR$/libft/src/ft_is/ft_isalnum.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libft/src/ft_is/ft_isalpha.o" beforeDir="false" afterPath="$PROJECT_DIR$/libft/src/ft_is/ft_isalpha.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libft/src/ft_is/ft_isascii.o" beforeDir="false" afterPath="$PROJECT_DIR$/libft/src/ft_is/ft_isascii.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libft/src/ft_is/ft_isdigit.o" beforeDir="false" afterPath="$PROJECT_DIR$/libft/src/ft_is/ft_isdigit.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libft/src/ft_is/ft_isprint.o" beforeDir="false" afterPath="$PROJECT_DIR$/libft/src/ft_is/ft_isprint.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libft/src/ft_mem/ft_bzero.o" beforeDir="false" afterPath="$PROJECT_DIR$/libft/src/ft_mem/ft_bzero.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libft/src/ft_mem/ft_calloc.o" beforeDir="false" afterPath="$PROJECT_DIR$/libft/src/ft_mem/ft_calloc.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libft/src/ft_mem/ft_memchr.o" beforeDir="false" afterPath="$PROJECT_DIR$/libft/src/ft_mem/ft_memchr.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libft/src/ft_mem/ft_memcmp.o" beforeDir="false" afterPath="$PROJECT_DIR$/libft/src/ft_mem/ft_memcmp.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libft/src/ft_mem/ft_memcpy.o" beforeDir="false" afterPath="$PROJECT_DIR$/libft/src/ft_mem/ft_memcpy.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libft/src/ft_mem/ft_memmove.o" beforeDir="false" afterPath="$PROJECT_DIR$/libft/src/ft_mem/ft_memmove.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libft/src/ft_mem/ft_memset.o" beforeDir="false" afterPath="$PROJECT_DIR$/libft/src/ft_mem/ft_memset.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libft/src/ft_printf/src/ft_format_parser.o" beforeDir="false" afterPath="$PROJECT_DIR$/libft/src/ft_printf/src/ft_format_parser.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libft/src/ft_printf/src/ft_print_hex.o" beforeDir="false" afterPath="$PROJECT_DIR$/libft/src/ft_printf/src/ft_print_hex.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libft/src/ft_printf/src/ft_printf.o" beforeDir="false" afterPath="$PROJECT_DIR$/libft/src/ft_printf/src/ft_printf.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libft/src/ft_printf/src/ft_printf_utils.o" beforeDir="false" afterPath="$PROJECT_DIR$/libft/src/ft_printf/src/ft_printf_utils.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libft/src/ft_str/ft_split.o" beforeDir="false" afterPath="$PROJECT_DIR$/libft/src/ft_str/ft_split.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libft/src/ft_str/ft_strchr.o" beforeDir="false" afterPath="$PROJECT_DIR$/libft/src/ft_str/ft_strchr.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libft/src/ft_str/ft_strdup.o" beforeDir="false" afterPath="$PROJECT_DIR$/libft/src/ft_str/ft_strdup.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libft/src/ft_str/ft_striteri.o" beforeDir="false" afterPath="$PROJECT_DIR$/libft/src/ft_str/ft_striteri.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libft/src/ft_str/ft_strjoin.o" beforeDir="false" afterPath="$PROJECT_DIR$/libft/src/ft_str/ft_strjoin.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libft/src/ft_str/ft_strlcat.o" beforeDir="false" afterPath="$PROJECT_DIR$/libft/src/ft_str/ft_strlcat.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libft/src/ft_str/ft_strlcpy.o" beforeDir="false" afterPath="$PROJECT_DIR$/libft/src/ft_str/ft_strlcpy.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libft/src/ft_str/ft_strlen.o" beforeDir="false" afterPath="$PROJECT_DIR$/libft/src/ft_str/ft_strlen.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libft/src/ft_str/ft_strmapi.o" beforeDir="false" afterPath="$PROJECT_DIR$/libft/src/ft_str/ft_strmapi.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libft/src/ft_str/ft_strncmp.o" beforeDir="false" afterPath="$PROJECT_DIR$/libft/src/ft_str/ft_strncmp.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libft/src/ft_str/ft_strnstr.o" beforeDir="false" afterPath="$PROJECT_DIR$/libft/src/ft_str/ft_strnstr.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libft/src/ft_str/ft_strrchr.o" beforeDir="false" afterPath="$PROJECT_DIR$/libft/src/ft_str/ft_strrchr.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libft/src/ft_str/ft_strtrim.o" beforeDir="false" afterPath="$PROJECT_DIR$/libft/src/ft_str/ft_strtrim.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libft/src/ft_str/ft_substr.o" beforeDir="false" afterPath="$PROJECT_DIR$/libft/src/ft_str/ft_substr.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libft/src/ft_to/ft_atoi.o" beforeDir="false" afterPath="$PROJECT_DIR$/libft/src/ft_to/ft_atoi.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libft/src/ft_to/ft_itoa.o" beforeDir="false" afterPath="$PROJECT_DIR$/libft/src/ft_to/ft_itoa.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libft/src/ft_to/ft_tolower.o" beforeDir="false" afterPath="$PROJECT_DIR$/libft/src/ft_to/ft_tolower.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libft/src/ft_to/ft_toupper.o" beforeDir="false" afterPath="$PROJECT_DIR$/libft/src/ft_to/ft_toupper.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libft/src/get_next_line/src/get_next_line.o" beforeDir="false" afterPath="$PROJECT_DIR$/libft/src/get_next_line/src/get_next_line.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libft/src/get_next_line/src/get_next_line_utils.o" beforeDir="false" afterPath="$PROJECT_DIR$/libft/src/get_next_line/src/get_next_line_utils.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mlx/libmlx.a" beforeDir="false" afterPath="$PROJECT_DIR$/mlx/libmlx.a" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mlx/mlx_init_loop.o" beforeDir="false" afterPath="$PROJECT_DIR$/mlx/mlx_init_loop.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mlx/mlx_int_str_to_wordtab.o" beforeDir="false" afterPath="$PROJECT_DIR$/mlx/mlx_int_str_to_wordtab.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mlx/mlx_mouse.o" beforeDir="false" afterPath="$PROJECT_DIR$/mlx/mlx_mouse.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mlx/mlx_new_image.o" beforeDir="false" afterPath="$PROJECT_DIR$/mlx/mlx_new_image.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mlx/mlx_new_window.o" beforeDir="false" afterPath="$PROJECT_DIR$/mlx/mlx_new_window.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mlx/mlx_png.o" beforeDir="false" afterPath="$PROJECT_DIR$/mlx/mlx_png.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mlx/mlx_shaders.o" beforeDir="false" afterPath="$PROJECT_DIR$/mlx/mlx_shaders.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mlx/mlx_xpm.o" beforeDir="false" afterPath="$PROJECT_DIR$/mlx/mlx_xpm.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/raycaster.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/raycaster.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/utils.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/utils.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/maps/map.cub" beforeDir="false" afterPath="$PROJECT_DIR$/maps/map.cub" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/init_game.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/init_game.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/inits.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/inits.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/textures/east.xpm" beforeDir="false" afterPath="$PROJECT_DIR$/textures/east.xpm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/textures/north.xpm" beforeDir="false" afterPath="$PROJECT_DIR$/textures/north.xpm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/textures/south.xpm" beforeDir="false" afterPath="$PROJECT_DIR$/textures/south.xpm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/textures/west.xpm" beforeDir="false" afterPath="$PROJECT_DIR$/textures/west.xpm" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -81,44 +36,77 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="c" value="3" />
-          <entry key="h" value="1" />
+          <entry key="c" value="5" />
+          <entry key="cub" value="1" />
+          <entry key="h" value="2" />
+          <entry key="xpm" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="ObjectiveC" value="4" />
+          <entry key="Image" value="1" />
+          <entry key="ObjectiveC" value="7" />
+          <entry key="PLAIN_TEXT" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="c" value="613" />
-          <entry key="h" value="3" />
+          <entry key="c" value="1425" />
+          <entry key="cub" value="1" />
+          <entry key="h" value="65" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="ObjectiveC" value="616" />
+          <entry key="ObjectiveC" value="1490" />
+          <entry key="PLAIN_TEXT" value="1" />
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/utils/utils.c">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/init_game.c">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="375">
-              <caret line="25" selection-start-line="25" selection-end-line="25" selection-end-column="58" />
+            <state relative-caret-position="120">
+              <caret line="8" column="21" selection-start-line="8" selection-start-column="21" selection-end-line="8" selection-end-column="21" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/maps/map.cub">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="315">
+              <caret line="21" column="5" selection-start-line="21" selection-start-column="5" selection-end-line="21" selection-end-column="5" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/inits.c">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="315">
+              <caret line="21" selection-end-line="86" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/raycaster.c">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-72">
-              <caret line="70" lean-forward="true" selection-start-line="70" selection-end-line="70" />
+            <state relative-caret-position="902">
+              <caret line="135" column="5" selection-end-line="136" selection-end-column="1" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/include/cub.h">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="180">
+              <caret line="37" column="1" selection-end-line="139" selection-end-column="6" />
             </state>
           </provider>
         </entry>
@@ -131,9 +119,12 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/raycaster.c" />
         <option value="$PROJECT_DIR$/src/utils/utils.c" />
+        <option value="$PROJECT_DIR$/src/raycaster.c" />
+        <option value="$PROJECT_DIR$/src/inits.c" />
         <option value="$PROJECT_DIR$/include/cub.h" />
+        <option value="$PROJECT_DIR$/maps/map.cub" />
+        <option value="$PROJECT_DIR$/src/init_game.c" />
       </list>
     </option>
   </component>
@@ -167,6 +158,16 @@
             <path>
               <item name="cub3d" type="b2602c69:ProjectViewProjectNode" />
               <item name="cub3d" type="462c0819:PsiDirectoryNode" />
+              <item name="libft" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="cub3d" type="b2602c69:ProjectViewProjectNode" />
+              <item name="cub3d" type="462c0819:PsiDirectoryNode" />
+              <item name="maps" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="cub3d" type="b2602c69:ProjectViewProjectNode" />
+              <item name="cub3d" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -174,6 +175,11 @@
               <item name="cub3d" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="utils" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="cub3d" type="b2602c69:ProjectViewProjectNode" />
+              <item name="cub3d" type="462c0819:PsiDirectoryNode" />
+              <item name="textures" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -210,12 +216,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1720087114433</updated>
-      <workItem from="1720087116353" duration="751000" />
+      <workItem from="1720087116353" duration="3785000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="751000" />
+    <option name="totallyTimeSpent" value="3785000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="2048" height="1152" extended-state="0" />
@@ -268,24 +274,48 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/include/cub.h">
+    <entry file="file://$PROJECT_DIR$/src/utils/utils.c">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="910">
-          <caret line="134" column="59" selection-start-line="134" selection-start-column="59" selection-end-line="134" selection-end-column="59" />
+        <state relative-caret-position="345">
+          <caret line="23" column="1" lean-forward="true" selection-start-line="23" selection-start-column="1" selection-end-line="23" selection-end-column="1" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/utils/utils.c">
+    <entry file="file://$PROJECT_DIR$/src/inits.c">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="25" selection-start-line="25" selection-end-line="25" selection-end-column="58" />
+        <state relative-caret-position="315">
+          <caret line="21" selection-end-line="86" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/raycaster.c">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-72">
-          <caret line="70" lean-forward="true" selection-start-line="70" selection-end-line="70" />
+        <state relative-caret-position="902">
+          <caret line="135" column="5" selection-end-line="136" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/include/cub.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="37" column="1" selection-end-line="139" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/maps/map.cub">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="21" column="5" selection-start-line="21" selection-start-column="5" selection-end-line="21" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/textures/east.xpm">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/init_game.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="8" column="21" selection-start-line="8" selection-start-column="21" selection-end-line="8" selection-end-column="21" />
         </state>
       </provider>
     </entry>

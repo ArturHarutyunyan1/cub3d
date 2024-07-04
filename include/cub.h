@@ -13,17 +13,19 @@
 
 // Keycodes
 
-#define KEY_ESC 53
-#define KEY_W 13
-#define KEY_A 0
-#define KEY_S 1
-#define KEY_D 2
+# define KEY_W 13
+# define KEY_A 0
+# define KEY_S 1
+# define KEY_D 2
+# define KEY_ESC 53
 #define LEFT_ARROW 123
 #define RIGHT_ARROW 124
 #define NORTH 0
 #define SOUTH 1
 #define EAST 2
 #define WEST 3
+#define MOVE_SPEED 0.5
+#define ROT_SPEED 0.1
 
 
 typedef struct s_vars

@@ -2,52 +2,20 @@
 
 void init_player(t_game *game)
 {
-    int i;
-    int j;
-
-    i = 0;
-    while (i < game->map.height)
-    {
-        j = 0;
-        while (j < game->map.width)
-        {
-            if (game->map.grid[i][j] == 'N' || game->map.grid[i][j] == 'S' || game->map.grid[i][j] == 'E' || game->map.grid[i][j] == 'W')
-            {
-                game->player.x = j + 0.5;
-                game->player.y = i + 0.5;
-                if (game->map.grid[i][j] == 'N')
-                {
-                    game->player.dir_x = -1;
-                    game->player.dir_y = 0;
-                    game->player.plane_x = 0;
-                    game->player.plane_y = 0.66;
-                }
-                else if (game->map.grid[i][j] == 'S')
-                {
-                    game->player.dir_x = 1;
-                    game->player.dir_y = 0;
-                    game->player.plane_x = 0;
-                    game->player.plane_y = -0.66;
-                }
-                else if (game->map.grid[i][j] == 'E')
-                {
-                    game->player.dir_x = 0;
-                    game->player.dir_y = 1;
-                    game->player.plane_x = 0.66;
-                    game->player.plane_y = 0;
-                }
-                else if (game->map.grid[i][j] == 'W')
-                {
-                    game->player.dir_x = 0;
-                    game->player.dir_y = -1;
-                    game->player.plane_x = -0.66;
-                    game->player.plane_y = 0;
-                }
+    // Replace 'S' with '0' to denote walkable space
+    for (int y = 0; y < game->map.height; y++) {
+        for (int x = 0; x < game->map.width; x++) {
+            if (game->map.grid[y][x] == 'S') {
+                game->player.x = x + 0.5; // Center of the cell
+                game->player.y = y + 0.5; // Center of the cell
+                game->player.dir_x = 1; // Initial direction vector X
+                game->player.dir_y = 0; // Initial direction vector Y
+                game->player.plane_x = 0; // Camera plane X
+                game->player.plane_y = 0.66; // Camera plane Y
+                game->map.grid[y][x] = '0'; // Mark as walkable space
                 return;
             }
-            j++;
         }
-        i++;
     }
 }
 
