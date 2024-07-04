@@ -24,8 +24,8 @@
 #define SOUTH 1
 #define EAST 2
 #define WEST 3
-#define MOVE_SPEED 0.5
-#define ROT_SPEED 0.1
+#define MOVE_SPEED 0.3
+#define ROTATE_SPEED 0.3
 
 
 typedef struct s_vars
@@ -137,4 +137,5 @@ int get_size(char *path);
 void my_mlx_pixel_put(t_img *img, int x, int y, int color);
 void raycaster(t_game *game);
 void init_textures(t_game *game);
+void clear_image(t_game *game);
 #endif

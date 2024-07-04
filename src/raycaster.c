@@ -130,7 +130,8 @@ void raycaster(t_game *game)
 		get_sides(game);
 		dda(game);
 		prepare_drawing(game);
-		draw_wall(game, x);
+		if (game->rays.hit == 1)
+			draw_wall(game, x);
 		x++;
 	}
 	mlx_put_image_to_window(game->vars.mlx, game->vars.mlx_win, game->img.img, 0, 0);
