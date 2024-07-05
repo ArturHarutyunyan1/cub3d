@@ -16,6 +16,18 @@ int keyrelease(int code, t_game *game)
     return (0);
 }
 
+t_color set_colors(char *str)
+{
+    char **rgb;
+    t_color color;
+    
+    rgb = ft_split(str, ',');
+    color.r = ft_atoi(rgb[0]);
+    color.g = ft_atoi(rgb[1]);
+    color.b = ft_atoi(rgb[2]);
+    return (color);
+}
+
 void draw_floor_and_ceiling(t_game *game)
 {
     int x;
@@ -66,12 +78,12 @@ void init_game(char *argv)
     ft_memset(game.key_states, 0, sizeof(game.key_states));
     game.map.grid = read_map(argv);
     game.map = init_map(game.map.grid);
-    game.ceiling = (t_color){.r = 255, .g = 0, .b = 0};
-    game.floor = (t_color){.r = 0, .g = 255, .b = 0};
     init_rays(&game);
     init_img(&game);
     init_player(&game);
     get_paths(&game, argv);
+    game.ceiling = set_colors(game.map.c);
+    game.floor = set_colors(game.map.f);
     game.vars.mlx = mlx_init();
     game.vars.mlx_win = mlx_new_window(game.vars.mlx, WIDTH, HEIGHT, "Cub3D");
     game.img.img = mlx_new_image(game.vars.mlx, WIDTH, HEIGHT);
