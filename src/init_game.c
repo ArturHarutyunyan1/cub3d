@@ -1,6 +1,5 @@
 #include "../include/cub.h"
 
-
 int keypress(int code, t_game *game)
 {
     if (code >= 0 && code < KEY_COUNT)
@@ -17,12 +16,46 @@ int keyrelease(int code, t_game *game)
     return (0);
 }
 
+void draw_floor_and_ceiling(t_game *game)
+{
+    int x;
+    int y;
+    int ceiling_color;
+    int floor_color;
+
+    ceiling_color = (game->ceiling.r << 16) | (game->ceiling.g << 8) | game->ceiling.b;
+    floor_color = (game->floor.r << 16) | (game->floor.g << 8) | game->floor.b;
+    y = 0;
+    while (y < HEIGHT)
+    {
+        x = 0;
+        while (x < WIDTH)
+        {
+            my_mlx_pixel_put(&game->img, x, y, ceiling_color);
+            x++;
+        }
+        y++;
+    }
+    y = HEIGHT / 2;
+    while (y < HEIGHT)
+    {
+        x = 0;
+        while (x < WIDTH)
+        {
+            my_mlx_pixel_put(&game->img, x, y, floor_color);
+            x++;
+        }
+        y++;
+    }
+}
+
 int game_loop(t_game *game)
 {
     clear_image(game);
+    draw_floor_and_ceiling(game);
     update_player(game);
     raycaster(game);
-    mlx_put_image_to_window(game->vars.mlx, game->vars.mlx_win, game->img.img, 0, 0);  // Display the new frame
+    mlx_put_image_to_window(game->vars.mlx, game->vars.mlx_win, game->img.img, 0, 0);
     return (0);
 }
 
@@ -33,6 +66,8 @@ void init_game(char *argv)
     ft_memset(game.key_states, 0, sizeof(game.key_states));
     game.map.grid = read_map(argv);
     game.map = init_map(game.map.grid);
+    game.ceiling = (t_color){.r = 255, .g = 0, .b = 0};
+    game.floor = (t_color){.r = 0, .g = 255, .b = 0};
     init_rays(&game);
     init_img(&game);
     init_player(&game);

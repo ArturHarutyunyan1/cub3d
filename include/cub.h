@@ -8,8 +8,8 @@
 
 // Default window size
 
-#define WIDTH 1280
-#define HEIGHT 720
+#define WIDTH 800
+#define HEIGHT 600
 
 // Keycodes
 
@@ -25,7 +25,9 @@
 #define EAST 2
 #define WEST 3
 #define MOVE_SPEED 0.05
-#define ROTATE_SPEED 0.05
+#define ROTATE_SPEED 0.03
+#define MOUSE_SENSITIVITY 0.005
+#define MOUSE_DEAD_ZONE 2
 #define KEY_COUNT 256
 
 typedef struct s_vars
@@ -55,6 +57,13 @@ typedef struct	s_img {
 	int		line_length;
 	int		endian;
 }		t_img;
+
+typedef struct s_color
+{
+    int r;
+    int g;
+    int b;
+}t_color;
 
 typedef struct s_texture
 {
@@ -115,6 +124,8 @@ typedef struct s_game
     t_img img;
     t_texture textures[4];
     t_rays rays;
+    t_color floor;
+    t_color ceiling;
     t_player player;
     int key_states[KEY_COUNT];
 }t_game;
@@ -139,5 +150,6 @@ void my_mlx_pixel_put(t_img *img, int x, int y, int color);
 void raycaster(t_game *game);
 void update_player(t_game *game);
 void init_textures(t_game *game);
+int mouse_move(int x, int y, t_game *game);
 void clear_image(t_game *game);
 #endif
