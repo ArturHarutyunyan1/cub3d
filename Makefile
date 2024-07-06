@@ -1,6 +1,6 @@
 NAME = cub3D
 CC = cc
-CFLAGS = -Wall -arch x86_64 -g3 -fsanitize=address
+CFLAGS = -Wall -Wextra -arch x86_64 # -g3 -fsanitize=address
 LIBFT_DIR = ./libft
 MLX_DIR = ./mlx
 LIBFT_FLAGS = -L$(LIBFT_DIR) -lft
