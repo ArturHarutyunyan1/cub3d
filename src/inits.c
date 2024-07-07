@@ -56,18 +56,25 @@ void init_player(t_game *game)
 t_map init_map(char **str)
 {
     int i;
-    int len;
+    int current_len;
+    int max_len;
     t_map map;
 
-    len = ft_strlen(str[0]);
     i = 0;
+    max_len = 0;
     while (str[i])
+    {
+        current_len = ft_strlen(str[i]);
+        if (current_len > max_len)
+            max_len = current_len;
         i++;
-    map.width = len - 1;
+    }
+    map.width = max_len;
     map.height = i;
     map.grid = str;
     return (map);
 }
+
 
 void init_img(t_game *game)
 {
