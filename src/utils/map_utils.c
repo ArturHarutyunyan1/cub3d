@@ -33,6 +33,7 @@ char **read_map(char *path)
     int fd;
     int count;
     char *line;
+    char *trim;
     char **map;
 
     i = 0;
@@ -44,12 +45,15 @@ char **read_map(char *path)
     if (!map)
         return (NULL);
     line = get_next_line(fd);
-    while (line && !(line[0] == '1'))
+    trim = ft_strtrim(line, " \t\n");
+    while (line && !(trim[0] == '1'))
     {
         free (line);
+        free (trim);
         line = get_next_line(fd);
+        trim = ft_strtrim(line, " \t\n");
     }
-    while (line && line[0] == '1')
+    while (line && trim[0] == '1')
     {
         map[i] = malloc((ft_strlen(line) + 1));
         if (!map[i])
@@ -57,7 +61,9 @@ char **read_map(char *path)
         ft_strlcpy(map[i], line, ft_strlen(line) + 1);
         i++;
         free (line);
+        free (trim);
         line = get_next_line(fd);
+        trim = ft_strtrim(line, " \t\n");
     }
     map[i] = NULL;
     close (fd);

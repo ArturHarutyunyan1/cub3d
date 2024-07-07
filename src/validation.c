@@ -100,7 +100,7 @@ bool check_chars(t_game *game)
                 e++;
             else if (c == 'W')
                 w++;
-            else if (c != '1' && c != '0' && c != '\n')
+            else if (c != '1' && c != '0' && c != '\n' && c != ' ' && c != '\t')
                 return (false);
             j++;
         }
