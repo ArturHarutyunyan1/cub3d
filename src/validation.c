@@ -28,35 +28,45 @@ bool surrounded_by_walls(t_game *game)
     int i;
     int j;
     int len;
+    char *trim;
+
     i = 0;
     j = 0;
-    while (game->map.grid[0][i])
+    trim = ft_strtrim(game->map.grid[0], " \t\n");
+    while (trim[i])
     {
-        if (game->map.grid[0][i] == '\n')
-            break;
-        if (game->map.grid[0][i] != '1')
+        if (trim[i] != '1')
+        {
+            free (trim);
             return (false);
+        }
         i++;
     }
     i = 1;
     while (game->map.grid[i + 1])
     {
-        len = ft_strlen(game->map.grid[i]);
-        if (game->map.grid[i][len - 1] == '\n')
-            len--;
-        if (game->map.grid[i][0] != '1' || game->map.grid[i][len - 1] != '1')
+        trim = ft_strtrim(game->map.grid[i], " \t\n");
+        len = ft_strlen(trim);
+        if (trim[0] != '1' || trim[len - 1] != '1')
+        {
+            free (trim);
             return (false);
+        }
+        free (trim);
         i++;
     }
     j = 0;
-    while (game->map.grid[i][j])
+    trim = ft_strtrim(game->map.grid[i], " \t\n");
+    while (trim[j])
     {
-        if (game->map.grid[i][j] == '\n')
-            break;
-        if (game->map.grid[i][j] != '1')
+        if (trim[j] != '1')
+        {
+            free (trim);
             return (false);
+        }
         j++;
     }
+    free (trim);
     return (true);
 }
 
