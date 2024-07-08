@@ -7,8 +7,8 @@ void validate(char *path)
     if (!check_format(path))
         exit(printf("Error\nInvalid format\n"));
     game.map.grid = read_map(path);
-    if (!surrounded_by_walls(&game))
-        ft_exit(&game, "Error\nMap is not surrounded by walls\n", 1);
+    // if (!surrounded_by_walls(&game))
+    //     ft_exit(&game, "Error\nMap is not surrounded by walls\n", 1);
     if (!check_chars(&game))
         ft_exit(&game, "Error\nInvalid characters in map\n", 1);
 }

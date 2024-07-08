@@ -64,8 +64,8 @@ void dda(t_game *game)
         }
         if (game->rays.map_x < 0 || game->rays.map_x >= game->map.width || game->rays.map_y < 0 || game->rays.map_y >= game->map.height)
             return;
-		if (game->map.grid[game->rays.map_y][game->rays.map_x] == ' ')
-			return;
+		// if (game->map.grid[game->rays.map_y][game->rays.map_x] == ' ')
+		// 	return;
         if (game->map.grid[game->rays.map_y][game->rays.map_x] == '1')
             game->rays.hit = 1;
     }
