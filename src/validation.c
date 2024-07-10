@@ -75,7 +75,7 @@ bool surrounded_by_walls(t_game *game)
         return (false);
     while (trim[i])
     {
-        if (trim[i] != '1')
+        if (trim[i] != '1' && trim[i] != ' ')
         {
             free(trim);
             return (false);
@@ -91,7 +91,7 @@ bool surrounded_by_walls(t_game *game)
         if (!trim)
             return (false);
         len = ft_strlen(trim);
-        if (trim[0] != '1' || trim[len - 1] != '1')
+        if ((trim[0] != '1' && trim[0] != ' ') || trim[len - 1] != '1')
         {
             free(trim);
             return (false);
@@ -106,7 +106,7 @@ bool surrounded_by_walls(t_game *game)
         return (false);
     while (trim[j])
     {
-        if (trim[j] != '1')
+        if (trim[j] != '1' && trim[j] != ' ')
         {
             free(trim);
             return (false);
