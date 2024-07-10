@@ -2,7 +2,7 @@
 
 void check_path(t_game *game, char *line)
 {
-     char **elements;
+    char **elements;
 
     elements = ft_split(line, ' ');
     if (!elements)
@@ -19,10 +19,7 @@ void check_path(t_game *game, char *line)
         game->map.f = ft_strdup(elements[1]);
     else if (ft_strncmp(elements[0], "C", 1) == 0)
         game->map.c = ft_strdup(elements[1]);
-    
-    for (int i = 0; elements[i]; i++)
-        free(elements[i]);
-    free(elements);
+    free_matrix(elements);
 }
 
 void process_line(t_game *game, char *line)
