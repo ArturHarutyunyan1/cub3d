@@ -33,10 +33,13 @@ void clear_image(t_game *game)
 int	ft_exit(t_game *game, char *msg, int status)
 {
 	printf("%s", msg);
-	(void)game;
-	// free_matrix(game->map.grid);
-	// mlx_destroy_image(game->vars.mlx, game->img.img);
-	// mlx_destroy_window(game->vars.mlx, game->vars.mlx_win);
+	mlx_destroy_image(game->vars.mlx, game->textures[0].img);
+	mlx_destroy_image(game->vars.mlx, game->textures[1].img);
+	mlx_destroy_image(game->vars.mlx, game->textures[2].img);
+	mlx_destroy_image(game->vars.mlx, game->textures[3].img);
+	mlx_destroy_image(game->vars.mlx, game->img.img);
+	mlx_destroy_window(game->vars.mlx, game->vars.mlx_win);
+	free_matrix(game->map.grid);
 	exit(status);
 }
 

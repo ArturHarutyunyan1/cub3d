@@ -20,11 +20,21 @@ t_color set_colors(char *str)
 {
     char **rgb;
     t_color color;
-    
+    int i;
+
     rgb = ft_split(str, ',');
+    if (!rgb)
+        return (color);
     color.r = ft_atoi(rgb[0]);
     color.g = ft_atoi(rgb[1]);
     color.b = ft_atoi(rgb[2]);
+    i = 0;
+    while (rgb[i])
+    {
+        free(rgb[i]);
+        i++;
+    }
+    free(rgb);
     return (color);
 }
 
@@ -94,4 +104,11 @@ void init_game(char *argv)
     mlx_hook(game.vars.mlx_win, 17, 0, exit_game, &game);
     mlx_loop_hook(game.vars.mlx, game_loop, &game);
     mlx_loop(game.vars.mlx);
+        free_matrix(game.map.grid); // Freeing dynamically allocated map grid memory
+    free(game.map.no); // Freeing texture paths
+    free(game.map.so);
+    free(game.map.we);
+    free(game.map.ea);
+    free(game.map.f);
+    free(game.map.c);
 }

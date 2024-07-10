@@ -122,5 +122,5 @@ void init_textures(t_game *game)
     if (!game->textures[3].img)
         ft_exit(game, "Failed to load south texture\n",1);
     game->textures[3].addr = mlx_get_data_addr(game->textures[3].img, &game->textures[3].bpp, &game->textures[3].line_length, &game->textures[3].endian);
-
+    
 }

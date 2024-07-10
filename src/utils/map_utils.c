@@ -66,6 +66,8 @@ char **read_map(char *path)
         trim = ft_strtrim(line, " \t\n");
     }
     map[i] = NULL;
+    free (trim);
+    free (line);
     close (fd);
     return (map);
 }

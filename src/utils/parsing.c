@@ -2,30 +2,27 @@
 
 void check_path(t_game *game, char *line)
 {
-    char **arr;
+     char **elements;
 
-    if ((line[0] == 'N' && line[1] == 'O' && line[2] == ' ')
-        || (line[0] == 'S' && line[1] == 'O' && line[2] == ' ')
-        || (line[0] == 'E' && line[1] == 'A' && line[2] == ' ')
-        || (line[0] == 'W' && line[1] == 'E' && line[2] == ' ')
-        || (line[0] == 'C' && line[1] == ' ')
-        || (line[0] == 'F' && line[1] == ' '))
-    {
-        arr = ft_split(line, ' ');
-        if (line[0] == 'N' && line[1] == 'O')
-            game->map.no = arr[1];
-        else if (line[0] == 'S' && line[1] == 'O')
-            game->map.so = arr[1];
-        else if (line[0] == 'E' && line[1] == 'A')
-            game->map.ea = arr[1];
-        else if (line[0] == 'W' && line[1] == 'E')
-            game->map.we = arr[1];
-        else if (line[0] == 'C')
-            game->map.c = arr[1];
-        else if (line[0] == 'F')
-            game->map.f = arr[1];
+    elements = ft_split(line, ' ');
+    if (!elements)
         return;
-    }
+    if (ft_strncmp(elements[0], "NO", 2) == 0)
+        game->map.no = ft_strdup(elements[1]);
+    else if (ft_strncmp(elements[0], "SO", 2) == 0)
+        game->map.so = ft_strdup(elements[1]);
+    else if (ft_strncmp(elements[0], "WE", 2) == 0)
+        game->map.we = ft_strdup(elements[1]);
+    else if (ft_strncmp(elements[0], "EA", 2) == 0)
+        game->map.ea = ft_strdup(elements[1]);
+    else if (ft_strncmp(elements[0], "F", 1) == 0)
+        game->map.f = ft_strdup(elements[1]);
+    else if (ft_strncmp(elements[0], "C", 1) == 0)
+        game->map.c = ft_strdup(elements[1]);
+    
+    for (int i = 0; elements[i]; i++)
+        free(elements[i]);
+    free(elements);
 }
 
 void process_line(t_game *game, char *line)
@@ -103,5 +100,6 @@ void get_paths(t_game *game, char *path)
             process_line(game, line);
         free(line);
     }
+    free (line);
     close(fd);
 }

@@ -71,42 +71,52 @@ bool surrounded_by_walls(t_game *game)
     i = 0;
     j = 0;
     trim = ft_strtrim(game->map.grid[0], " \t\n");
+    if (!trim)
+        return (false);
     while (trim[i])
     {
         if (trim[i] != '1')
         {
-            free (trim);
+            free(trim);
             return (false);
         }
         i++;
     }
+    free(trim);
+
     i = 1;
     while (game->map.grid[i + 1])
     {
         trim = ft_strtrim(game->map.grid[i], " \t\n");
+        if (!trim)
+            return (false);
         len = ft_strlen(trim);
         if (trim[0] != '1' || trim[len - 1] != '1')
         {
-            free (trim);
+            free(trim);
             return (false);
         }
-        free (trim);
+        free(trim);
         i++;
     }
+
     j = 0;
     trim = ft_strtrim(game->map.grid[i], " \t\n");
+    if (!trim)
+        return (false);
     while (trim[j])
     {
         if (trim[j] != '1')
         {
-            free (trim);
+            free(trim);
             return (false);
         }
         j++;
     }
-    free (trim);
+    free(trim);
     return (true);
 }
+
 
 bool check_chars(t_game *game)
 {
