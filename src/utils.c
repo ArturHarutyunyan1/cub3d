@@ -55,3 +55,14 @@ int exit_game(t_game *game)
 	ft_exit(game, "Game was closed successfully\n", 0);
 	return (0);
 }
+
+void cleanup(t_game *game)
+{
+	free_matrix(game->map.grid);
+	free(game->map.no);
+	free(game->map.so);
+	free(game->map.we);
+	free(game->map.ea);
+	free(game->map.f);
+	free(game->map.c);
+}

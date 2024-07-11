@@ -182,5 +182,6 @@ void validate(char *path);
 bool check_format(char *line);
 bool surrounded_by_walls(t_game *game);
 bool check_chars(t_game *game);
+void cleanup(t_game *game);
 
 #endif

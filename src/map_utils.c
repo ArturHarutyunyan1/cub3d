@@ -7,12 +7,12 @@ int	check(char s)
 	return (0);
 }
 
-void check_map(char **map)
+void	check_map(char **map)
 {
-    size_t i;
-    size_t j;
+	size_t	i;
+	size_t	j;
 
-    i = 1;
+	i = 1;
 	while (map[i])
 	{
 		j = 1;
@@ -21,92 +21,111 @@ void check_map(char **map)
 			while (map[i][j + 1])
 			{
 				if ((j > ft_strlen(map[i]) - 1 || j > ft_strlen(map[i - 1]) - 1)
-					&& map[i][j] != '1' && check(map[i][j]) == 0)
-                    exit(printf("Error\nSomething went wrong\n"));
+						&& map[i][j] != '1' && check(map[i][j]) == 0)
+					exit(printf("Error\nSomething went wrong\n"));
 				if (check(map[i][j]) == 1 || map[i][j] == '1')
 					j++;
-				else if (map[i][j] != '1' && check(map[i][j - 1]) == 0
-					&& check(map[i][j + 1]) == 0 && check(map[i + 1][j]) == 0
-					&& check(map[i - 1][j]) == 0)
+				else if (map[i][j] != '1'
+						&& check(map[i][j - 1]) == 0
+						&& check(map[i][j + 1]) == 0 && check(map[i + 1][j]) == 0
+						&& check(map[i - 1][j]) == 0)
 					j++;
 				else
-                    exit(printf("Error\nSomething went wrong\n"));
+					exit(printf("Error\nSomething went wrong\n"));
 			}
 		}
 		i++;
 	}
 }
 
-int get_size(char *path)
+int	get_size(char *path)
 {
-    int fd = open(path, O_RDONLY);
-    if (fd < 0) return -1;
+	int		fd;
+	int		flag;
+	int		map_size;
+	char	*line;
 
-    int flag = 1;
-    int map_size = 0;
-    char *line;
-
-    while (flag)
-    {
-        line = get_next_line(fd);
-        if (line == NULL)
-        {
-            if (map_size == 0) return -1;
-            flag = 0;
-        }
-        else
-        {
-            map_size++;
-            free(line);
-        }
-    }
-    close(fd);
-    return map_size;
+	fd = open(path, O_RDONLY);
+	flag = 1;
+	map_size = 0;
+	while (flag)
+	{
+		line = get_next_line(fd);
+		if (line == NULL)
+		{
+			if (map_size == 0)
+				return (-1);
+			flag = 0;
+		}
+		else
+			map_size++;
+		free(line);
+	}
+	close(fd);
+	return (map_size);
 }
 
-char **trim_map(char **map)
+char	**trim_map(char **map)
 {
-    int size = 0;
-    while (map[size] && map[size][0] != '\n')
-        size++;
-    char **trim = (char **)malloc((size + 3) * sizeof(char *));
-    if (!trim) return NULL;
+	int i;
+	int size;
+	char **trim;
 
-    for (int i = 0; i < size; i++) {
-        trim[i] = map[i];
-    }
-    
-    trim[size] = strdup("\n");
-    trim[size + 1] = strdup("\n");
-    trim[size + 2] = NULL;
-    return trim;
+	i = 0;
+	size = 0;
+	while (map[size] && map[size][0] != '\n')
+		size++;
+	trim = (char **)malloc((size + 3) * sizeof(char *));
+	if (!trim)
+		return (NULL);
+	while (i < size)
+	{
+		trim[i] = map[i];
+		i++;
+	}
+	trim[size] = strdup("\n");
+	trim[size + 1] = strdup("\n");
+	trim[size + 2] = NULL;
+	return (trim);
 }
 
-char **skip_newlines(char **map, int size) {
-    char **trim = (char **)malloc((size + 1) * sizeof(char *));
-    if (!trim) return NULL;
-
-    int i = 0, j = 0;
-    while (map[i]) {
-        char *trimmed_line = ft_strtrim(map[i], " \t\n");
-        if (trimmed_line[0] != '\0') {
-            trim[j] = strdup(map[i]);
-            j++;
-        }
-        free(trimmed_line);
-        i++;
-    }
-    return trim;
+char	**skip_newlines(char **map, int size)
+{
+	int i;
+	int j;
+	char *trimmed_line;
+	char **trim;
+	
+	i = 0;
+	j = 0;
+	trim = (char **)malloc((size + 1) * sizeof(char *));
+	if (!trim)
+		return (NULL);
+	while (map[i]) {
+		trimmed_line = ft_strtrim(map[i], " \t\n");
+		if (trimmed_line[0] != '\0') {
+			trim[j] = strdup(map[i]);
+			j++;
+		}
+		free(trimmed_line);
+		i++;
+	}
+	return (trim);
 }
 
-void compare_maps(char **map, char **trim) {
-    int i = 0;
-    while (map[i] && trim[i]) {
-        if (strcmp(map[i], trim[i]) != 0) {
-            exit(printf("Error\nNewline encountered\n"));
-        }
-        i++;
-    }
+void	compare_maps(char **map, char **trim)
+{
+	int i;
+
+	i = 0;
+	while (map[i] && trim[i])
+	{
+		if (strcmp(map[i], trim[i]) != 0)
+		{
+			exit(printf("Error\nNewline encountered\n"));
+		}
+		i++;
+	}
 }
 
 
