@@ -9,8 +9,8 @@
 /*   Updated: 2024/07/12 01:47:54 by arturhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 #include "../include/cub.h"
+
 void	remove_extra_spaces(char *dup, char *trimmed_line)
 {
 	int	i;

@@ -1,4 +1,4 @@
-/* ************************************************************************** */
+/******************************************************************************/
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   cub.h                                              :+:      :+:    :+:   */
@@ -6,9 +6,9 @@
 /*   By: arturhar <arturhar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 06:39:00 by arturhar          #+#    #+#             */
-/*   Updated: 2024/07/12 01:46:19 by arturhar         ###   ########.fr       */
+/*   Updated: 2024/07/12 01:55:40 by arturhar         ###   ########.fr       */
 /*                                                                            */
-/* ************************************************************************** */
+/******************************************************************************/
 
 #ifndef CUB
 #define CUB
@@ -192,12 +192,11 @@ void check_and_process_path(t_game *game, char *trimmed_line);
 void trim_and_process_line(t_game *game, char *dup, char *trimmed_line);
 void process_line(t_game *game, char *line);
 void dda(t_game *game);
-void	get_sides(t_game *game);
+void get_sides(t_game *game);
 void	setup(t_game *game, int x);
 void calculate_perp_wall_dist_and_direction(t_game *game);
 void calculate_draw_limits_and_tex_x(t_game *game);
-
-
-
+void set_step_and_side_dist_x(t_game *game);
+void set_step_and_side_dist_y(t_game *game);
 
 #endif

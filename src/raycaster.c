@@ -1,4 +1,4 @@
-/******************************************************************************/
+/* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   raycaster.c                                        :+:      :+:    :+:   */
@@ -8,13 +8,13 @@
 /*   Created: 2024/07/10 06:40:05 by arturhar          #+#    #+#             */
 /*   Updated: 2024/07/12 01:44:29 by arturhar         ###   ########.fr       */
 /*                                                                            */
-/******************************************************************************/
-
+/* ************************************************************************** */
 #include "../include/cub.h"
+
 void	prepare_drawing(t_game *game)
 {
 	calculate_perp_wall_dist_and_direction(game);
-    calculate_draw_limits_and_tex_x(game);
+	calculate_draw_limits_and_tex_x(game);
 }
 
 static void	draw_wall(t_game *game, int x)
