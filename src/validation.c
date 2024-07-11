@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   validation.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: arturhar <arturhar@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/07/10 06:40:08 by arturhar          #+#    #+#             */
+/*   Updated: 2024/07/10 06:40:09 by arturhar         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../include/cub.h"
 
 int	check(char s)
@@ -22,7 +34,7 @@ void check_map(char **map)
 			{
 				if ((j > ft_strlen(map[i]) - 1 || j > ft_strlen(map[i - 1]) - 1)
 					&& map[i][j] != '1' && check(map[i][j]) == 0)
-                    exit(printf("EROR\n"));
+                    exit(printf("Error\nSomething went wrong\n"));
 				if (check(map[i][j]) == 1 || map[i][j] == '1')
 					j++;
 				else if (map[i][j] != '1' && check(map[i][j - 1]) == 0
@@ -30,7 +42,7 @@ void check_map(char **map)
 					&& check(map[i - 1][j]) == 0)
 					j++;
 				else
-                    exit(printf("EROR\n"));
+                    exit(printf("Error\nSomething went wrong\n"));
 			}
 		}
 		i++;

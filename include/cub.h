@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   cub.h                                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: arturhar <arturhar@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/07/10 06:39:00 by arturhar          #+#    #+#             */
+/*   Updated: 2024/07/10 06:39:29 by arturhar         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef CUB
 #define CUB
 
@@ -26,8 +38,6 @@
 #define WEST 3
 #define MOVE_SPEED 0.05
 #define ROTATE_SPEED 0.03
-#define MOUSE_SENSITIVITY 0.005
-#define MOUSE_DEAD_ZONE 2
 #define KEY_COUNT 256
 
 typedef struct s_vars
