@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   map_utils1.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: arturhar <arturhar@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/07/12 00:25:31 by arturhar          #+#    #+#             */
+/*   Updated: 2024/07/12 00:25:32 by arturhar         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 #include "../include/cub.h"
 
 int	get_size(char *path)
@@ -29,9 +40,9 @@ int	get_size(char *path)
 
 char	**trim_map(char **map)
 {
-	int i;
-	int size;
-	char **trim;
+	int		i;
+	int		size;
+	char	**trim;
 
 	i = 0;
 	size = 0;
@@ -53,19 +64,21 @@ char	**trim_map(char **map)
 
 char	**skip_newlines(char **map, int size)
 {
-	int i;
-	int j;
-	char *trimmed_line;
-	char **trim;
-	
+	int		i;
+	int		j;
+	char	*trimmed_line;
+	char	**trim;
+
 	i = 0;
 	j = 0;
 	trim = (char **)malloc((size + 1) * sizeof(char *));
 	if (!trim)
 		return (NULL);
-	while (map[i]) {
+	while (map[i])
+	{
 		trimmed_line = ft_strtrim(map[i], " \t\n");
-		if (trimmed_line[0] != '\0') {
+		if (trimmed_line[0] != '\0')
+		{
 			trim[j] = strdup(map[i]);
 			j++;
 		}
@@ -77,15 +90,13 @@ char	**skip_newlines(char **map, int size)
 
 void	compare_maps(char **map, char **trim)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (map[i] && trim[i])
 	{
 		if (strcmp(map[i], trim[i]) != 0)
-		{
 			exit(printf("Error\nNewline encountered\n"));
-		}
 		i++;
 	}
 }

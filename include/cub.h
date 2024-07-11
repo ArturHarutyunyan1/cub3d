@@ -1,4 +1,4 @@
-/* ************************************************************************** */
+/******************************************************************************/
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   cub.h                                              :+:      :+:    :+:   */
@@ -6,9 +6,9 @@
 /*   By: arturhar <arturhar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 06:39:00 by arturhar          #+#    #+#             */
-/*   Updated: 2024/07/11 22:41:26 by arturhar         ###   ########.fr       */
+/*   Updated: 2024/07/12 01:43:58 by arturhar         ###   ########.fr       */
 /*                                                                            */
-/* ************************************************************************** */
+/******************************************************************************/
 
 #ifndef CUB
 #define CUB
@@ -145,7 +145,7 @@ int keypress(int code, t_game *game);
 int keyrelease(int code, t_game *game);
 int game_loop(t_game *game);
 int	check(char s);
-void check_map(char **map);
+void check_map(char **map, int j);
 int get_size(char *path);
 char **trim_map(char **map);
 char **skip_newlines(char **map, int size);
@@ -187,5 +187,17 @@ char *get_trimmed_line(int fd);
 char **allocate_map(int size);
 void read_and_trim_lines(int fd, char **map);
 char **finalize_map(char **map, int size);
+void remove_extra_spaces(char *dup, char *trimmed_line);
+void check_and_process_path(t_game *game, char *trimmed_line);
+void trim_and_process_line(t_game *game, char *dup, char *trimmed_line);
+void process_line(t_game *game, char *line);
+void dda(t_game *game);
+void	get_sides(t_game *game);
+void	setup(t_game *game, int x);
+void calculate_perp_wall_dist_and_direction(t_game *game);
+void calculate_draw_limits_and_tex_x(t_game *game);
+
+
+
 
 #endif

@@ -21,7 +21,7 @@ void validate(char *path)
         exit(printf("Error\nInvalid format\n"));
     game.map.grid = read_map(path);
     game.map = init_map(game.map.grid);
-    check_map(game.map.grid);
+    check_map(game.map.grid, 1);
     if (!surrounded_by_walls(&game))
         ft_exit(&game, "Error\nMap is not surrounded by walls\n", 1);
     if (!check_chars(&game))
