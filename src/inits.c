@@ -6,7 +6,7 @@
 /*   By: arturhar <arturhar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 06:39:57 by arturhar          #+#    #+#             */
-/*   Updated: 2024/07/11 17:39:43 by arturhar         ###   ########.fr       */
+/*   Updated: 2024/07/11 18:04:10 by arturhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,13 +76,15 @@ t_map init_map(char **str)
     max_len = 0;
     while (str[i])
     {
+        if (str[i][0] == '\n')
+            break;
         current_len = ft_strlen(str[i]);
         if (current_len > max_len)
             max_len = current_len;
         i++;
     }
     map.width = max_len;
-    map.height = i - 2;
+    map.height = i;
     map.grid = str;
     return (map);
 }

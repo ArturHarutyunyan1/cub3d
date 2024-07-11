@@ -1,4 +1,5 @@
 #include "../../include/cub.h"
+
 int get_size(char *path)
 {
     int fd = open(path, O_RDONLY);
@@ -29,19 +30,48 @@ int get_size(char *path)
 char **trim_map(char **map)
 {
     int size = 0;
-    while (map[size]) size++;
-
+    while (map[size] && map[size][0] != '\n')
+        size++;
     char **trim = (char **)malloc((size + 3) * sizeof(char *));
     if (!trim) return NULL;
 
     for (int i = 0; i < size; i++) {
         trim[i] = map[i];
     }
+    
     trim[size] = strdup("\n");
     trim[size + 1] = strdup("\n");
     trim[size + 2] = NULL;
     return trim;
 }
+
+char **skip_newlines(char **map, int size) {
+    char **trim = (char **)malloc((size + 1) * sizeof(char *));
+    if (!trim) return NULL;
+
+    int i = 0, j = 0;
+    while (map[i]) {
+        char *trimmed_line = ft_strtrim(map[i], " \t\n");
+        if (trimmed_line[0] != '\0') {
+            trim[j] = strdup(map[i]);
+            j++;
+        }
+        free(trimmed_line);
+        i++;
+    }
+    return trim;
+}
+
+void compare_maps(char **map, char **trim) {
+    int i = 0;
+    while (map[i] && trim[i]) {
+        if (strcmp(map[i], trim[i]) != 0) {
+            exit(printf("Error\nNewline encountered\n"));
+        }
+        i++;
+    }
+}
+
 
 char **read_map(char *path)
 {
@@ -51,6 +81,7 @@ char **read_map(char *path)
     char *line;
     char *trim;
     char **map;
+    char **trimmed_map;
 
     i = 0;
     fd = open(path, O_RDONLY);
@@ -69,19 +100,16 @@ char **read_map(char *path)
     }
     while (line)
     {
-        if (line[0] != '\n')
-        {
-            map[i] = (char *)malloc((ft_strlen(line) + 1) * sizeof(char));
-            if (!map[i])
-                return (NULL);
-            ft_strlcpy(map[i], line, ft_strlen(line) + 1);
-            i++;
-        }
-        else
-            exit(printf("Error\nNewline encountered\n"));
+        map[i] = (char *)malloc((ft_strlen(line) + 1) * sizeof(char));
+        if (!map[i])
+            return (NULL);
+        ft_strlcpy(map[i], line, ft_strlen(line) + 1);
+        i++;
         free (line);
         line = get_next_line(fd);
     }
     map[i] = NULL;
+    trimmed_map = skip_newlines(map, size);
+    compare_maps(map, trimmed_map);
     return(trim_map(map));
 }
