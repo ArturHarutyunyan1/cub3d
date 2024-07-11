@@ -1,4 +1,4 @@
-#include "../../include/cub.h"
+#include "../include/cub.h"
 
 void check_path(t_game *game, char *line)
 {
