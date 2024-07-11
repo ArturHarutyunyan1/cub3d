@@ -9,8 +9,8 @@
 /*   Updated: 2024/07/12 02:26:00 by arturhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 #include "../include/cub.h"
+
 void	draw_floor_and_ceiling(t_game *game)
 {
 	int	x;
