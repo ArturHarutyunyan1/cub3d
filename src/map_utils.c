@@ -6,11 +6,11 @@
 /*   By: arturhar <arturhar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 00:22:10 by arturhar          #+#    #+#             */
-/*   Updated: 2024/07/12 00:22:11 by arturhar         ###   ########.fr       */
+/*   Updated: 2024/07/12 01:47:09 by arturhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "../include/cub.h"
 
+#include "../include/cub.h"
 int	check(char s)
 {
 	if (s == ' ' || s == '\t' || s == '\r' || s == '\n')
@@ -18,7 +18,7 @@ int	check(char s)
 	return (0);
 }
 
-void	check_map(char **map, int j)
+void	check_map(char **map, size_t j)
 {
 	size_t	i;
 

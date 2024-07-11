@@ -1,4 +1,4 @@
-/******************************************************************************/
+/* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   cub.h                                              :+:      :+:    :+:   */
@@ -6,9 +6,9 @@
 /*   By: arturhar <arturhar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 06:39:00 by arturhar          #+#    #+#             */
-/*   Updated: 2024/07/12 01:43:58 by arturhar         ###   ########.fr       */
+/*   Updated: 2024/07/12 01:46:19 by arturhar         ###   ########.fr       */
 /*                                                                            */
-/******************************************************************************/
+/* ************************************************************************** */
 
 #ifndef CUB
 #define CUB
@@ -145,7 +145,7 @@ int keypress(int code, t_game *game);
 int keyrelease(int code, t_game *game);
 int game_loop(t_game *game);
 int	check(char s);
-void check_map(char **map, int j);
+void check_map(char **map, size_t j);
 int get_size(char *path);
 char **trim_map(char **map);
 char **skip_newlines(char **map, int size);

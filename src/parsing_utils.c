@@ -6,11 +6,11 @@
 /*   By: arturhar <arturhar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 01:04:32 by arturhar          #+#    #+#             */
-/*   Updated: 2024/07/12 01:04:33 by arturhar         ###   ########.fr       */
+/*   Updated: 2024/07/12 01:47:54 by arturhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "../include/cub.h"
 
+#include "../include/cub.h"
 void	remove_extra_spaces(char *dup, char *trimmed_line)
 {
 	int	i;
@@ -44,13 +44,6 @@ void	check_and_process_path(t_game *game, char *trimmed_line)
 
 void	trim_and_process_line(t_game *game, char *dup, char *trimmed_line)
 {
-	int	i;
-	int	j;
-	int	flg;
-
-	i = 0;
-	j = 0;
-	flg = 0;
 	remove_extra_spaces(dup, trimmed_line);
 	check_and_process_path(game, trimmed_line);
 }
