@@ -70,41 +70,29 @@ bool check_chars(t_game *game)
 {
     int i;
     int j;
-    int n;
-    int s;
-    int w;
-    int e;
+    int count;
     char c;
 
-    n = 0;
-    s = 0;
-    w = 0;
-    e = 0;
-
     i = 0;
+    count = 0;
     while (game->map.grid[i])
     {
         j = 0;
         while (game->map.grid[i][j])
         {
             c = game->map.grid[i][j];
-            if (c == 'N')
-                n++;
-            else if (c == 'S')
-                s++;
-            else if (c == 'E')
-                e++;
-            else if (c == 'W')
-                w++;
+            if (c == 'N'
+                || c == 'S'
+                || c == 'W'
+                || c == 'E')
+                count++;
             else if (c != '1' && c != '0' && c != '\n' && c != ' ' && c != '\t')
                 return (false);
             j++;
         }
         i++;
     }
-
-    if ((n + s + e + w) != 1)
+    if (count != 1)
         return (false);
-
     return (true);
 }

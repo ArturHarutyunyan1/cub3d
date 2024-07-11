@@ -6,19 +6,11 @@
 /*   By: arturhar <arturhar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 06:39:55 by arturhar          #+#    #+#             */
-/*   Updated: 2024/07/11 20:51:56 by arturhar         ###   ########.fr       */
+/*   Updated: 2024/07/11 22:29:52 by arturhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub.h"
-
-void	hooks(t_game *game)
-{
-	mlx_hook(game->vars.mlx_win, 2, 1L << 0, keypress, &game);
-	mlx_hook(game->vars.mlx_win, 3, 1L << 1, keyrelease, &game);
-	mlx_hook(game->vars.mlx_win, 17, 0, exit_game, &game);
-	mlx_loop_hook(game->vars.mlx, game_loop, &game);
-}
 
 void	init_game(char *argv)
 {
@@ -42,7 +34,10 @@ void	init_game(char *argv)
 			&game.img.line_length,
 			&game.img.endian);
 	init_textures(&game);
-	hooks(&game);
+	mlx_hook(game.vars.mlx_win, 2, 1L << 0, keypress, &game);
+	mlx_hook(game.vars.mlx_win, 3, 1L << 1, keyrelease, &game);
+	mlx_hook(game.vars.mlx_win, 17, 0, exit_game, &game);
+	mlx_loop_hook(game.vars.mlx, game_loop, &game);
 	mlx_loop(game.vars.mlx);
 	cleanup(&game);
 }

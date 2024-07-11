@@ -6,7 +6,7 @@
 /*   By: arturhar <arturhar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 06:39:00 by arturhar          #+#    #+#             */
-/*   Updated: 2024/07/11 17:29:02 by arturhar         ###   ########.fr       */
+/*   Updated: 2024/07/11 22:41:26 by arturhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -183,5 +183,9 @@ bool check_format(char *line);
 bool surrounded_by_walls(t_game *game);
 bool check_chars(t_game *game);
 void cleanup(t_game *game);
+char *get_trimmed_line(int fd);
+char **allocate_map(int size);
+void read_and_trim_lines(int fd, char **map);
+char **finalize_map(char **map, int size);
 
 #endif
