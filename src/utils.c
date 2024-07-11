@@ -6,11 +6,11 @@
 /*   By: arturhar <arturhar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 06:39:51 by arturhar          #+#    #+#             */
-/*   Updated: 2024/07/11 17:25:03 by arturhar         ###   ########.fr       */
+/*   Updated: 2024/07/11 21:02:03 by arturhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/cub.h"
+#include "../include/cub.h"
 
 void	free_matrix(char **matrix)
 {
@@ -25,22 +25,6 @@ void	free_matrix(char **matrix)
 	free(matrix);
 }
 
-void clear_image(t_game *game)
-{
-    int x, y;
-
-    y = 0;
-    while (y < HEIGHT)
-    {
-        x = 0;
-        while (x < WIDTH)
-        {
-            my_mlx_pixel_put(&game->img, x, y, 0x000000);  // Clear to black (0x000000)
-            x++;
-        }
-        y++;
-    }
-}
 
 int	ft_exit(t_game *game, char *msg, int status)
 {
