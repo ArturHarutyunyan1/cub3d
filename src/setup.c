@@ -1,4 +1,4 @@
-/* ************************************************************************** */
+/******************************************************************************/
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   setup.c                                            :+:      :+:    :+:   */
@@ -6,10 +6,12 @@
 /*   By: arturhar <arturhar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 02:39:51 by arturhar          #+#    #+#             */
-/*   Updated: 2024/07/12 21:56:04 by arturhar         ###   ########.fr       */
+/*   Updated: 2024/07/12 23:19:11 by arturhar         ###   ########.fr       */
 /*                                                                            */
-/* ************************************************************************** */
+/******************************************************************************/
+
 #include "../include/cub.h"
+
 
 t_color	set_colors(char *str)
 {
@@ -93,7 +95,7 @@ void	init_textures(t_game *game)
 	i = 0;
 	while (i <= 3)
 	{
-		set_path(i, path, game);
+		path = set_path(i, path, game);
 		game->textures[i].img = mlx_xpm_file_to_image(game->vars.mlx, path,
 				&game->textures[i].width,
 				&game->textures[i].height);

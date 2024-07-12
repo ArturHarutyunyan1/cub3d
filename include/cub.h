@@ -6,7 +6,7 @@
 /*   By: arturhar <arturhar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 06:39:00 by arturhar          #+#    #+#             */
-/*   Updated: 2024/07/12 22:09:26 by arturhar         ###   ########.fr       */
+/*   Updated: 2024/07/12 23:42:06 by arturhar         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -16,6 +16,8 @@
 #include "../libft/include/libft.h"
 #include "../mlx/mlx.h"
 #include <stdbool.h>
+# include <X11/X.h>
+# include <X11/keysym.h>
 #include <math.h>
 
 // Default window size
@@ -25,12 +27,12 @@
 
 // Keycodes
 
-# define KEY_W 13
-# define KEY_A 0
-# define KEY_S 1
-# define KEY_D 2
-# define KEY_ESC 53
-#define LEFT_ARROW 123
+# define KEY_W XK_w
+# define KEY_A XK_a
+# define KEY_S XK_s
+# define KEY_D XK_d
+# define KEY_ESC XK_Escape
+#define LEFT_ARROW XK_Left
 #define RIGHT_ARROW 124
 #define NORTH 0
 #define SOUTH 1

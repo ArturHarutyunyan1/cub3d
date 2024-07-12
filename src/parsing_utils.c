@@ -1,4 +1,4 @@
-/* ************************************************************************** */
+/******************************************************************************/
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   parsing_utils.c                                    :+:      :+:    :+:   */
@@ -6,9 +6,10 @@
 /*   By: arturhar <arturhar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 01:04:32 by arturhar          #+#    #+#             */
-/*   Updated: 2024/07/12 01:47:54 by arturhar         ###   ########.fr       */
+/*   Updated: 2024/07/13 01:09:53 by arturhar         ###   ########.fr       */
 /*                                                                            */
-/* ************************************************************************** */
+/******************************************************************************/
+
 #include "../include/cub.h"
 
 void	remove_extra_spaces(char *dup, char *trimmed_line)
@@ -58,7 +59,6 @@ void	process_line(t_game *game, char *line)
 	if (trimmed_line)
 	{
 		trim_and_process_line(game, dup, trimmed_line);
-		free(dup);
 		free(trimmed_line);
 	}
 }

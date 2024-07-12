@@ -1,4 +1,4 @@
-/* ************************************************************************** */
+/******************************************************************************/
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils_bonus.c                        :+:      :+:    :+:   */
@@ -6,35 +6,11 @@
 /*   By: arturhar <arturhar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 15:36:07 by arturhar          #+#    #+#             */
-/*   Updated: 2024/05/29 21:21:10 by arturhar         ###   ########.fr       */
+/*   Updated: 2024/07/12 23:30:05 by arturhar         ###   ########.fr       */
 /*                                                                            */
-/* ************************************************************************** */
+/******************************************************************************/
 
 #include "../include/get_next_line_bonus.h"
-
-size_t	ft_strlen(const char *str)
-{
-	size_t	i;
-
-	i = 0;
-	while (str[i])
-		i++;
-	return (i);
-}
-
-void	*ft_memset(void *str, int c, size_t n)
-{
-	unsigned char	val;
-	char			*ret;
-	size_t			i;
-
-	i = 0;
-	ret = (char *)str;
-	val = (unsigned char)c;
-	while (i < n)
-		ret[i++] = val;
-	return (ret);
-}
 
 void	*ft_calloc(size_t items, size_t size)
 {

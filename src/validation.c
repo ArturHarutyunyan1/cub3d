@@ -1,4 +1,4 @@
-/* ************************************************************************** */
+/******************************************************************************/
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   validation.c                                       :+:      :+:    :+:   */
@@ -6,11 +6,12 @@
 /*   By: arturhar <arturhar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 06:40:08 by arturhar          #+#    #+#             */
-/*   Updated: 2024/07/12 22:09:41 by arturhar         ###   ########.fr       */
+/*   Updated: 2024/07/13 01:13:10 by arturhar         ###   ########.fr       */
 /*                                                                            */
-/* ************************************************************************** */
-#include "../include/cub.h"
+/******************************************************************************/
 
+
+#include "../include/cub.h"
 void	validate(char *path)
 {
 	t_game	game;
@@ -24,6 +25,7 @@ void	validate(char *path)
 		ft_exit(&game, "Error\nMap is not surrounded by walls\n", 1);
 	if (!check_chars(&game, 0, 0, 0))
 		ft_exit(&game, "Error\nInvalid characters in map\n", 1);
+	free_matrix(game.map.grid);
 }
 
 bool	check_format(char *line)
@@ -48,18 +50,29 @@ bool	surrounded_by_walls(t_game *game)
 	while (trim[i])
 	{
 		if (trim[i] != '1')
+		{
+			free(trim);
 			return (false);
+		}
 		i++;
 	}
+	free(trim);
+
 	i = 0;
-	free (trim);
 	trim = ft_strtrim(game->map.grid[game->map.height], " \t\n");
+	if (!trim)
+		return (false);
 	while (trim[i])
 	{
 		if (trim[i] != '1')
+		{
+			free(trim);
 			return (false);
+		}
 		i++;
 	}
+	free(trim);
+
 	return (true);
 }
 

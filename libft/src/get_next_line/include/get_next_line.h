@@ -1,14 +1,15 @@
-/* ************************************************************************** */
+/******************************************************************************/
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: arturhar <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: arturhar <arturhar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 15:35:10 by arturhar          #+#    #+#             */
-/*   Updated: 2024/02/21 15:35:13 by arturhar         ###   ########.fr       */
+/*   Updated: 2024/07/12 23:29:31 by arturhar         ###   ########.fr       */
 /*                                                                            */
-/* ************************************************************************** */
+/******************************************************************************/
+
 #ifndef GET_NEXT_LINE_H
 # define GET_NEXT_LINE_H
 
@@ -21,12 +22,13 @@
 # include <unistd.h>
 # include <fcntl.h>
 # include <string.h>
+#include "../../../include/libft.h"
 
 char	*get_next_line(int fd);
 char	*ft_strchr(const char *str, int c);
 char	*ft_strjoin(const char *s1, const char *s2);
-void	*ft_memset(void *str, int c, size_t n);
+// void	*ft_memset(void *str, int c, size_t n);
 void	*ft_calloc(size_t items, size_t size);
-size_t	ft_strlen(const char *str);
+// size_t	ft_strlen(const char *str);
 
 #endif
