@@ -9,7 +9,6 @@
 /*   Updated: 2024/07/11 21:02:03 by arturhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 #include "../include/cub.h"
 
 void	free_matrix(char **matrix)
@@ -24,7 +23,6 @@ void	free_matrix(char **matrix)
 	}
 	free(matrix);
 }
-
 
 int	ft_exit(t_game *game, char *msg, int status)
 {
@@ -42,21 +40,21 @@ int	ft_exit(t_game *game, char *msg, int status)
 	exit(status);
 }
 
-void my_mlx_pixel_put(t_img *img, int x, int y, int color)
+void	my_mlx_pixel_put(t_img *img, int x, int y, int color)
 {
-	char *dst;
+	char	*dst;
 
 	dst = img->addr + (y * img->line_length + x * (img->bits_per_pixel / 8));
 	*(unsigned int *)dst = color;
 }
 
-int exit_game(t_game *game)
+int	exit_game(t_game *game)
 {
 	ft_exit(game, "Game was closed successfully\n", 0);
 	return (0);
 }
 
-void cleanup(t_game *game)
+void	cleanup(t_game *game)
 {
 	free_matrix(game->map.grid);
 	free(game->map.no);

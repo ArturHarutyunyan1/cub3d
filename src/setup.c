@@ -6,20 +6,10 @@
 /*   By: arturhar <arturhar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 02:39:51 by arturhar          #+#    #+#             */
-/*   Updated: 2024/07/12 02:39:56 by arturhar         ###   ########.fr       */
+/*   Updated: 2024/07/12 21:56:04 by arturhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "../include/cub.h"
-
-void	check_inits(t_game *game)
-{
-	if (!game->map.ea || !game->map.so
-		|| !game->map.we
-		|| !game->map.no
-		|| !game->map.c
-		|| !game->map.f)
-		ft_exit(game, "Error\nNot all required paths are initialized\n", 1);
-}
 
 t_color	set_colors(char *str)
 {
@@ -66,46 +56,53 @@ void	init_rays(t_game *game)
 	game->rays.side = 0;
 }
 
+char	*set_path(int i, char *path, t_game *game)
+{
+	if (i == 0)
+	{
+		path = game->map.no;
+		if (!path)
+			ft_exit(game, "Error\nFailed to load north texture\n", 1);
+	}
+	if (i == 1)
+	{
+		path = game->map.ea;
+		if (!path)
+			ft_exit(game, "Error\nFailed to load east texture\n", 1);
+	}
+	if (i == 2)
+	{
+		path = game->map.we;
+		if (!path)
+			ft_exit(game, "Error\nFailed to load west texture\n", 1);
+	}
+	if (i == 3)
+	{
+		path = game->map.so;
+		if (!path)
+			ft_exit(game, "Error\nFailed to load south texture\n", 1);
+	}
+	return (path);
+}
+
 void	init_textures(t_game *game)
 {
-	game->textures[0].img = mlx_xpm_file_to_image(game->vars.mlx,
-			game->map.no,
-			&game->textures[0].width,
-			&game->textures[0].height);
-	if (!game->textures[0].img)
-		ft_exit(game, "Failed to load north texture\n", 1);
-	game->textures[0].addr = mlx_get_data_addr(game->textures[0].img,
-			&game->textures[0].bpp,
-			&game->textures[0].line_length,
-			&game->textures[0].endian);
-	game->textures[1].img = mlx_xpm_file_to_image(game->vars.mlx,
-			game->map.ea,
-			&game->textures[1].width,
-			&game->textures[1].height);
-	if (!game->textures[1].img)
-		ft_exit(game, "Failed to load east texture\n", 1);
-	game->textures[1].addr = mlx_get_data_addr(game->textures[1].img,
-			&game->textures[1].bpp,
-			&game->textures[1].line_length,
-			&game->textures[1].endian);
-	game->textures[2].img = mlx_xpm_file_to_image(game->vars.mlx,
-			game->map.we,
-			&game->textures[2].width,
-			&game->textures[2].height);
-	if (!game->textures[2].img)
-		ft_exit(game, "Failed to load west texture\n", 1);
-	game->textures[2].addr = mlx_get_data_addr(game->textures[2].img,
-			&game->textures[2].bpp,
-			&game->textures[2].line_length,
-			&game->textures[2].endian);
-	game->textures[3].img = mlx_xpm_file_to_image(game->vars.mlx,
-			game->map.so,
-			&game->textures[3].width,
-			&game->textures[3].height);
-	if (!game->textures[3].img)
-		ft_exit(game, "Failed to load south texture\n", 1);
-	game->textures[3].addr = mlx_get_data_addr(game->textures[3].img,
-			&game->textures[3].bpp,
-			&game->textures[3].line_length,
-			&game->textures[3].endian);
+	int		i;
+	char	*path;
+
+	i = 0;
+	while (i <= 3)
+	{
+		set_path(i, path, game);
+		game->textures[i].img = mlx_xpm_file_to_image(game->vars.mlx, path,
+				&game->textures[i].width,
+				&game->textures[i].height);
+		if (!game->textures[i].img)
+			ft_exit(game, "Error\nFailed to load texture\n", 1);
+		game->textures[i].addr = mlx_get_data_addr(game->textures[i].img,
+				&game->textures[i].bpp,
+				&game->textures[i].line_length,
+				&game->textures[i].endian);
+		i++;
+	}
 }

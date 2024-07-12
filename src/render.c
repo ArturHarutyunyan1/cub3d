@@ -6,10 +6,21 @@
 /*   By: arturhar <arturhar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 02:21:15 by arturhar          #+#    #+#             */
-/*   Updated: 2024/07/12 02:26:00 by arturhar         ###   ########.fr       */
+/*   Updated: 2024/07/12 22:10:58 by arturhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "../include/cub.h"
+
+void	check_inits(t_game *game)
+{
+	ft_memset(game.key_states, 0, sizeof(game.key_states));
+	if (!game->map.ea || !game->map.so
+		|| !game->map.we
+		|| !game->map.no
+		|| !game->map.c
+		|| !game->map.f)
+		ft_exit(game, "Error\nNot all required paths are initialized\n", 1);
+}
 
 void	draw_floor_and_ceiling(t_game *game)
 {
