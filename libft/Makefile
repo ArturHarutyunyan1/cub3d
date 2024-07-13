@@ -66,7 +66,7 @@ BONUS_OBJS = ${SRCB:.c=.o}
 LIBC = ar rcs
 CC = gcc
 RM = rm -f
-CFLAGS = -Wall -Wextra -Werror # -arch x86_64
+CFLAGS = -Wall -Wextra -Werror -arch x86_64
 
 .c.o:
 	${CC} ${CFLAGS} -c $< -o $@

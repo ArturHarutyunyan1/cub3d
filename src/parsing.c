@@ -1,68 +1,87 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   parsing.c                                          :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: arturhar <arturhar@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/12 00:58:10 by arturhar          #+#    #+#             */
-/*   Updated: 2024/07/12 00:58:11 by arturhar         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
 #include "../include/cub.h"
 
-void	assign_path(t_game *game, char **arr)
+void check_path(t_game *game, char *line)
 {
-	if (strcmp(arr[0], "NO") == 0)
-		game->map.no = arr[1];
-	else if (strcmp(arr[0], "SO") == 0)
-		game->map.so = arr[1];
-	else if (strcmp(arr[0], "EA") == 0)
-		game->map.ea = arr[1];
-	else if (strcmp(arr[0], "WE") == 0)
-		game->map.we = arr[1];
-	else if (strcmp(arr[0], "C") == 0)
-		game->map.c = arr[1];
-	else if (strcmp(arr[0], "F") == 0)
-		game->map.f = arr[1];
+     char **elements;
+
+    elements = ft_split(line, ' ');
+    if (!elements)
+        return;
+    if (ft_strncmp(elements[0], "NO", 2) == 0)
+        game->map.no = ft_strdup(elements[1]);
+    else if (ft_strncmp(elements[0], "SO", 2) == 0)
+        game->map.so = ft_strdup(elements[1]);
+    else if (ft_strncmp(elements[0], "WE", 2) == 0)
+        game->map.we = ft_strdup(elements[1]);
+    else if (ft_strncmp(elements[0], "EA", 2) == 0)
+        game->map.ea = ft_strdup(elements[1]);
+    else if (ft_strncmp(elements[0], "F", 1) == 0)
+        game->map.f = ft_strdup(elements[1]);
+    else if (ft_strncmp(elements[0], "C", 1) == 0)
+        game->map.c = ft_strdup(elements[1]);
+    
+    for (int i = 0; elements[i]; i++)
+        free(elements[i]);
+    free(elements);
 }
 
-void	check_path(t_game *game, char *line)
+void process_line(t_game *game, char *line)
 {
-	char	**arr;
+    int i;
+    int j;
+    int flg;
+    char *dup;
+    char *trimmed_line;
 
-	if (strncmp(line, "NO ", 3) == 0
-		|| strncmp(line, "SO ", 3) == 0
-		|| strncmp(line, "EA ", 3) == 0
-		|| strncmp(line, "WE ", 3) == 0
-		|| strncmp(line, "C ", 2) == 0
-		|| strncmp(line, "F ", 2) == 0
-		|| line[0] == '1')
-	{
-		arr = ft_split(line, ' ');
-		assign_path(game, arr);
-		return ;
-	}
-	ft_exit(game, "Error\nInvalid Characters\n", 1);
+    i = 0;
+    j = 0;
+    flg = 0;
+    dup = ft_strtrim(line, " \t\n");
+    trimmed_line = malloc(ft_strlen(dup) + 1);
+    if (trimmed_line)
+    {
+        while (dup[i])
+        {
+            if (dup[i] == ' ' || dup[i] == '\t')
+            {
+                if (flg == 0)
+                {
+                    trimmed_line[j++] = ' ';
+                    flg = 1;
+                }
+            }
+            else
+            {
+                trimmed_line[j++] = dup[i];
+                flg = 0;
+            }
+            i++;
+        }
+        trimmed_line[j] = '\0';
+        check_path(game, trimmed_line);
+        free(dup);
+        free(trimmed_line);
+    }
 }
 
-void	get_paths(t_game *game, char *path)
+void get_paths(t_game *game, char *path)
 {
-	int		fd;
-	char	*line;
+    int fd;
+    char *line;
 
-	fd = open(path, O_RDONLY);
-	if (fd == -1)
-		return ;
-	game->map.is_all_set = 0;
-	while (game->map.is_all_set != 1)
-	{
-		line = get_next_line(fd);
-		if (!line)
-			break ;
-		if (!contains_only_whitespace(line))
-			process_line(game, line);
-		free(line);
-	}
-	close(fd);
+    fd = open(path, O_RDONLY);
+    if (fd == -1)
+        return;
+    game->map.is_all_set = 0;
+    while (game->map.is_all_set != 1)
+    {
+        line = get_next_line(fd);
+        if (!line)
+            break;
+        if (!contains_only_whitespace(line))
+            process_line(game, line);
+        free(line);
+    }
+    free (line);
+    close(fd);
 }

@@ -27,7 +27,7 @@ char *get_trimmed_line(int fd)
     line = get_next_line(fd);
     if (!line)
         return (NULL);
-    trim = ft_strtrim(line, " \t\n");
+    trim = ft_strtrim(line, "\t");
     free(line);
     return (trim);
 }
@@ -45,19 +45,25 @@ char **allocate_map(int size) {
 void read_and_trim_lines(int fd, char **map)
 {
     int i = 0;
+    char *line;
     char *trim;
 
-    trim = get_trimmed_line(fd);
+    line = get_next_line(fd);
+    trim = ft_strtrim(line, " \t\n");
     while (trim && trim[0] != '1')
     {
+        free(line);
         free(trim);
-        trim = get_trimmed_line(fd);
+        line = get_next_line(fd);
+        trim = ft_strtrim(line, " \t\n");
     }
-    while (trim)
+    free(trim);
+    while (line)
     {
-        map[i] = trim;
+        map[i] = ft_strdup(line);
         i++;
-        trim = get_trimmed_line(fd);
+        free(line);
+        line = get_next_line(fd);
     }
     map[i] = NULL;
 }

@@ -1,4 +1,4 @@
-/******************************************************************************/
+/* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   map_utils1.c                                       :+:      :+:    :+:   */
@@ -6,9 +6,9 @@
 /*   By: arturhar <arturhar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 00:25:31 by arturhar          #+#    #+#             */
-/*   Updated: 2024/07/13 01:07:44 by arturhar         ###   ########.fr       */
+/*   Updated: 2024/07/13 21:13:59 by arturhar         ###   ########.fr       */
 /*                                                                            */
-/******************************************************************************/
+/* ************************************************************************** */
 
 #include "../include/cub.h"
 
@@ -56,11 +56,12 @@ char **trim_map(char **map)
         trim[i] = ft_strdup(map[i]);
         i++;
     }
-    trim[size] = strdup("\n");
-    trim[size + 1] = strdup("\n");
+    trim[size] = ft_strdup("\n");
+    trim[size + 1] = ft_strdup("\n");
     trim[size + 2] = NULL;
     return (trim);
 }
+
 char **skip_newlines(char **map, int size)
 {
     int i = 0;
@@ -74,7 +75,7 @@ char **skip_newlines(char **map, int size)
         trimmed_line = ft_strtrim(map[i], " \t\n");
         if (trimmed_line[0] != '\0')
         {
-            trim[j] = strdup(map[i]);
+            trim[j] = ft_strdup(map[i]);
             j++;
         }
         free(trimmed_line);
@@ -84,12 +85,13 @@ char **skip_newlines(char **map, int size)
     return (trim);
 }
 
+
 void compare_maps(char **map, char **trim)
 {
     int i = 0;
     while (map[i] && trim[i])
     {
-        if (strcmp(map[i], trim[i]) != 0)
+        if (ft_strcmp(map[i], trim[i]) != 0)
         {
             free_matrix(trim);
             exit(printf("Error\nNewline encountered\n"));

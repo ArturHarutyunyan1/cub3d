@@ -1,4 +1,4 @@
-/******************************************************************************/
+/* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   validation.c                                       :+:      :+:    :+:   */
@@ -6,9 +6,9 @@
 /*   By: arturhar <arturhar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 06:40:08 by arturhar          #+#    #+#             */
-/*   Updated: 2024/07/13 01:13:10 by arturhar         ###   ########.fr       */
+/*   Updated: 2024/07/13 09:02:00 by arturhar         ###   ########.fr       */
 /*                                                                            */
-/******************************************************************************/
+/* ************************************************************************** */
 
 
 #include "../include/cub.h"
@@ -20,7 +20,9 @@ void	validate(char *path)
 		exit(printf("Error\nInvalid format\n"));
 	game.map.grid = read_map(path);
 	game.map = init_map(game.map.grid);
-	check_map(game.map.grid, 1);
+	for(int i = 0; game.map.grid[i]; i++)
+		printf("%s", game.map.grid[i]);
+	check_map(game.map.grid);
 	if (!surrounded_by_walls(&game))
 		ft_exit(&game, "Error\nMap is not surrounded by walls\n", 1);
 	if (!check_chars(&game, 0, 0, 0))
