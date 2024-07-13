@@ -6,9 +6,10 @@
 /*   By: arturhar <arturhar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 06:39:55 by arturhar          #+#    #+#             */
-/*   Updated: 2024/07/12 23:33:47 by arturhar         ###   ########.fr       */
+/*   Updated: 2024/07/13 23:37:32 by arturhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "../include/cub.h"
 
 void	init_game(char *argv)
@@ -38,5 +39,4 @@ void	init_game(char *argv)
 	mlx_hook(game.vars.mlx_win, 17, 0, exit_game, &game);
 	mlx_loop_hook(game.vars.mlx, game_loop, &game);
 	mlx_loop(game.vars.mlx);
-	cleanup(&game);
 }
