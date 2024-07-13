@@ -6,10 +6,9 @@
 /*   By: arturhar <arturhar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 01:04:32 by arturhar          #+#    #+#             */
-/*   Updated: 2024/07/13 08:50:54 by arturhar         ###   ########.fr       */
+/*   Updated: 2024/07/13 22:24:23 by arturhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 #include "../include/cub.h"
 
 void	remove_extra_spaces(char *dup, char *trimmed_line)
@@ -48,17 +47,3 @@ void	trim_and_process_line(t_game *game, char *dup, char *trimmed_line)
 	remove_extra_spaces(dup, trimmed_line);
 	check_and_process_path(game, trimmed_line);
 }
-
-// void	process_line(t_game *game, char *line)
-// {
-// 	char	*dup;
-// 	char	*trimmed_line;
-
-// 	dup = ft_strtrim(line, " \t\n");
-// 	trimmed_line = malloc(ft_strlen(dup) + 1);
-// 	if (trimmed_line)
-// 	{
-// 		trim_and_process_line(game, dup, trimmed_line);
-// 		free(trimmed_line);
-// 	}
-// }

@@ -6,12 +6,11 @@
 /*   By: arturhar <arturhar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 06:40:08 by arturhar          #+#    #+#             */
-/*   Updated: 2024/07/13 09:02:00 by arturhar         ###   ########.fr       */
+/*   Updated: 2024/07/13 22:35:11 by arturhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-
 #include "../include/cub.h"
+
 void	validate(char *path)
 {
 	t_game	game;
@@ -20,9 +19,7 @@ void	validate(char *path)
 		exit(printf("Error\nInvalid format\n"));
 	game.map.grid = read_map(path);
 	game.map = init_map(game.map.grid);
-	for(int i = 0; game.map.grid[i]; i++)
-		printf("%s", game.map.grid[i]);
-	check_map(game.map.grid);
+	check_map(game.map.grid, 0, 0);
 	if (!surrounded_by_walls(&game))
 		ft_exit(&game, "Error\nMap is not surrounded by walls\n", 1);
 	if (!check_chars(&game, 0, 0, 0))
@@ -52,29 +49,18 @@ bool	surrounded_by_walls(t_game *game)
 	while (trim[i])
 	{
 		if (trim[i] != '1')
-		{
-			free(trim);
 			return (false);
-		}
 		i++;
 	}
-	free(trim);
-
 	i = 0;
+	free (trim);
 	trim = ft_strtrim(game->map.grid[game->map.height], " \t\n");
-	if (!trim)
-		return (false);
 	while (trim[i])
 	{
 		if (trim[i] != '1')
-		{
-			free(trim);
 			return (false);
-		}
 		i++;
 	}
-	free(trim);
-
 	return (true);
 }
 
