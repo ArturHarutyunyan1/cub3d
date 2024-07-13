@@ -12,7 +12,7 @@
 
 NAME = cub3D
 CC = cc
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -arch x86_64
 SRC_DIR = src
 OBJ_DIR = obj
 LIBFT_DIR = libft
@@ -51,7 +51,7 @@ $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 all: $(NAME)
 
 $(NAME): $(OBJS) $(LIBFT) $(MLX)
-	$(CC) $(CFLAGS) $(OBJS) -L$(LIBFT_DIR) -lft -L$(MLX_DIR) -lmlx -o $(NAME)
+	$(CC) $(CFLAGS) $(OBJS) -L$(LIBFT_DIR) -lft -L$(MLX_DIR) -Lmlx -lmlx -framework OpenGL -framework AppKit  -o $(NAME)
 
 $(LIBFT):
 	@make -C $(LIBFT_DIR)
