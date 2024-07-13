@@ -6,7 +6,7 @@
 /*   By: arturhar <arturhar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 06:40:08 by arturhar          #+#    #+#             */
-/*   Updated: 2024/07/13 22:35:11 by arturhar         ###   ########.fr       */
+/*   Updated: 2024/07/13 23:17:43 by arturhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "../include/cub.h"
@@ -61,6 +61,7 @@ bool	surrounded_by_walls(t_game *game)
 			return (false);
 		i++;
 	}
+	free (trim);
 	return (true);
 }
 

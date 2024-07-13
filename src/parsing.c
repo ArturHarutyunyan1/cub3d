@@ -6,7 +6,7 @@
 /*   By: arturhar <arturhar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/13 22:42:56 by arturhar          #+#    #+#             */
-/*   Updated: 2024/07/13 22:42:57 by arturhar         ###   ########.fr       */
+/*   Updated: 2024/07/13 23:10:17 by arturhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "../include/cub.h"
@@ -35,21 +35,14 @@ void	check_path(t_game *game, char *line)
 
 void	process_line(t_game *game, char *line)
 {
-	int		i;
-	int		j;
-	int		flg;
 	char	*dup;
 	char	*trimmed_line;
 
-	i = 0;
-	j = 0;
-	flg = 0;
 	dup = ft_strtrim(line, " \t\n");
 	trimmed_line = malloc(ft_strlen(dup) + 1);
 	if (trimmed_line)
 	{
 		remove_extra_spaces(dup, trimmed_line);
-		trimmed_line[j] = '\0';
 		check_path(game, trimmed_line);
 		free(dup);
 		free(trimmed_line);
