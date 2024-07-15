@@ -6,7 +6,7 @@
 /*   By: arturhar <arturhar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 06:39:00 by arturhar          #+#    #+#             */
-/*   Updated: 2024/07/15 11:25:30 by arturhar         ###   ########.fr       */
+/*   Updated: 2024/07/15 13:28:47 by arturhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -134,6 +134,7 @@ typedef struct s_game
 	t_map		map;
 	t_img		img;
 	t_texture	textures[4];
+	t_texture	sprite[4];
 	t_rays		rays;
 	t_color		floor;
 	t_color		ceiling;
@@ -209,5 +210,7 @@ char	*get_trimmed_line(int fd);
 // Bonus
 
 void minimap(t_game *game);
+void draw_sprite(t_game *game);
+void set_sprite(t_game *game);
 
 #endif
