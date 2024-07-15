@@ -6,7 +6,7 @@
 #    By: arturhar <arturhar@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/10 06:40:11 by arturhar          #+#    #+#              #
-#    Updated: 2024/07/13 01:36:48 by arturhar         ###   ########.fr        #
+#    Updated: 2024/07/15 11:27:56 by arturhar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,7 +36,8 @@ SRC_FILES = get_side.c \
 			setup.c \
 			utils.c \
 			utils1.c \
-			validation.c
+			validation.c \
+			minimap.c
 OBJ_FILES = $(SRC_FILES:.c=.o)
 
 OBJS = $(addprefix $(OBJ_DIR)/,$(OBJ_FILES))

@@ -6,7 +6,7 @@
 /*   By: arturhar <arturhar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 06:39:00 by arturhar          #+#    #+#             */
-/*   Updated: 2024/07/13 23:34:52 by arturhar         ###   ########.fr       */
+/*   Updated: 2024/07/15 11:25:30 by arturhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -205,5 +205,9 @@ t_map	init_map(char **str);
 void	my_mlx_pixel_put(t_img *img, int x, int y, int color);
 int		ft_exit(t_game *game, char *msg, int status);
 char	*get_trimmed_line(int fd);
+
+// Bonus
+
+void minimap(t_game *game);
 
 #endif
