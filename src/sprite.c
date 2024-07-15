@@ -38,15 +38,14 @@ t_texture get_sprite(t_game *game)
 {
     static int i;
 
-    // i = 0;
     i++;
-    if (i == 10)
+    if (i <= 10)
         return (game->sprite[0]);
-    if (i == 20)
+    if (i <= 20)
         return (game->sprite[1]);
-    if (i == 30)
+    if (i <= 30)
         return (game->sprite[2]);
-    if (i == 40)
+    if (i <= 40)
         return (game->sprite[3]);
     if (i > 40)
         i = 0;
@@ -59,22 +58,20 @@ void draw_sprite(t_game *game)
     int sprite_height;
     int x_start;
     int y_start;
+    int color;
     t_texture sprite;
 
     sprite_width = 256;
     sprite_height = 256;
     x_start = (WIDTH - sprite_width) / 2;
-    y_start = HEIGHT - sprite_height;
+    y_start = HEIGHT - sprite_height + 10;
     sprite = get_sprite(game);
     for (int y = 0; y < sprite_height; y++)
     {
         for (int x = 0; x < sprite_width; x++)
         {
-            int color = *(int *)(sprite.addr + (y * sprite.line_length + x * (sprite.bpp / 8)));
-            if (color != 0x000000) // Replace with the actual transparent color code if different
-            {
-                my_mlx_pixel_put(&game->img, x_start + x, y_start + y, color);
-            }
+            color = *(int *)(sprite.addr + (y * sprite.line_length + x * (sprite.bpp / 8)));
+            my_mlx_pixel_put(&game->img, x_start + x, y_start + y, color);
         }
     }
 }
