@@ -6,7 +6,7 @@
 /*   By: arturhar <arturhar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 06:39:00 by arturhar          #+#    #+#             */
-/*   Updated: 2024/07/15 13:28:47 by arturhar         ###   ########.fr       */
+/*   Updated: 2024/07/15 23:50:12 by arturhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ typedef struct s_map
 	char	*ea;
 	char	*we;
 	char	**grid;
+	char	*path;
 }	t_map;
 
 typedef struct s_img
@@ -96,6 +97,11 @@ typedef struct s_player
 	double	plane_x;
 	double	plane_y;
 }	t_player;
+
+typedef struct s_mouse
+{
+	int last_x;
+}t_mouse;
 
 typedef struct s_rays
 {
@@ -139,6 +145,7 @@ typedef struct s_game
 	t_color		floor;
 	t_color		ceiling;
 	t_player	player;
+	t_mouse		mouse;
 	int			key_states[KEY_COUNT];
 }	t_game;
 
@@ -212,5 +219,7 @@ char	*get_trimmed_line(int fd);
 void minimap(t_game *game);
 void draw_sprite(t_game *game);
 void set_sprite(t_game *game);
+int mouse_move(int x, int y, t_game *game);
+void	init_mouse(t_game *game);
 
 #endif

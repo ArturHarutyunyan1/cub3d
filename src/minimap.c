@@ -8,17 +8,19 @@ void minimap(t_game *game)
     int map_y;
     int scale;
     int color;
+    char **map;
 
     scale = 10;
     map_y = 0;
+    map = read_map(game->map.path);
     while (map_y < game->map.height)
     {
         map_x = 0;
         while (map_x < game->map.width)
         {
-            if (game->map.grid[map_y][map_x] == '1' || game->map.grid[map_y][map_x] == ' ' || game->map.grid[map_y][map_x] == '\t')
+            if (map[map_y][map_x] == '1' || map[map_y][map_x] == ' ' || map[map_y][map_x] == '\t')
                 color = 0x4169E1;
-            else if (game->map.grid[map_y][map_x] == '0')
+            else if (map[map_y][map_x] == '0')
                 color = 0x000000;
             y = 0;
             while (y < scale)
