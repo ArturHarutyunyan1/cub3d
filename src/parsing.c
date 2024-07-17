@@ -1,4 +1,4 @@
-/* ************************************************************************** */
+/******************************************************************************/
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
@@ -6,18 +6,38 @@
 /*   By: arturhar <arturhar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/13 22:42:56 by arturhar          #+#    #+#             */
-/*   Updated: 2024/07/13 23:10:17 by arturhar         ###   ########.fr       */
+/*   Updated: 2024/07/18 01:00:25 by arturhar         ###   ########.fr       */
 /*                                                                            */
-/* ************************************************************************** */
-#include "../include/cub.h"
+/******************************************************************************/
 
-void	check_path(t_game *game, char *line)
+#include "../include/cub.h"
+void set_counts(t_game *game, char *line)
+{
+    if (ft_strncmp(line, "NO", 2) == 0)
+        game->valid.count_no++;
+    else if (ft_strncmp(line, "SO", 2) == 0)
+        game->valid.count_so++;
+    else if (ft_strncmp(line, "EA", 2) == 0)
+        game->valid.count_ea++;
+    else if (ft_strncmp(line, "WE", 2) == 0)
+        game->valid.count_we++;
+    else if (ft_strncmp(line, "C", 1) == 0)
+        game->valid.count_c++;
+    else if (ft_strncmp(line, "F", 1) == 0)
+        game->valid.count_f++;
+}
+
+void set_paths(t_game *game, char *line)
 {
 	char	**elements;
 
 	elements = ft_split(line, ' ');
-	if (!elements)
-		return ;
+	if (!elements || !elements[1] || elements[2])
+    {
+        free_matrix(elements);
+        exit(printf("Error\nSomething went wrong\n"));
+        return ;
+    }
 	if (ft_strncmp(elements[0], "NO", 2) == 0)
 		game->map.no = ft_strdup(elements[1]);
 	else if (ft_strncmp(elements[0], "SO", 2) == 0)
@@ -43,30 +63,27 @@ void	process_line(t_game *game, char *line)
 	if (trimmed_line)
 	{
 		remove_extra_spaces(dup, trimmed_line);
-		check_path(game, trimmed_line);
-		free(dup);
+        set_counts(game, trimmed_line);
+        set_paths(game, trimmed_line);
 		free(trimmed_line);
 	}
+    free (dup);
 }
 
-void	get_paths(t_game *game, char *path)
+void extract_paths(t_game *game)
 {
-	int		fd;
-	char	*line;
+    char *line;
+    t_list *cur;
 
-	fd = open(path, O_RDONLY);
-	if (fd == -1)
-		return ;
-	game->map.is_all_set = 0;
-	while (game->map.is_all_set != 1)
-	{
-		line = get_next_line(fd);
-		if (!line)
-			break ;
-		if (!contains_only_whitespace(line))
-			process_line(game, line);
-		free(line);
-	}
-	free (line);
-	close(fd);
+    cur = game->file;
+    while (cur)
+    {
+        line = ft_strtrim((char *)cur->content, " \t\n");
+        if (!contains_only_whitespace((char *)cur->content) && is_identifier(line))
+            process_line(game, (char *)cur->content);
+        free (line);
+        cur = cur->next;
+    }
+    if (game->valid.count_no != 1 || game->valid.count_so != 1 || game->valid.count_ea != 1 || game->valid.count_we != 1 || game->valid.count_c != 1 || game->valid.count_f != 1)
+        exit(printf("Error\nSomething went wrong with paths\n"));
 }

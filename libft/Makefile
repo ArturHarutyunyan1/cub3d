@@ -48,7 +48,16 @@ SRCS := $(SRC_DIR)/$(FT_FD)/ft_putchar_fd.c \
         $(SRC_DIR)/$(PRINTF)/src/ft_printf_utils.c \
         $(SRC_DIR)/$(PRINTF)/src/ft_printf.c \
         $(SRC_DIR)/$(GNL)/src/get_next_line.c \
-        $(SRC_DIR)/$(GNL)/src/get_next_line_utils.c
+        $(SRC_DIR)/$(GNL)/src/get_next_line_utils.c \
+        $(SRC_DIR)/$(FT_LST)/ft_lstadd_back.c \
+        $(SRC_DIR)/$(FT_LST)/ft_lstadd_front.c \
+        $(SRC_DIR)/$(FT_LST)/ft_lstclear.c \
+        $(SRC_DIR)/$(FT_LST)/ft_lstdelone.c \
+        $(SRC_DIR)/$(FT_LST)/ft_lstiter.c \
+        $(SRC_DIR)/$(FT_LST)/ft_lstlast.c \
+        $(SRC_DIR)/$(FT_LST)/ft_lstmap.c \
+        $(SRC_DIR)/$(FT_LST)/ft_lstnew.c \
+        $(SRC_DIR)/$(FT_LST)/ft_lstsize.c \
 
 SRCB := $(SRC_DIR)/$(FT_LST)/ft_lstadd_back.c \
         $(SRC_DIR)/$(FT_LST)/ft_lstadd_front.c \

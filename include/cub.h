@@ -1,4 +1,4 @@
-/* ************************************************************************** */
+/******************************************************************************/
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   cub.h                                              :+:      :+:    :+:   */
@@ -6,9 +6,9 @@
 /*   By: arturhar <arturhar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 06:39:00 by arturhar          #+#    #+#             */
-/*   Updated: 2024/07/15 23:50:12 by arturhar         ###   ########.fr       */
+/*   Updated: 2024/07/18 01:46:14 by arturhar         ###   ########.fr       */
 /*                                                                            */
-/* ************************************************************************** */
+/******************************************************************************/
 
 #ifndef CUB_H
 # define CUB_H
@@ -134,6 +134,16 @@ typedef struct s_rays
 	int		side;
 }	t_rays;
 
+typedef struct s_valid
+{
+    int     count_no;
+    int     count_so;
+    int     count_ea;
+    int     count_we;
+    int     count_c;
+    int     count_f;
+}t_valid;
+
 typedef struct s_game
 {
 	t_vars		vars;
@@ -146,80 +156,57 @@ typedef struct s_game
 	t_color		ceiling;
 	t_player	player;
 	t_mouse		mouse;
+	t_valid     valid;
+    t_list      *file;
 	int			key_states[KEY_COUNT];
 }	t_game;
 
-void	init_game(char *argv);
-void	init_player(t_game *game);
-void	init_img(t_game *game);
-void	init_rays(t_game *game);
-void	init_textures(t_game *game);
-void	check_inits(t_game *game);
-
-// Game loop and event handling
-int		game_loop(t_game *game);
-int		keypress(int code, t_game *game);
-int		keyrelease(int code, t_game *game);
-int		exit_game(t_game *game);
-
-// Map handling and validation
-void	validate(char *path);
-char	**read_map(char *path);
-void	check_map(char **map, size_t i, size_t j);
-char	**trim_map(char **map);
-char	**skip_newlines(char **map, int size);
-void	compare_maps(char **map, char **trim);
-void	get_paths(t_game *game, char *path);
-void	process_line(t_game *game, char *line);
-bool	surrounded_by_walls(t_game *game);
-bool	check_format(char *line);
-bool	check_chars(t_game *game, int i, int j, int count);
-char	**allocate_map(int size);
-void	read_and_trim_lines(int fd, char **map);
-char	**finalize_map(char **map, int size);
+void	free_matrix(char **matrix);
+int	ft_isspace(int c);
+int	ft_strcmp(const char *str1, const char *str2);
+int	contains_only_whitespace(const char *str);
+int is_identifier(const char *line);
 void	remove_extra_spaces(char *dup, char *trimmed_line);
-
-// Movement functions
+void read_file_into(t_list **file, char *path);
+void extract_paths(t_game *game);
+void extract_map(t_game *game, char *path);
+void	validate(t_game *game, char *path);
+int	ft_exit(t_game *game, char *msg, int status);
+t_map	init_map(char **str);
+int is_valid_line(char *line);
+void	init_game(t_game *game);
+int	game_loop(t_game *game);
+int	keyrelease(int code, t_game *game);
+int	keypress(int code, t_game *game);
+void	get_sides(t_game *game);
+void	set_step_and_side_dist_x(t_game *game);
+void	set_step_and_side_dist_y(t_game *game);
+int	mouse_move(int x, int y, t_game *game);
+void	init_mouse(t_game *game);
 void	move_forward(t_game *game);
 void	move_backwards(t_game *game);
 void	move_left(t_game *game);
 void	move_right(t_game *game);
-void	rotate_left(t_game *game);
-void	rotate_right(t_game *game);
+void	set_dir(char c, t_game *game);
+void	init_player(t_game *game);
 void	update_player(t_game *game);
-
-// Raycasting and rendering functions
+void	setup(t_game *game, int x);
+void	dda(t_game *game);
+void	calculate_perp_wall_dist_and_direction(t_game *game);
+void	calculate_draw_limits_and_tex_x(t_game *game);
 void	raycaster(t_game *game);
 void	draw_floor_and_ceiling(t_game *game);
 void	clear_image(t_game *game);
-void	dda(t_game *game);
-void	get_sides(t_game *game);
-void	setup(t_game *game, int x);
-void	calculate_perp_wall_dist_and_direction(t_game *game);
-void	calculate_draw_limits_and_tex_x(t_game *game);
-void	set_step_and_side_dist_x(t_game *game);
-void	set_step_and_side_dist_y(t_game *game);
-
-// Utility functions
-int		get_size(char *path);
-int		check(char s);
-int		ft_isspace(int c);
-int		contains_only_whitespace(const char *str);
-int		ft_strcmp(const char *str1, const char *str2);
-void	free_matrix(char **matrix);
-void	cleanup(t_game *game);
+void	check_inits(t_game *game);
+void	rotate_left(t_game *game);
+void	rotate_right(t_game *game);
 t_color	set_colors(char *str);
-t_map	init_map(char **str);
-void	my_mlx_pixel_put(t_img *img, int x, int y, int color);
-int		ft_exit(t_game *game, char *msg, int status);
-char	*get_trimmed_line(int fd);
-
-// Bonus
-
-void minimap(t_game *game);
+void	init_img(t_game *game);
+void	init_rays(t_game *game);
+char	*set_path(int i, char *path, t_game *game);
+void	init_textures(t_game *game);
 void draw_sprite(t_game *game);
-void set_sprite(t_game *game);
-int mouse_move(int x, int y, t_game *game);
-void	init_mouse(t_game *game);
+int	exit_game(t_game *game);
+void	my_mlx_pixel_put(t_img *img, int x, int y, int color);
 
 #endif

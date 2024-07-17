@@ -6,98 +6,129 @@
 /*   By: arturhar <arturhar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/13 22:47:44 by arturhar          #+#    #+#             */
-/*   Updated: 2024/07/13 22:47:45 by arturhar         ###   ########.fr       */
+/*   Updated: 2024/07/18 02:18:20 by arturhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "../include/cub.h"
 
-char	**read_map(char *path)
+int get_size(char *path)
 {
-	int		fd;
-	int		size;
-	char	**map;
-	char	**final;
+    int fd = open(path, O_RDONLY);
+    if (fd < 0) return -1;
 
-	fd = open(path, O_RDONLY);
-	if (fd < 0)
-		exit(printf("Error\nCan't open map\n"));
-	size = get_size(path);
-	map = (char **)malloc((size + 1) * sizeof(char *));
-	if (!map)
-	{
-		close(fd);
-		return (NULL);
-	}
-	read_and_trim_lines(fd, map);
-	final = finalize_map(map, size);
-	free_matrix(map);
-	close(fd);
-	return (final);
+    int flag = 1;
+    int map_size = 0;
+    char *line;
+
+    while (flag)
+    {
+        line = get_next_line(fd);
+        if (line == NULL)
+        {
+            if (map_size == 0) return -1;
+            flag = 0;
+        }
+        else
+        {
+            map_size++;
+            free(line);
+        }
+    }
+    close(fd);
+    return map_size;
 }
 
-char	*get_trimmed_line(int fd)
+void read_file_into(t_list **file, char *path)
 {
-	char	*line;
-	char	*trim;
+    int fd;
+    char *line;
+    t_list *node;
 
-	line = get_next_line(fd);
-	if (!line)
-		return (NULL);
-	trim = ft_strtrim(line, "\t");
-	free(line);
-	return (trim);
+    fd = open(path, O_RDONLY);
+    line = get_next_line(fd);
+    while (line)
+    {
+        node = (t_list *)malloc((ft_strlen(line) + 1) * sizeof(t_list));
+        if (!node)
+            return ;
+        node->content = ft_strdup(line);
+        node->next = NULL;
+        ft_lstadd_back(file, node);
+        free (line);
+        line = get_next_line(fd);
+    }
+    close (fd);
 }
 
-char	**allocate_map(int size)
+int is_valid_line(char *line)
 {
-	char	**map;
+    char *trim;
 
-	map = (char **)malloc((size + 1) * sizeof(char *));
-	if (!map)
-		return (NULL);
-	return (map);
+    trim = ft_strtrim(line, " \n\t");
+    if (trim[0] == '1')
+    {
+        free (trim);
+        return (1);
+    }
+    free (trim);
+    return (0);
 }
 
-void	read_and_trim_lines(int fd, char **map)
+void check_for_valid_map(t_list *cur)
 {
-	int		i;
-	char	*line;
-	char	*trim;
+    char *line;
+    int found_empty_line;
+    int found_valid_map_start;
 
-	line = get_next_line(fd);
-	trim = ft_strtrim(line, " \t\n");
-	i = 0;
-	while (trim && trim[0] != '1')
-	{
-		free(line);
-		free(trim);
-		line = get_next_line(fd);
-		trim = ft_strtrim(line, " \t\n");
-	}
-	free(trim);
-	while (line)
-	{
-		map[i] = ft_strdup(line);
-		i++;
-		free(line);
-		line = get_next_line(fd);
-	}
-	map[i] = NULL;
+    found_empty_line = 0;
+    found_valid_map_start = 0;
+    while (cur)
+    {
+        line = (char *)cur->content;
+
+        if (contains_only_whitespace(line))
+        {
+            if (found_valid_map_start)
+                found_empty_line = 1;
+        }
+        else if (is_valid_line(line))
+        {
+            if (found_empty_line)
+                exit(printf("Invalid map: Empty line found in the middle of the map.\n"));
+            found_valid_map_start = 1;
+        }
+        cur = cur->next;
+    }
 }
 
-char	**finalize_map(char **map, int size)
-{
-	char	**trimmed_map;
-	char	**final_map;
 
-	trimmed_map = skip_newlines(map, size);
-	if (!trimmed_map)
-	{
-		free_matrix(map);
-		return (NULL);
-	}
-	compare_maps(map, trimmed_map);
-	final_map = trim_map(map);
-	free_matrix(trimmed_map);
-	return (final_map);
+void extract_map(t_game *game, char *path)
+{
+    int i;
+    char *line;
+    t_list *cur;
+    
+    i = 0;
+    game->map.grid = (char **)malloc((get_size(path) + 4) * sizeof(char *));
+    if (!game->map.grid)
+        return ;
+    cur = game->file;
+    while (cur)
+    {
+        line = (char *)cur->content;
+        if (!contains_only_whitespace(line) && is_valid_line(line))
+        {
+            game->map.grid[i] = ft_strdup(line);
+            if (!game->map.grid[i])
+                return ;
+            i++;
+        }
+        cur = cur->next;
+    }
+    game->map.grid[i] = ft_strdup("\n");
+    game->map.grid[i + 1] = ft_strdup("\n");
+    game->map.grid[i + 2] = ft_strdup("\n");
+    game->map.grid[i + 3] = NULL;
+    check_for_valid_map(game->file);
 }

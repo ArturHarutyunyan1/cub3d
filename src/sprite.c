@@ -17,7 +17,7 @@ static char *set_path(t_game *game, int i)
     return (path);
 }
 
-void set_sprite(t_game *game)
+static void set_sprite(t_game *game)
 {
     int i;
     char *path;

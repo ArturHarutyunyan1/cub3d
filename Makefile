@@ -1,3 +1,4 @@
+
 # **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
@@ -21,11 +22,8 @@ SRC_FILES = get_side.c \
 			init_game.c \
 			input_handling.c \
 			main.c \
-			map_utils.c \
-			map_utils1.c \
 			movement.c \
 			parsing.c \
-			parsing_utils.c \
 			player.c \
 			player_init.c \
 			raycaster.c \
@@ -37,8 +35,6 @@ SRC_FILES = get_side.c \
 			utils.c \
 			utils1.c \
 			validation.c \
-			minimap.c \
-			sprite.c \
 			mouse.c
 OBJ_FILES = $(SRC_FILES:.c=.o)
 
