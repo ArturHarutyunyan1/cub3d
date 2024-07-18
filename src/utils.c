@@ -1,4 +1,4 @@
-/******************************************************************************/
+/* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
@@ -6,9 +6,9 @@
 /*   By: arturhar <arturhar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 06:39:51 by arturhar          #+#    #+#             */
-/*   Updated: 2024/07/18 00:50:03 by arturhar         ###   ########.fr       */
+/*   Updated: 2024/07/18 23:19:22 by arturhar         ###   ########.fr       */
 /*                                                                            */
-/******************************************************************************/
+/* ************************************************************************** */
 
 #include "../include/cub.h"
 void	free_matrix(char **matrix)
@@ -81,7 +81,9 @@ int	ft_exit(t_game *game, char *msg, int status)
 void	my_mlx_pixel_put(t_img *img, int x, int y, int color)
 {
 	char	*dst;
-
+	
+	if (x < 0 || x >= WIDTH || y < 0 || y >= HEIGHT)
+        return;
 	dst = img->addr + (y * img->line_length + x * (img->bits_per_pixel / 8));
 	*(unsigned int *)dst = color;
 }

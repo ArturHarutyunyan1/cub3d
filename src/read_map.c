@@ -6,7 +6,7 @@
 /*   By: arturhar <arturhar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/13 22:47:44 by arturhar          #+#    #+#             */
-/*   Updated: 2024/07/18 02:18:20 by arturhar         ###   ########.fr       */
+/*   Updated: 2024/07/18 03:10:47 by arturhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,7 @@ void check_for_valid_map(t_list *cur)
         else if (is_valid_line(line))
         {
             if (found_empty_line)
-                exit(printf("Invalid map: Empty line found in the middle of the map.\n"));
+                exit(printf("Error\nEmpty line found in the middle of the map.\n"));
             found_valid_map_start = 1;
         }
         cur = cur->next;

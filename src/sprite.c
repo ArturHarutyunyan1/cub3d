@@ -1,6 +1,6 @@
 #include "../include/cub.h"
 
-static char *set_path(t_game *game, int i)
+static char *set_sprite_path(t_game *game, int i)
 {
     char *path;
 
@@ -17,7 +17,7 @@ static char *set_path(t_game *game, int i)
     return (path);
 }
 
-static void set_sprite(t_game *game)
+void set_sprite(t_game *game)
 {
     int i;
     char *path;
@@ -25,7 +25,7 @@ static void set_sprite(t_game *game)
     i = 0;
     while (i <= 3)
     {
-        path = set_path(game, i);
+        path = set_sprite_path(game, i);
         game->sprite[i].img = mlx_xpm_file_to_image(game->vars.mlx, path, &game->sprite[i].width, &game->sprite[i].height);
         if (!game->sprite[i].img)
             ft_exit(game, "Error\nCan't load sprite\n", 1);
@@ -61,8 +61,8 @@ void draw_sprite(t_game *game)
     int color;
     t_texture sprite;
 
-    sprite_width = 256;
-    sprite_height = 256;
+    sprite_width = 64;
+    sprite_height = 64;
     x_start = (WIDTH - sprite_width) / 2;
     y_start = HEIGHT - sprite_height + 10;
     sprite = get_sprite(game);
