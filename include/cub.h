@@ -6,9 +6,10 @@
 /*   By: arturhar <arturhar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 06:39:00 by arturhar          #+#    #+#             */
-/*   Updated: 2024/07/19 21:11:20 by arturhar         ###   ########.fr       */
+/*   Updated: 2024/07/19 21:53:39 by arturhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #ifndef CUB_H
 # define CUB_H
 
@@ -209,5 +210,6 @@ int		exit_game(t_game *game);
 void	my_mlx_pixel_put(t_img *img, int x, int y, int color);
 void	set_sprite(t_game *game);
 void	set_newlines(char **map, int i);
-
+void	check_map(char **map, size_t i, size_t j);
+void	iterate_file(t_game *game);
 #endif

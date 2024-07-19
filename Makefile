@@ -19,24 +19,24 @@ OBJ_DIR = obj
 LIBFT_DIR = libft
 MLX_DIR = mlx
 SRC_FILES = get_side.c \
-			init_game.c \
-			input_handling.c \
-			main.c \
-			movement.c \
-			parsing.c \
-			player.c \
-			player_init.c \
-			raycaster.c \
-			raycaster_setup.c \
-			read_map.c \
-			render.c \
-			rotate.c \
-			setup.c \
-			utils.c \
-			utils1.c \
-			validation.c \
-			sprite.c \
-			mouse.c
+            init_game.c \
+            input_handling.c \
+            main.c \
+            movement.c \
+            parsing.c \
+            player_init.c \
+            player.c \
+            raycaster_setup.c \
+            raycaster.c \
+            read_map.c \
+            render.c \
+            rotate.c \
+            setup.c \
+            utils.c \
+            utils1.c \
+            utils2.c \
+            validation.c
+
 OBJ_FILES = $(SRC_FILES:.c=.o)
 
 OBJS = $(addprefix $(OBJ_DIR)/,$(OBJ_FILES))
