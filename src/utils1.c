@@ -1,4 +1,4 @@
-/******************************************************************************/
+/* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   utils1.c                                           :+:      :+:    :+:   */
@@ -6,10 +6,9 @@
 /*   By: arturhar <arturhar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 22:01:12 by arturhar          #+#    #+#             */
-/*   Updated: 2024/07/18 01:48:10 by arturhar         ###   ########.fr       */
+/*   Updated: 2024/07/19 21:15:31 by arturhar         ###   ########.fr       */
 /*                                                                            */
-/******************************************************************************/
-
+/* ************************************************************************** */
 #include "../include/cub.h"
 
 int	ft_isspace(int c)
@@ -40,4 +39,38 @@ int	contains_only_whitespace(const char *str)
 		str++;
 	}
 	return (1);
+}
+
+void	remove_extra_spaces(char *dup, char *trimmed_line)
+{
+	int	i;
+	int	j;
+	int	flg;
+
+	i = 0;
+	j = 0;
+	flg = 0;
+	while (dup[i])
+	{
+		if ((dup[i] == ' ' || dup[i] == '\t') && flg == 0)
+		{
+			trimmed_line[j++] = ' ';
+			flg = 1;
+		}
+		else if (dup[i] != ' ' && dup[i] != '\t')
+		{
+			trimmed_line[j++] = dup[i];
+			flg = 0;
+		}
+		i++;
+	}
+	trimmed_line[j] = '\0';
+}
+
+void	set_newlines(char **map, int i)
+{
+	map[i] = ft_strdup("\n");
+	map[i + 1] = ft_strdup("\n");
+	map[i + 2] = ft_strdup("\n");
+	map[i + 3] = NULL;
 }

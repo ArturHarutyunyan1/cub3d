@@ -9,8 +9,8 @@
 /*   Updated: 2024/07/18 23:05:01 by arturhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 #include "../include/cub.h"
+
 int	keypress(int code, t_game *game)
 {
 	if (code >= 0 && code < KEY_COUNT)

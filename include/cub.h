@@ -6,10 +6,9 @@
 /*   By: arturhar <arturhar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 06:39:00 by arturhar          #+#    #+#             */
-/*   Updated: 2024/07/18 03:20:54 by arturhar         ###   ########.fr       */
+/*   Updated: 2024/07/19 21:11:20 by arturhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 #ifndef CUB_H
 # define CUB_H
 
@@ -100,8 +99,8 @@ typedef struct s_player
 
 typedef struct s_mouse
 {
-	int last_x;
-}t_mouse;
+	int	last_x;
+}	t_mouse;
 
 typedef struct s_rays
 {
@@ -136,13 +135,13 @@ typedef struct s_rays
 
 typedef struct s_valid
 {
-    int     count_no;
-    int     count_so;
-    int     count_ea;
-    int     count_we;
-    int     count_c;
-    int     count_f;
-}t_valid;
+	int	count_no;
+	int	count_so;
+	int	count_ea;
+	int	count_we;
+	int	count_c;
+	int	count_f;
+}	t_valid;
 
 typedef struct s_game
 {
@@ -156,32 +155,32 @@ typedef struct s_game
 	t_color		ceiling;
 	t_player	player;
 	t_mouse		mouse;
-	t_valid     valid;
-    t_list      *file;
+	t_valid		valid;
+	t_list		*file;
 	int			key_states[KEY_COUNT];
 }	t_game;
 
 void	free_matrix(char **matrix);
-int	ft_isspace(int c);
-int	ft_strcmp(const char *str1, const char *str2);
-int	contains_only_whitespace(const char *str);
-int is_identifier(const char *line);
+int		ft_isspace(int c);
+int		ft_strcmp(const char *str1, const char *str2);
+int		contains_only_whitespace(const char *str);
+int		is_identifier(const char *line);
 void	remove_extra_spaces(char *dup, char *trimmed_line);
-void read_file_into(t_list **file, char *path);
-void extract_paths(t_game *game);
-void extract_map(t_game *game, char *path);
+void	read_file_into(t_list **file, char *path);
+void	extract_paths(t_game *game);
+void	extract_map(t_game *game, char *path);
 void	validate(t_game *game, char *path);
-int	ft_exit(t_game *game, char *msg, int status);
+int		ft_exit(t_game *game, char *msg, int status);
 t_map	init_map(char **str);
-int is_valid_line(char *line);
+int		is_valid_line(char *line);
 void	init_game(t_game *game);
-int	game_loop(t_game *game);
-int	keyrelease(int code, t_game *game);
-int	keypress(int code, t_game *game);
+int		game_loop(t_game *game);
+int		keyrelease(int code, t_game *game);
+int		keypress(int code, t_game *game);
 void	get_sides(t_game *game);
 void	set_step_and_side_dist_x(t_game *game);
 void	set_step_and_side_dist_y(t_game *game);
-int	mouse_move(int x, int y, t_game *game);
+int		mouse_move(int x, int y, t_game *game);
 void	init_mouse(t_game *game);
 void	move_forward(t_game *game);
 void	move_backwards(t_game *game);
@@ -205,9 +204,10 @@ void	init_img(t_game *game);
 void	init_rays(t_game *game);
 char	*set_path(int i, char *path, t_game *game);
 void	init_textures(t_game *game);
-void draw_sprite(t_game *game);
-int	exit_game(t_game *game);
+void	draw_sprite(t_game *game);
+int		exit_game(t_game *game);
 void	my_mlx_pixel_put(t_img *img, int x, int y, int color);
-void set_sprite(t_game *game);
+void	set_sprite(t_game *game);
+void	set_newlines(char **map, int i);
 
 #endif
