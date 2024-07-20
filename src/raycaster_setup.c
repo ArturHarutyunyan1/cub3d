@@ -6,18 +6,19 @@
 /*   By: arturhar <arturhar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 02:00:47 by arturhar          #+#    #+#             */
-/*   Updated: 2024/07/12 02:00:48 by arturhar         ###   ########.fr       */
+/*   Updated: 2024/07/20 01:33:28 by arturhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "../include/cub.h"
 
 void	setup(t_game *game, int x)
 {
 	game->rays.camera_x = 2 * x / (double)WIDTH - 1;
 	game->rays.ray_dir_x = game->player.dir_x + game->player.plane_x
-		* game->rays.camera_x;
+		* -game->rays.camera_x;
 	game->rays.ray_dir_y = game->player.dir_y + game->player.plane_y
-		* game->rays.camera_x;
+		* -game->rays.camera_x;
 	game->rays.map_x = (int)game->player.x;
 	game->rays.map_y = (int)game->player.y;
 	if (game->rays.ray_dir_x == 0)

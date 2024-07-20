@@ -6,7 +6,7 @@
 /*   By: arturhar <arturhar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 06:39:00 by arturhar          #+#    #+#             */
-/*   Updated: 2024/07/19 21:53:39 by arturhar         ###   ########.fr       */
+/*   Updated: 2024/07/20 00:47:37 by arturhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,8 +57,9 @@ typedef struct s_map
 	char	*so;
 	char	*ea;
 	char	*we;
-	char	**grid;
 	char	*path;
+	char	**grid;
+	char	**dup;
 }	t_map;
 
 typedef struct s_img
@@ -181,8 +182,6 @@ int		keypress(int code, t_game *game);
 void	get_sides(t_game *game);
 void	set_step_and_side_dist_x(t_game *game);
 void	set_step_and_side_dist_y(t_game *game);
-int		mouse_move(int x, int y, t_game *game);
-void	init_mouse(t_game *game);
 void	move_forward(t_game *game);
 void	move_backwards(t_game *game);
 void	move_left(t_game *game);
@@ -205,11 +204,10 @@ void	init_img(t_game *game);
 void	init_rays(t_game *game);
 char	*set_path(int i, char *path, t_game *game);
 void	init_textures(t_game *game);
-void	draw_sprite(t_game *game);
 int		exit_game(t_game *game);
 void	my_mlx_pixel_put(t_img *img, int x, int y, int color);
-void	set_sprite(t_game *game);
 void	set_newlines(char **map, int i);
 void	check_map(char **map, size_t i, size_t j);
 void	iterate_file(t_game *game);
+void	minimap(t_game *game);
 #endif

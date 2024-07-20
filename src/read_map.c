@@ -6,9 +6,10 @@
 /*   By: arturhar <arturhar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/13 22:47:44 by arturhar          #+#    #+#             */
-/*   Updated: 2024/07/19 21:11:38 by arturhar         ###   ########.fr       */
+/*   Updated: 2024/07/20 00:14:43 by arturhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "../include/cub.h"
 
 int	get_size(char *path)

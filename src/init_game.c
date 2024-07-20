@@ -6,11 +6,32 @@
 /*   By: arturhar <arturhar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 06:39:55 by arturhar          #+#    #+#             */
-/*   Updated: 2024/07/18 23:20:17 by arturhar         ###   ########.fr       */
+/*   Updated: 2024/07/20 01:39:57 by arturhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub.h"
+
+char	**dup_map(char **map)
+{
+	int		i;
+	char	**dup;
+
+	i = 0;
+	while (map[i])
+		i++;
+	dup = (char **)malloc((i + 1) * sizeof(char *));
+	if (!dup)
+		return (NULL);
+	i = 0;
+	while (map[i][0] != '\n')
+	{
+		dup[i] = ft_strdup(map[i]);
+		i++;
+	}
+	dup[i] = NULL;
+	return (dup);
+}
 
 void	init_game(t_game *game)
 {
@@ -19,6 +40,7 @@ void	init_game(t_game *game)
 	init_img(game);
 	init_player(game);
 	extract_paths(game);
+	game->map.dup = dup_map(game->map.grid);
 	game->ceiling = set_colors(game->map.c);
 	game->floor = set_colors(game->map.f);
 	game->vars.mlx = mlx_init();

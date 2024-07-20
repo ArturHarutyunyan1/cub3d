@@ -6,9 +6,10 @@
 /*   By: arturhar <arturhar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 06:40:05 by arturhar          #+#    #+#             */
-/*   Updated: 2024/07/12 01:44:29 by arturhar         ###   ########.fr       */
+/*   Updated: 2024/07/20 00:58:02 by arturhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "../include/cub.h"
 
 void	prepare_drawing(t_game *game)
@@ -48,8 +49,8 @@ void	raycaster(t_game *game)
 {
 	int	x;
 
-	x = 0;
-	while (x < WIDTH)
+	x = -1;
+	while (++x <= WIDTH)
 	{
 		setup(game, x);
 		get_sides(game);
@@ -57,7 +58,6 @@ void	raycaster(t_game *game)
 		prepare_drawing(game);
 		if (game->rays.hit == 1)
 			draw_wall(game, x);
-		x++;
 	}
 	mlx_put_image_to_window(game->vars.mlx,
 		game->vars.mlx_win,

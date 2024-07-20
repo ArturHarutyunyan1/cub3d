@@ -13,7 +13,7 @@
 
 NAME = cub3D
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -arch x86_64 -g3 -fsanitize=address
+CFLAGS = -Wall -Wextra -Werror -arch x86_64 # -g3 -fsanitize=address
 SRC_DIR = src
 OBJ_DIR = obj
 LIBFT_DIR = libft
@@ -22,6 +22,7 @@ SRC_FILES = get_side.c \
             init_game.c \
             input_handling.c \
             main.c \
+            minimap.c \
             movement.c \
             parsing.c \
             player_init.c \
