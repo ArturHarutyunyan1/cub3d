@@ -6,7 +6,7 @@
 /*   By: arturhar <arturhar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 06:40:03 by arturhar          #+#    #+#             */
-/*   Updated: 2024/07/20 01:35:28 by arturhar         ###   ########.fr       */
+/*   Updated: 2024/07/20 21:51:36 by arturhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,11 @@ void	update_player(t_game *game)
 	if (game->key_states[KEY_S])
 		move_backwards(game);
 	if (game->key_states[KEY_A])
-		move_right(game);
-	if (game->key_states[KEY_D])
 		move_left(game);
+	if (game->key_states[KEY_D])
+		move_right(game);
 	if (game->key_states[LEFT_ARROW])
-		rotate_right(game);
-	if (game->key_states[RIGHT_ARROW])
 		rotate_left(game);
+	if (game->key_states[RIGHT_ARROW])
+		rotate_right(game);
 }
