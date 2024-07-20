@@ -23,6 +23,7 @@ SRC_FILES = get_side.c \
             input_handling.c \
             main.c \
             minimap.c \
+            mouse.c \
             movement.c \
             parsing.c \
             player_init.c \

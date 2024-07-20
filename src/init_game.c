@@ -6,7 +6,7 @@
 /*   By: arturhar <arturhar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 06:39:55 by arturhar          #+#    #+#             */
-/*   Updated: 2024/07/20 21:34:19 by arturhar         ###   ########.fr       */
+/*   Updated: 2024/07/20 21:50:21 by arturhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,9 +53,11 @@ void	init_game(t_game *game)
 			&game->img.endian);
 	init_textures(game);
 	set_sprite(game);
+	init_mouse(game);
 	mlx_hook(game->vars.mlx_win, 2, 1L << 0, keypress, game);
 	mlx_hook(game->vars.mlx_win, 3, 1L << 1, keyrelease, game);
 	mlx_hook(game->vars.mlx_win, 17, 0, exit_game, game);
+	mlx_hook(game->vars.mlx_win, 6, 1L << 6, mouse_move, game);
 	mlx_loop_hook(game->vars.mlx, game_loop, game);
 	mlx_loop(game->vars.mlx);
 }
