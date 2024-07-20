@@ -6,19 +6,20 @@
 /*   By: arturhar <arturhar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/19 21:16:00 by arturhar          #+#    #+#             */
-/*   Updated: 2024/07/19 21:21:16 by arturhar         ###   ########.fr       */
+/*   Updated: 2024/07/20 21:56:17 by arturhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "../include/cub.h"
 
 int	is_identifier(const char *line)
 {
-	if (ft_strncmp(line, "NO", 2) == 0
-		|| ft_strncmp(line, "SO", 2) == 0
-		|| ft_strncmp(line, "EA", 2) == 0
-		|| ft_strncmp(line, "WE", 2) == 0
-		|| ft_strncmp(line, "C", 1) == 0
-		|| ft_strncmp(line, "F", 1) == 0)
+	if (ft_strncmp(line, "NO ", 3) == 0
+		|| ft_strncmp(line, "SO ", 3) == 0
+		|| ft_strncmp(line, "EA ", 3) == 0
+		|| ft_strncmp(line, "WE ", 3) == 0
+		|| ft_strncmp(line, "C ", 2) == 0
+		|| ft_strncmp(line, "F ", 2) == 0)
 		return (1);
 	return (0);
 }
