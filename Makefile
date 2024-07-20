@@ -53,7 +53,7 @@ $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 
 all: $(NAME)
 
-$(NAME): $(OBJS) $(LIBFT) $(MLX)
+$(NAME): $(OBJS) $(LIBFT) $(MLX) include/ Makefile
 	$(CC) $(CFLAGS) $(OBJS) -L$(LIBFT_DIR) -lft -L$(MLX_DIR) -Lmlx -lmlx -framework OpenGL -framework AppKit  -o $(NAME)
 
 $(LIBFT):
