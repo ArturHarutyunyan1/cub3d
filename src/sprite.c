@@ -6,7 +6,7 @@
 /*   By: arturhar <arturhar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/20 21:38:29 by arturhar          #+#    #+#             */
-/*   Updated: 2024/07/20 21:44:10 by arturhar         ###   ########.fr       */
+/*   Updated: 2024/07/20 23:32:13 by arturhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ void	set_sprite(t_game *game)
 		path = set_sprite_textures(game, i);
 		game->sprite[i].img = mlx_xpm_file_to_image(game->vars.mlx, path,
 				&game->sprite[i].width, &game->sprite[i].height);
+		free (path);
 		if (!game->sprite[i].img)
 			ft_exit(game, "Error\nCan't load sprite\n", 1);
 		game->sprite[i].addr = mlx_get_data_addr(game->sprite[i].img,

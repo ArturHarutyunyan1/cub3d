@@ -6,9 +6,10 @@
 /*   By: arturhar <arturhar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/20 20:39:07 by arturhar          #+#    #+#             */
-/*   Updated: 2024/07/20 20:41:30 by arturhar         ###   ########.fr       */
+/*   Updated: 2024/07/20 23:33:13 by arturhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "../include/cub.h"
 
 static void	draw_cell(t_game *game, int map_x, int map_y, int color)
@@ -43,11 +44,15 @@ void	minimap(t_game *game)
 		map_x = 0;
 		while (map_x < game->map.width)
 		{
-			if (game->map.dup[map_y][map_x] == '1')
-				color = 0x4169E1;
-			if (game->map.dup[map_y][map_x] == '0')
-				color = 0x000000;
-			draw_cell(game, map_x, map_y, color);
+			if (map_y < game->map.height
+				&& map_x < (int)ft_strlen(game->map.dup[map_y]))
+			{
+				if (game->map.dup[map_y][map_x] == '1')
+					color = 0x4169E1;
+				if (game->map.dup[map_y][map_x] == '0')
+					color = 0x000000;
+				draw_cell(game, map_x, map_y, color);
+			}
 			map_x++;
 		}
 		map_y++;
