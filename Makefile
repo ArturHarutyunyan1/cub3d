@@ -33,6 +33,7 @@ SRC_FILES = get_side.c \
             render.c \
             rotate.c \
             setup.c \
+            sprite.c \
             utils.c \
             utils1.c \
             utils2.c \

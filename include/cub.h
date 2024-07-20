@@ -6,7 +6,7 @@
 /*   By: arturhar <arturhar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 06:39:00 by arturhar          #+#    #+#             */
-/*   Updated: 2024/07/20 00:47:37 by arturhar         ###   ########.fr       */
+/*   Updated: 2024/07/20 21:44:32 by arturhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -210,4 +210,6 @@ void	set_newlines(char **map, int i);
 void	check_map(char **map, size_t i, size_t j);
 void	iterate_file(t_game *game);
 void	minimap(t_game *game);
+void	set_sprite(t_game *game);
+void	sprite(t_game *game, int x, int y);
 #endif
