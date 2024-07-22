@@ -6,7 +6,7 @@
 /*   By: arturhar <arturhar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 06:40:08 by arturhar          #+#    #+#             */
-/*   Updated: 2024/07/22 15:43:00 by arturhar         ###   ########.fr       */
+/*   Updated: 2024/07/22 16:08:29 by arturhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,4 +88,5 @@ void	validate(t_game *game, char *path)
 		ft_exit(game, "Error\nMap is not surrounded by walls\n", 1);
 	if (!check_chars(game, 0, 0, 0))
 		ft_exit(game, "Error\nInvalid characters\n", 1);
+	free_matrix(map.dup);
 }

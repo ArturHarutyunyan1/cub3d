@@ -6,9 +6,10 @@
 /*   By: arturhar <arturhar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 01:20:24 by arturhar          #+#    #+#             */
-/*   Updated: 2024/07/12 01:20:25 by arturhar         ###   ########.fr       */
+/*   Updated: 2024/07/22 16:19:40 by arturhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "../include/cub.h"
 
 void	set_dir(char c, t_game *game)
@@ -48,7 +49,7 @@ void	init_player(t_game *game)
 	while (i < game->map.height)
 	{
 		j = 0;
-		while (j < game->map.width)
+		while (j < game->map.width && game->map.grid[i][j] != '\0')
 		{
 			if (game->map.grid[i][j] == 'N' || game->map.grid[i][j] == 'S'
 				|| game->map.grid[i][j] == 'E'
