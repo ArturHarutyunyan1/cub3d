@@ -6,9 +6,10 @@
 /*   By: arturhar <arturhar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 06:40:08 by arturhar          #+#    #+#             */
-/*   Updated: 2024/07/19 21:20:57 by arturhar         ###   ########.fr       */
+/*   Updated: 2024/07/22 15:43:00 by arturhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "../include/cub.h"
 
 bool	check_format(char *line)
@@ -76,10 +77,13 @@ bool	check_chars(t_game *game, int i, int j, int count)
 
 void	validate(t_game *game, char *path)
 {
+	t_map	map;
+
 	if (!check_format(path))
 		exit(printf("Error\nInvalid format\n"));
 	iterate_file(game);
-	check_map(game->map.grid, 0, 0);
+	map.dup = dup_map(game->map.grid);
+	check_map(map.dup, 0, 0);
 	if (!surrounded_by_walls(game))
 		ft_exit(game, "Error\nMap is not surrounded by walls\n", 1);
 	if (!check_chars(game, 0, 0, 0))

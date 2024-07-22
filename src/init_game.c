@@ -6,32 +6,11 @@
 /*   By: arturhar <arturhar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 06:39:55 by arturhar          #+#    #+#             */
-/*   Updated: 2024/07/20 21:50:21 by arturhar         ###   ########.fr       */
+/*   Updated: 2024/07/22 15:01:53 by arturhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub.h"
-
-char	**dup_map(char **map)
-{
-	int		i;
-	char	**dup;
-
-	i = 0;
-	while (map[i])
-		i++;
-	dup = (char **)malloc((i + 1) * sizeof(char *));
-	if (!dup)
-		return (NULL);
-	i = 0;
-	while (map[i][0] != '\n')
-	{
-		dup[i] = ft_strdup(map[i]);
-		i++;
-	}
-	dup[i] = NULL;
-	return (dup);
-}
 
 void	init_game(t_game *game)
 {

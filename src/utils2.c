@@ -6,7 +6,7 @@
 /*   By: arturhar <arturhar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/19 21:16:00 by arturhar          #+#    #+#             */
-/*   Updated: 2024/07/20 21:56:17 by arturhar         ###   ########.fr       */
+/*   Updated: 2024/07/22 15:43:13 by arturhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,8 @@ int	is_identifier(const char *line)
 
 int	check(char s)
 {
-	if (s == ' ' || s == '\t' || s == '\r' || s == '\n')
+	if (s == ' ' || s == '\t' || s == '\r'
+		|| s == '\n' || s == '\v' || s == '\f')
 		return (1);
 	return (0);
 }
@@ -43,7 +44,7 @@ void	check_map(char **map, size_t i, size_t j)
 			{
 				if ((j > ft_strlen(map[i]) - 1 || j > ft_strlen(map[i - 1]) - 1)
 					&& map[i][j] != '1' && check(map[i][j]) == 0)
-					exit(printf("Error\nSomething went wrong aaa\n"));
+					exit(printf("Error\nSomething went wrong\n"));
 				if (check(map[i][j]) == 1 || map[i][j] == '1')
 					j++;
 				else if (map[i][j] != '1' && check(map[i][j - 1]) == 0
@@ -74,4 +75,25 @@ void	iterate_file(t_game *game)
 		free(trim);
 		cur = cur->next;
 	}
+}
+
+char	**dup_map(char **map)
+{
+	int		i;
+	char	**dup;
+
+	i = 0;
+	while (map[i])
+		i++;
+	dup = (char **)malloc((i + 1) * sizeof(char *));
+	if (!dup)
+		return (NULL);
+	i = 0;
+	while (map[i][0] != '\n')
+	{
+		dup[i] = ft_strdup(map[i]);
+		i++;
+	}
+	dup[i] = NULL;
+	return (dup);
 }
