@@ -6,7 +6,7 @@
 /*   By: arturhar <arturhar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 06:39:55 by arturhar          #+#    #+#             */
-/*   Updated: 2024/07/22 15:01:53 by arturhar         ###   ########.fr       */
+/*   Updated: 2024/07/24 01:00:14 by arturhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ void	init_game(t_game *game)
 	init_player(game);
 	extract_paths(game);
 	game->map.dup = dup_map(game->map.grid);
-	game->ceiling = set_colors(game->map.c);
 	game->floor = set_colors(game->map.f);
+	game->ceiling = set_colors(game->map.c);
 	game->vars.mlx = mlx_init();
 	game->vars.mlx_win = mlx_new_window(game->vars.mlx,
 			WIDTH, HEIGHT, "Cub3D");

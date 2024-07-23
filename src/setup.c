@@ -6,9 +6,10 @@
 /*   By: arturhar <arturhar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 02:39:51 by arturhar          #+#    #+#             */
-/*   Updated: 2024/07/12 23:19:11 by arturhar         ###   ########.fr       */
+/*   Updated: 2024/07/24 01:08:43 by arturhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "../include/cub.h"
 
 t_color	set_colors(char *str)
@@ -16,17 +17,24 @@ t_color	set_colors(char *str)
 	int		i;
 	char	**rgb;
 	t_color	color;
-
+	
+	check_commas(str);
 	rgb = ft_split(str, ',');
+	if (!rgb || !rgb[0] || !rgb[1] || !rgb[2])
+		exit(printf("Error\nSomething went wrong\n"));
 	color.r = ft_atoi(rgb[0]);
 	color.g = ft_atoi(rgb[1]);
 	color.b = ft_atoi(rgb[2]);
+	if (color.r > 255 || color.g > 255 || color.b > 255)
+		exit(printf("Error\nSomething went wrong\n"));
 	i = 0;
 	while (rgb[i])
 	{
 		free(rgb[i]);
 		i++;
 	}
+	if (i != 3)
+		exit(printf("Error\nSomething went wrong\n"));
 	free(rgb);
 	return (color);
 }

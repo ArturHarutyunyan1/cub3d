@@ -13,7 +13,7 @@
 
 NAME = cub3D
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -arch x86_64 -g3 -fsanitize=address
+CFLAGS = -Wall -Wextra -Werror -arch x86_64 # -g3 -fsanitize=address
 SRC_DIR = src
 OBJ_DIR = obj
 LIBFT_DIR = libft
@@ -38,6 +38,7 @@ SRC_FILES = get_side.c \
             utils.c \
             utils1.c \
             utils2.c \
+            utils3.c \
             validation.c
 
 OBJ_FILES = $(SRC_FILES:.c=.o)

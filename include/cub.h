@@ -6,7 +6,7 @@
 /*   By: arturhar <arturhar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 06:39:00 by arturhar          #+#    #+#             */
-/*   Updated: 2024/07/22 14:54:16 by arturhar         ###   ########.fr       */
+/*   Updated: 2024/07/24 01:07:15 by arturhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -215,4 +215,5 @@ void	sprite(t_game *game, int x, int y);
 void	init_mouse(t_game *game);
 int		mouse_move(int x, int y, t_game *game);
 char	**dup_map(char **map);
+void	check_commas(char *str);
 #endif
