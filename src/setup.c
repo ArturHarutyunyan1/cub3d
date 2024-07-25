@@ -17,7 +17,7 @@ t_color	set_colors(char *str)
 	int		i;
 	char	**rgb;
 	t_color	color;
-	
+
 	check_commas(str);
 	rgb = ft_split(str, ',');
 	if (!rgb || !rgb[0] || !rgb[1] || !rgb[2])

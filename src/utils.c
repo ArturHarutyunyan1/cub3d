@@ -28,7 +28,7 @@ void	free_matrix(char **matrix)
 int	ft_exit(t_game *game, char *msg, int status)
 {
 	int	i;
-		
+
 	printf("%s", msg);
 	i = 0;
 	if (game != NULL)
@@ -39,7 +39,7 @@ int	ft_exit(t_game *game, char *msg, int status)
 			{
 				if (game->textures[i].img)
 					mlx_destroy_image(game->vars.mlx, game->textures[i].img);
-				i++;	
+				i++;
 			}
 			if (game->vars.mlx_win)
 				mlx_destroy_window(game->vars.mlx, game->vars.mlx_win);
