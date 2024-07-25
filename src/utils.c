@@ -6,9 +6,10 @@
 /*   By: arturhar <arturhar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 06:39:51 by arturhar          #+#    #+#             */
-/*   Updated: 2024/07/19 21:15:57 by arturhar         ###   ########.fr       */
+/*   Updated: 2024/07/25 20:59:53 by arturhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "../include/cub.h"
 
 void	free_matrix(char **matrix)
@@ -26,15 +27,23 @@ void	free_matrix(char **matrix)
 
 int	ft_exit(t_game *game, char *msg, int status)
 {
+	int	i;
+		
 	printf("%s", msg);
-	if (status == 2)
+	i = 0;
+	if (game != NULL)
 	{
-		mlx_destroy_image(game->vars.mlx, game->textures[0].img);
-		mlx_destroy_image(game->vars.mlx, game->textures[1].img);
-		mlx_destroy_image(game->vars.mlx, game->textures[2].img);
-		mlx_destroy_image(game->vars.mlx, game->textures[3].img);
-		mlx_destroy_image(game->vars.mlx, game->img.img);
-		mlx_destroy_window(game->vars.mlx, game->vars.mlx_win);
+		if (status == 2)
+		{
+			while (i < 3)
+			{
+				if (game->textures[i].img)
+					mlx_destroy_image(game->vars.mlx, game->textures[i].img);
+				i++;	
+			}
+			if (game->vars.mlx_win)
+				mlx_destroy_window(game->vars.mlx, game->vars.mlx_win);
+		}
 	}
 	free_matrix(game->map.grid);
 	exit(status);

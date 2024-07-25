@@ -6,9 +6,10 @@
 /*   By: arturhar <arturhar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/13 22:42:56 by arturhar          #+#    #+#             */
-/*   Updated: 2024/07/18 01:00:25 by arturhar         ###   ########.fr       */
+/*   Updated: 2024/07/25 21:01:38 by arturhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "../include/cub.h"
 
 void	set_counts(t_game *game, char *line)
@@ -25,6 +26,12 @@ void	set_counts(t_game *game, char *line)
 		game->valid.count_c++;
 	else if (ft_strncmp(line, "F", 1) == 0)
 		game->valid.count_f++;
+	if (game->valid.count_no > 1 || game->valid.count_so > 1
+		|| game->valid.count_ea > 1
+		|| game->valid.count_we > 1
+		|| game->valid.count_c > 1
+		|| game->valid.count_f > 1)
+		ft_exit(game, "Error\nSomething went wrong with paths\n", 1);
 }
 
 void	set_paths(t_game *game, char *line)
