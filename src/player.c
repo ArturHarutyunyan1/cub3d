@@ -6,7 +6,7 @@
 /*   By: arturhar <arturhar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 06:40:03 by arturhar          #+#    #+#             */
-/*   Updated: 2024/08/03 02:00:53 by arturhar         ###   ########.fr       */
+/*   Updated: 2024/08/03 02:32:36 by arturhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,6 @@ void	update_player(t_game *game)
 		move_left(game);
 	if (game->key_states[KEY_D])
 		move_right(game);
-	if (game->key_states[KEY_E] && is_looking_at_door(game))
-		door(game);
 	if (game->key_states[LEFT_ARROW])
 		rotate_left(game);
 	if (game->key_states[RIGHT_ARROW])

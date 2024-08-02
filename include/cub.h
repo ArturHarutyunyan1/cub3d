@@ -6,7 +6,7 @@
 /*   By: arturhar <arturhar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 06:39:00 by arturhar          #+#    #+#             */
-/*   Updated: 2024/08/03 01:31:45 by arturhar         ###   ########.fr       */
+/*   Updated: 2024/08/03 02:31:53 by arturhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -217,4 +217,6 @@ void	init_mouse(t_game *game);
 int		mouse_move(int x, int y, t_game *game);
 char	**dup_map(char **map);
 void	check_commas(char *str);
+bool	is_looking_at_door(t_game *game);
+void	door(t_game *game);
 #endif

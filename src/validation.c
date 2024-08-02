@@ -6,7 +6,7 @@
 /*   By: arturhar <arturhar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 06:40:08 by arturhar          #+#    #+#             */
-/*   Updated: 2024/08/03 01:26:53 by arturhar         ###   ########.fr       */
+/*   Updated: 2024/08/03 02:29:44 by arturhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,29 @@ bool	check_chars(t_game *game, int i, int j, int count)
 	return (true);
 }
 
+void check_doors(t_game *game)
+{
+	int x;
+	int y;
+	
+	y = 0;
+	while (game->map.grid[y])
+	{
+		x = 0;
+		while (game->map.grid[y][x])
+		{
+			if (game->map.grid[y][x] == 'D' || game->map.grid[y][x] == 'd')
+            {
+				if (!(game->map.grid[y][x - 1] == '1' && game->map.grid[y][x + 1] == '1') // Check horizontal walls
+					&& !(game->map.grid[y - 1][x] == '1' && game->map.grid[y + 1][x] == '1')) // Check vertical walls
+					ft_exit(game, "Error\nInvalid door\n", 1);
+            }
+			x++;
+		}
+		y++;
+	}
+}
+
 void	validate(t_game *game, char *path)
 {
 	t_map	map;
@@ -85,6 +108,7 @@ void	validate(t_game *game, char *path)
 	iterate_file(game);
 	map.dup = dup_map(game->map.grid);
 	check_map(map.dup, 0, 0);
+	check_doors(game);
 	if (!surrounded_by_walls(game))
 		ft_exit(game, "Error\nMap is not surrounded by walls\n", 1);
 	if (!check_chars(game, 0, 0, 0))
