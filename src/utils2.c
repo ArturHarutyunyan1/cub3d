@@ -6,7 +6,7 @@
 /*   By: arturhar <arturhar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/19 21:16:00 by arturhar          #+#    #+#             */
-/*   Updated: 2024/07/22 15:43:13 by arturhar         ###   ########.fr       */
+/*   Updated: 2024/08/03 00:46:51 by arturhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ char	**dup_map(char **map)
 		i++;
 	dup = (char **)malloc((i + 1) * sizeof(char *));
 	if (!dup)
-		return (NULL);
+		exit(printf("Error\nMemory allocation failure\n"));
 	i = 0;
 	while (map[i][0] != '\n')
 	{

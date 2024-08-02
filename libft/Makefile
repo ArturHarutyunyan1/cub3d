@@ -73,7 +73,7 @@ OBJS = ${SRCS:.c=.o}
 BONUS_OBJS = ${SRCB:.c=.o}
 
 LIBC = ar rcs
-CC = gcc
+CC = cc
 RM = rm -f
 CFLAGS = -Wall -Wextra -Werror -arch x86_64
 

@@ -6,7 +6,7 @@
 /*   By: arturhar <arturhar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/13 22:47:44 by arturhar          #+#    #+#             */
-/*   Updated: 2024/07/20 00:14:43 by arturhar         ###   ########.fr       */
+/*   Updated: 2024/08/03 00:44:06 by arturhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,12 +48,14 @@ void	read_file_into(t_list **file, char *path)
 	t_list	*node;
 
 	fd = open(path, O_RDONLY);
+	if (fd < 0)
+		exit(printf("Error\nCan't open file\n"));
 	line = get_next_line(fd);
 	while (line)
 	{
 		node = (t_list *)malloc((ft_strlen(line) + 1) * sizeof(t_list));
 		if (!node)
-			return ;
+			exit(printf("Error\nMemory allocation failure\n"));
 		node->content = ft_strdup(line);
 		node->next = NULL;
 		ft_lstadd_back(file, node);
@@ -112,7 +114,7 @@ void	extract_map(t_game *game, char *path)
 	i = 0;
 	game->map.grid = (char **)malloc((get_size(path) + 4) * sizeof(char *));
 	if (!game->map.grid)
-		return ;
+		ft_exit(game, "Error\nMemory allocation failure\n", 1);
 	cur = game->file;
 	while (cur)
 	{
