@@ -20,7 +20,7 @@ void	*ft_calloc(size_t count, size_t size)
 		return (NULL);
 	ptr = malloc(count * size);
 	if (!ptr)
-		return (NULL);
+		exit(printf("Error\nMemory allocation failure\n"));
 	ft_bzero (ptr, count * size);
 	return (ptr);
 }

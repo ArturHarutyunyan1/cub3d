@@ -6,9 +6,10 @@
 /*   By: arturhar <arturhar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 15:35:22 by arturhar          #+#    #+#             */
-/*   Updated: 2024/07/17 20:34:51 by arturhar         ###   ########.fr       */
+/*   Updated: 2024/08/03 00:52:03 by arturhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "../include/get_next_line.h"
 
 // size_t	ft_strlen(const char *str)
@@ -67,7 +68,7 @@ char	*ft_strjoin(const char *s1, const char *s2)
 	length = ft_strlen(s1) + ft_strlen(s2);
 	ret = (char *)malloc((length + 1) * sizeof(char));
 	if (!ret || !s1 || !s2)
-		return (NULL);
+		exit(printf("Error\nMemory allocation failure\n"));
 	i = 0;
 	j = 0;
 	while (s1[i])

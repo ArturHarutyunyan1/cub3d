@@ -25,7 +25,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 		return (ft_strdup(s2));
 	rtn = malloc(sizeof(char) * (len));
 	if (rtn == NULL)
-		return (NULL);
+		exit(printf("Error\nMemory allocation failure\n"));
 	ft_memmove(rtn, s1, ft_strlen(s1));
 	ft_memmove(rtn + ft_strlen(s1), s2, ft_strlen(s2));
 	rtn[len - 1] = '\0';

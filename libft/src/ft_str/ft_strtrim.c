@@ -40,7 +40,7 @@ char	*ft_strtrim(char const *s1, char const *set)
 		end--;
 	str = (char *)malloc(sizeof(*s1) * (end - start + 1));
 	if (!str)
-		return (NULL);
+		exit(printf("Error\nMemory allocation failure\n"));
 	i = 0;
 	while (start < end)
 		str[i++] = s1[start++];

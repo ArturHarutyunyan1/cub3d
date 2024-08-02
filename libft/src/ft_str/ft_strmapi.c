@@ -20,7 +20,7 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 		return (NULL);
 	str = malloc((ft_strlen(s) + 1));
 	if (!str)
-		return (NULL);
+		exit(printf("Error\nMemory allocation failure\n"));
 	i = 0;
 	while (s[i])
 	{

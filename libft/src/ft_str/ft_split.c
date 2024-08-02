@@ -43,7 +43,7 @@ static char	*ft_strndup(const char *str, size_t n)
 		len = ft_strlen(str);
 	dup = malloc((len + 1) * sizeof(char));
 	if (!dup)
-		return (NULL);
+		exit(printf("Error\nMemory allocation failure\n"));
 	ft_memmove(dup, str, len);
 	dup[len] = '\0';
 	return (dup);

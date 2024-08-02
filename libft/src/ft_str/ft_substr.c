@@ -27,7 +27,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 		end = len;
 	s2 = (char *)malloc(sizeof(char) * (end + 1));
 	if (!s2)
-		return (0);
+		exit(printf("Error\nMemory allocation failure\n"));
 	ft_strlcpy(s2, s + start, end + 1);
 	return (s2);
 }

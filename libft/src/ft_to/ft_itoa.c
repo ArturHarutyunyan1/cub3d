@@ -40,7 +40,7 @@ char	*ft_itoa(int n)
 	}
 	str = (char *)malloc((digits + 1) * sizeof(char));
 	if (!str)
-		return (NULL);
+		exit(printf("Error\nMemory allocation failure\n"));
 	str[digits] = 0;
 	while (digits--)
 	{

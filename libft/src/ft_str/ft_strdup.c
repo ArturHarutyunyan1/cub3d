@@ -19,7 +19,7 @@ char	*ft_strdup(const char *src)
 	i = 0;
 	dest = (char *)malloc((ft_strlen(src) + 1) * sizeof(char));
 	if (dest == NULL)
-		return (NULL);
+		exit(printf("Error\nMemory allocation failure\n"));
 	while (src[i] != '\0')
 	{
 		dest[i] = src[i];
