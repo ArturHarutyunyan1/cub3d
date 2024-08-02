@@ -6,7 +6,7 @@
 /*   By: arturhar <arturhar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 06:40:08 by arturhar          #+#    #+#             */
-/*   Updated: 2024/07/22 16:08:29 by arturhar         ###   ########.fr       */
+/*   Updated: 2024/08/03 01:26:53 by arturhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,8 @@ bool	check_chars(t_game *game, int i, int j, int count)
 				count++;
 			else if (game->map.grid[i][j] != '1' && game->map.grid[i][j] != '0'
 				&& game->map.grid[i][j] != '\n' && game->map.grid[i][j] != ' '
-				&& game->map.grid[i][j] != '\t')
+				&& game->map.grid[i][j] != '\t' && game->map.grid[i][j] != 'D'
+				&& game->map.grid[i][j] != 'd')
 				return (false);
 			j++;
 		}

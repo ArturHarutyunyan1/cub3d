@@ -6,7 +6,7 @@
 /*   By: arturhar <arturhar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 06:39:00 by arturhar          #+#    #+#             */
-/*   Updated: 2024/07/24 01:07:15 by arturhar         ###   ########.fr       */
+/*   Updated: 2024/08/03 01:31:45 by arturhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@
 # define KEY_A 0
 # define KEY_S 1
 # define KEY_D 2
+# define KEY_E 14
 # define KEY_ESC 53
 # define LEFT_ARROW 123
 # define RIGHT_ARROW 124
@@ -150,7 +151,7 @@ typedef struct s_game
 	t_vars		vars;
 	t_map		map;
 	t_img		img;
-	t_texture	textures[4];
+	t_texture	textures[6];
 	t_texture	sprite[4];
 	t_rays		rays;
 	t_color		floor;

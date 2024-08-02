@@ -6,7 +6,7 @@
 /*   By: arturhar <arturhar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 06:40:05 by arturhar          #+#    #+#             */
-/*   Updated: 2024/07/20 21:32:57 by arturhar         ###   ########.fr       */
+/*   Updated: 2024/08/03 01:26:35 by arturhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,12 @@ static void	draw_wall(t_game *game, int x)
 	int			color;
 	t_texture	*texture;
 
-	texture = &game->textures[game->rays.direction];
+	if (game->rays.hit == 2)
+		texture = &game->textures[4];
+	else if (game->rays.hit == 3)
+		texture = &game->textures[5];
+	else
+		texture = &game->textures[game->rays.direction];
 	game->rays.step = 1.0 * texture->height / game->rays.line_height;
 	game->rays.tex_pos = (game->rays.draw_start - HEIGHT
 			/ 2 + game->rays.line_height / 2)
@@ -50,13 +55,13 @@ void	raycaster(t_game *game)
 	int	x;
 
 	x = -1;
-	while (++x <= WIDTH)
+	while (++x < WIDTH)
 	{
 		setup(game, x);
 		get_sides(game);
 		dda(game);
 		prepare_drawing(game);
-		if (game->rays.hit == 1)
+		if (game->rays.hit > 0)
 			draw_wall(game, x);
 	}
 	mlx_put_image_to_window(game->vars.mlx,

@@ -6,7 +6,7 @@
 /*   By: arturhar <arturhar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 02:00:47 by arturhar          #+#    #+#             */
-/*   Updated: 2024/07/20 01:33:28 by arturhar         ###   ########.fr       */
+/*   Updated: 2024/08/03 01:25:31 by arturhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,10 @@ void	dda(t_game *game)
 			return ;
 		if (game->map.grid[game->rays.map_y][game->rays.map_x] == '1')
 			game->rays.hit = 1;
+		else if (game->map.grid[game->rays.map_y][game->rays.map_x] == 'D')
+			game->rays.hit = 2;
+		else if (game->map.grid[game->rays.map_y][game->rays.map_x] == 'd')
+			game->rays.hit = 3;
 	}
 }
 

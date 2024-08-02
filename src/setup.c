@@ -6,7 +6,7 @@
 /*   By: arturhar <arturhar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 02:39:51 by arturhar          #+#    #+#             */
-/*   Updated: 2024/07/24 01:08:43 by arturhar         ###   ########.fr       */
+/*   Updated: 2024/08/03 01:15:24 by arturhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,23 +73,17 @@ char	*set_path(int i, char *path, t_game *game)
 			ft_exit(game, "Error\nFailed to load north texture\n", 1);
 	}
 	if (i == 1)
-	{
 		path = game->map.ea;
-		if (!path)
-			ft_exit(game, "Error\nFailed to load east texture\n", 1);
-	}
 	if (i == 2)
-	{
 		path = game->map.we;
-		if (!path)
-			ft_exit(game, "Error\nFailed to load west texture\n", 1);
-	}
 	if (i == 3)
-	{
 		path = game->map.so;
-		if (!path)
-			ft_exit(game, "Error\nFailed to load south texture\n", 1);
-	}
+	if (i == 4)
+		path = "./textures/close.xpm";
+	if (i == 5)
+		path = "./textures/open.xpm";
+	if (!path)
+		ft_exit(game, "Error\nSomething went wrong with paths\n", 1);
 	return (path);
 }
 
@@ -99,7 +93,7 @@ void	init_textures(t_game *game)
 	char	*path;
 
 	i = 0;
-	while (i <= 3)
+	while (i <= 5)
 	{
 		path = set_path(i, path, game);
 		game->textures[i].img = mlx_xpm_file_to_image(game->vars.mlx, path,
