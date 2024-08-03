@@ -6,7 +6,7 @@
 /*   By: arturhar <arturhar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/20 20:39:07 by arturhar          #+#    #+#             */
-/*   Updated: 2024/07/20 23:33:13 by arturhar         ###   ########.fr       */
+/*   Updated: 2024/08/03 09:31:38 by arturhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,10 @@ void	minimap(t_game *game)
 					color = 0x4169E1;
 				if (game->map.dup[map_y][map_x] == '0')
 					color = 0x000000;
+				if (game->map.dup[map_y][map_x] == 'D')
+					color = 0xa34a24;
+				if (game->map.grid[map_y][map_x] == 'd')
+					color = 0x00FF00;
 				draw_cell(game, map_x, map_y, color);
 			}
 			map_x++;

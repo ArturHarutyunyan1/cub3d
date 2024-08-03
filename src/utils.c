@@ -6,7 +6,7 @@
 /*   By: arturhar <arturhar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 06:39:51 by arturhar          #+#    #+#             */
-/*   Updated: 2024/07/25 20:59:53 by arturhar         ###   ########.fr       */
+/*   Updated: 2024/08/03 09:43:14 by arturhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,10 +35,12 @@ int	ft_exit(t_game *game, char *msg, int status)
 	{
 		if (status == 2)
 		{
-			while (i < 3)
+			while (game->textures[i].img || game->sprite[i].img)
 			{
 				if (game->textures[i].img)
 					mlx_destroy_image(game->vars.mlx, game->textures[i].img);
+				if (game->sprite[i].img)
+					mlx_destroy_image(game->vars.mlx, game->sprite[i].img);
 				i++;
 			}
 			if (game->vars.mlx_win)
@@ -46,6 +48,7 @@ int	ft_exit(t_game *game, char *msg, int status)
 		}
 	}
 	free_matrix(game->map.grid);
+	ft_lstclear(&game->file, free);
 	exit(status);
 }
 

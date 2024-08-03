@@ -6,9 +6,10 @@
 /*   By: arturhar <arturhar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 02:21:15 by arturhar          #+#    #+#             */
-/*   Updated: 2024/07/12 23:33:27 by arturhar         ###   ########.fr       */
+/*   Updated: 2024/08/03 09:59:43 by arturhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "../include/cub.h"
 
 void	check_inits(t_game *game)
@@ -65,4 +66,5 @@ void	clear_image(t_game *game)
 		}
 		y++;
 	}
+	mlx_clear_window(game->vars.mlx, game->vars.mlx_win);
 }
