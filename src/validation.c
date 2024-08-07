@@ -6,7 +6,7 @@
 /*   By: arturhar <arturhar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 06:40:08 by arturhar          #+#    #+#             */
-/*   Updated: 2024/08/03 02:29:44 by arturhar         ###   ########.fr       */
+/*   Updated: 2024/08/07 13:51:23 by arturhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ bool	surrounded_by_walls(t_game *game)
 		return (false);
 	while (trim[i])
 	{
-		if (trim[i] != '1')
+		if (trim[i] != '1' && trim[i] != ' ' && trim[i] != '\t')
 			return (false);
 		i++;
 	}
@@ -42,7 +42,7 @@ bool	surrounded_by_walls(t_game *game)
 	trim = ft_strtrim(game->map.grid[game->map.height], " \t\n");
 	while (trim[i])
 	{
-		if (trim[i] != '1')
+		if (trim[i] != '1' && trim[i] != ' ' && trim[i] != '\t')
 			return (false);
 		i++;
 	}

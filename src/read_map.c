@@ -6,7 +6,7 @@
 /*   By: arturhar <arturhar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/13 22:47:44 by arturhar          #+#    #+#             */
-/*   Updated: 2024/08/03 09:47:12 by arturhar         ###   ########.fr       */
+/*   Updated: 2024/08/07 13:52:17 by arturhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,6 +103,8 @@ void	check_for_valid_map(t_list *cur)
 		}
 		cur = cur->next;
 	}
+	if (!found_valid_map_start)
+		exit(printf("Error\nMissing map\n"));
 }
 
 void	extract_map(t_game *game, char *path)
