@@ -6,7 +6,7 @@
 /*   By: arturhar <arturhar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 06:39:00 by arturhar          #+#    #+#             */
-/*   Updated: 2024/08/03 02:31:53 by arturhar         ###   ########.fr       */
+/*   Updated: 2024/08/16 14:17:21 by arturhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@
 
 // Default window size
 
-# define WIDTH 800
-# define HEIGHT 600
+# define WIDTH 1280
+# define HEIGHT 720
 
 // Keycodes
 
@@ -30,6 +30,7 @@
 # define KEY_S 1
 # define KEY_D 2
 # define KEY_E 14
+# define KEY_SPC 49
 # define KEY_ESC 53
 # define LEFT_ARROW 123
 # define RIGHT_ARROW 124
@@ -152,7 +153,7 @@ typedef struct s_game
 	t_map		map;
 	t_img		img;
 	t_texture	textures[6];
-	t_texture	sprite[4];
+	t_texture	sprite[5];
 	t_rays		rays;
 	t_color		floor;
 	t_color		ceiling;
@@ -161,6 +162,7 @@ typedef struct s_game
 	t_valid		valid;
 	t_list		*file;
 	int			key_states[KEY_COUNT];
+	int			is_animation_playing;
 }	t_game;
 
 void	free_matrix(char **matrix);

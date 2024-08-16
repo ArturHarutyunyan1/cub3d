@@ -6,7 +6,7 @@
 /*   By: arturhar <arturhar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/11 22:08:26 by arturhar          #+#    #+#             */
-/*   Updated: 2024/08/03 10:20:15 by arturhar         ###   ########.fr       */
+/*   Updated: 2024/08/16 14:25:35 by arturhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ int	keypress(int code, t_game *game)
 		door(game);
 	if (code >= 0 && code < KEY_COUNT)
 		game->key_states[code] = 1;
+	if (code == KEY_SPC)
+		game->is_animation_playing = 1;
 	if (code == KEY_ESC)
 		exit_game(game);
 	return (0);

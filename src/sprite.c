@@ -6,7 +6,7 @@
 /*   By: arturhar <arturhar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/20 21:38:29 by arturhar          #+#    #+#             */
-/*   Updated: 2024/07/20 23:32:13 by arturhar         ###   ########.fr       */
+/*   Updated: 2024/08/16 14:21:05 by arturhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ static char	*set_sprite_textures(t_game *game, int i)
 		path = ft_strdup("./textures/sprite2.xpm");
 	if (i == 3)
 		path = ft_strdup("./textures/sprite3.xpm");
+	if (i == 4)
+		path = ft_strdup("./textures/sprite4.xpm");
 	if (!path)
 		ft_exit(game, "Error\nCan't load textures\n", 1);
 	return (path);
@@ -35,7 +37,7 @@ void	set_sprite(t_game *game)
 	char	*path;
 
 	i = 0;
-	while (i < 4)
+	while (i < 5)
 	{
 		path = set_sprite_textures(game, i);
 		game->sprite[i].img = mlx_xpm_file_to_image(game->vars.mlx, path,
@@ -63,8 +65,13 @@ static t_texture	get_sprite(t_game *game)
 		return (game->sprite[2]);
 	if (i <= 40)
 		return (game->sprite[3]);
-	if (i > 40)
+	if (i <= 50)
+		return (game->sprite[4]);
+	if (i > 50)
+	{
 		i = 0;
+		game->is_animation_playing = 0;
+	}
 	return (game->sprite[0]);
 }
 
@@ -75,13 +82,16 @@ void	sprite(t_game *game, int x, int y)
 	int			y_start;
 	t_texture	sprites;
 
-	x_start = (WIDTH - 256) / 2;
-	y_start = (HEIGHT - 256) + 10;
-	sprites = get_sprite(game);
-	while (y < 256)
+	x_start = (WIDTH - 345) / 2;
+	y_start = (HEIGHT - 360) + 10;
+	if (!game->is_animation_playing)
+		sprites = game->sprite[0];
+	else
+		sprites = get_sprite(game);
+	while (y < 360)
 	{
 		x = 0;
-		while (x < 256)
+		while (x < 345)
 		{
 			color = *(int *)(sprites.addr
 					+ (y * sprites.line_length
