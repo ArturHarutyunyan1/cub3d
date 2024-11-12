@@ -14,27 +14,26 @@
 
 bool	is_looking_at_door(t_game *game)
 {
-	int next_x;
-	int next_y;
+	int	next_x;
+	int	next_y;
 
 	next_x = (int)(game->player.x + game->player.dir_x);
 	next_y = (int)(game->player.y + game->player.dir_y);
-	if ((abs(next_x - (int)game->player.x) <= 1 && abs(next_y - (int)game->player.y) <= 1)
-		&& (game->map.grid[next_y][next_x] == 'D' || game->map.grid[next_y][next_x] == 'd'))
+	if ((abs(next_x - (int)game->player.x) <= 1
+			&& abs(next_y - (int)game->player.y) <= 1)
+		&& (game->map.grid[next_y][next_x] == 'D'
+		|| game->map.grid[next_y][next_x] == 'd'))
 		return (true);
-
 	return (false);
 }
 
-
 void	door(t_game *game)
 {
-	int next_x;
-	int next_y;
+	int	next_x;
+	int	next_y;
 
 	next_x = (int)(game->player.x + game->player.dir_x);
 	next_y = (int)(game->player.y + game->player.dir_y);
-	
 	if (game->map.grid[next_y][next_x] == 'D')
 		game->map.grid[next_y][next_x] = 'd';
 	else if (game->map.grid[next_y][next_x] == 'd')

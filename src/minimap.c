@@ -53,10 +53,6 @@ void	minimap(t_game *game)
 					color = 0x000000;
 				else if (game->map.dup[map_y][map_x] == 'D')
 					color = 0xa34a24;
-				else if (game->map.grid[map_y][map_x] == 'd')
-					color = 0x00FF00;
-				else
-					color = 0xFFFFFF;
 				draw_cell(game, map_x, map_y, color);
 			}
 			map_x++;

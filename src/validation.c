@@ -76,11 +76,11 @@ bool	check_chars(t_game *game, int i, int j, int count)
 	return (true);
 }
 
-void check_doors(t_game *game)
+void	check_doors(t_game *game)
 {
-	int x;
-	int y;
-	
+	int	x;
+	int	y;
+
 	y = 0;
 	while (game->map.grid[y])
 	{
@@ -88,11 +88,13 @@ void check_doors(t_game *game)
 		while (game->map.grid[y][x])
 		{
 			if (game->map.grid[y][x] == 'D' || game->map.grid[y][x] == 'd')
-            {
-				if (!(game->map.grid[y][x - 1] == '1' && game->map.grid[y][x + 1] == '1') // Check horizontal walls
-					&& !(game->map.grid[y - 1][x] == '1' && game->map.grid[y + 1][x] == '1')) // Check vertical walls
+			{
+				if (!(game->map.grid[y][x - 1] == '1'
+					&& game->map.grid[y][x + 1] == '1')
+					&& !(game->map.grid[y - 1][x] == '1'
+					&& game->map.grid[y + 1][x] == '1'))
 					ft_exit(game, "Error\nInvalid door\n", 1);
-            }
+			}
 			x++;
 		}
 		y++;

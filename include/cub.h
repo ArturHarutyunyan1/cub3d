@@ -6,7 +6,7 @@
 /*   By: arturhar <arturhar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 06:39:00 by arturhar          #+#    #+#             */
-/*   Updated: 2024/08/16 14:17:21 by arturhar         ###   ########.fr       */
+/*   Updated: 2024/11/12 16:30:58 by arturhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@
 
 // Default window size
 
-# define WIDTH 1280
-# define HEIGHT 720
+# define WIDTH 800
+# define HEIGHT 600
 
 // Keycodes
 

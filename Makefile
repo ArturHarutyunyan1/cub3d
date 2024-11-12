@@ -13,7 +13,7 @@
 
 NAME = cub3D
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -arch x86_64 # -g3 -fsanitize=address
+CFLAGS = -Wall -Wextra -Werror #-arch x86_64 # -g3 -fsanitize=address
 SRC_DIR = src
 OBJ_DIR = obj
 LIBFT_DIR = libft
@@ -48,7 +48,7 @@ LIBFT = $(LIBFT_DIR)/libft.a
 MLX = $(MLX_DIR)/libmlx.a
 INCLUDES = -I$(LIBFT_DIR) -I$(MLX_DIR)
 
-$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c Makefile include/cub.h
 	@mkdir -p $(OBJ_DIR)
 	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
 
