@@ -13,7 +13,7 @@
 
 NAME = cub3D
 CC = cc
-CFLAGS = -Wall -Wextra -Werror #-arch x86_64 # -g3 -fsanitize=address
+CFLAGS = -Wall -Wextra -Werror -arch x86_64 # -g3 -fsanitize=address
 SRC_DIR = src
 OBJ_DIR = obj
 LIBFT_DIR = libft

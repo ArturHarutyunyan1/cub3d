@@ -6,7 +6,7 @@
 /*   By: arturhar <arturhar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/13 22:42:56 by arturhar          #+#    #+#             */
-/*   Updated: 2024/08/03 09:46:19 by arturhar         ###   ########.fr       */
+/*   Updated: 2024/11/13 19:49:52 by arturhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ void	process_line(t_game *game, char *line)
 	}
 	else
 	{
-		free (trimmed_line);
+		free (dup);
 		ft_exit(game, "Error\nMemory allocation failure\n", 1);
 	}
 	free (dup);
